@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_shopping">
+
+    <fragment
+        android:id="@+id/navigation_donate"
+        android:name="com.hnb.huinongbang.ui.Donate.DonateFragment"
+        android:label="@string/title_donate"
+        tools:layout="@layout/fragment_donate" />
+
+    <fragment
+        android:id="@+id/navigation_shopping"
+        android:name="com.hnb.huinongbang.ui.shopping.ShoppingFragment"
+        android:label="@string/title_shopping"
+        tools:layout="@layout/fragment_shopping" />
+
+    <fragment
+        android:id="@+id/navigation_planting"
+        android:name="com.hnb.huinongbang.ui.Planting.PlantingFragment"
+        android:label="@string/title_planting"
+        tools:layout="@layout/fragment_planting" />
+    <fragment
+        android:id="@+id/navigation_policy"
+        android:name="com.hnb.huinongbang.ui.policy.PolicyFragment"
+        android:label="@string/title_policy"
+        tools:layout="@layout/fragment_policy" />
+    <fragment
+        android:id="@+id/navigation_my"
+        android:name="com.hnb.huinongbang.ui.my.MyFragment"
+        android:label="@string/title_my"
+        tools:layout="@layout/fragment_my" />
+</navigation>
