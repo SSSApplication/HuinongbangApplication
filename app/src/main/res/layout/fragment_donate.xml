@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.Donate.DonateFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.youth.banner.Banner
+            android:id="@+id/dbanner"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
+    </LinearLayout>
     <TextView
         android:id="@+id/text_donate"
         android:layout_width="match_parent"
