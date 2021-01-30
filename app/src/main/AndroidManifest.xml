@@ -12,7 +12,7 @@
         android:networkSecurityConfig="@xml/network_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.Huinongbang">
         <activity
             android:name=".BottomActivity"
             android:label="@string/title_activity_bottom"></activity>

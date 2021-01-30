@@ -10,8 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
 object Repository {
-
-    //获取用户 Dispatchers.IO函数线程类型设置，里面的代码全在子线程运行
+    // Dispatchers.IO函数线程类型设置，里面的代码全在子线程运行
+    //获取用户
     fun login(loginData: LoginData) = fire(Dispatchers.IO) {
         val userResponse = HNBNetwork.login(loginData)
         if (userResponse.code == 1) { //根据状态来处理
@@ -23,7 +23,18 @@ object Repository {
             Result.failure(RuntimeException("response status is ${userResponse.message}"))
         }
     }
-
+    //获取所有分类
+    fun categories(type: Int) = fire(Dispatchers.IO) {
+        val categoryResponse = HNBNetwork.categories(type)
+        if (categoryResponse.code == 1) { //根据状态来处理
+            LogUtil.d("分类模块", "获取分类成功，分类如下：${categoryResponse.data}")
+            val categories = categoryResponse.data
+            Result.success(categories)
+        } else {
+            LogUtil.d("分类模块", "获取分类失败，${categoryResponse.message}")
+            Result.failure(RuntimeException("response status is ${categoryResponse.message}"))
+        }
+    }
     //简化函数
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) = liveData<Result<T>>(context) {
         val result = try {

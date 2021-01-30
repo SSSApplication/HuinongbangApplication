@@ -3,23 +3,14 @@ package com.hnb.huinongbang.ui.login
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProviders
 import com.hnb.huinongbang.BottomActivity
 import com.hnb.huinongbang.HNBApplication.Companion.context
-import com.hnb.huinongbang.MainActivity
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.LoginData
-import com.hnb.huinongbang.logic.model.UserResponse
-import com.hnb.huinongbang.logic.network.ServiceCreator
-import com.hnb.huinongbang.logic.network.UserService
-import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_login.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
@@ -49,15 +40,14 @@ class LoginActivity : AppCompatActivity() {
         }
         //监听登录结果
         viewModel.loginLiveData.observe(this, {result ->
-            val userResponse = result.getOrNull()
-            if(userResponse != null){
-                Repository.saveUser(userResponse)
+            val user = result.getOrNull()
+            if(user != null){
+                Repository.saveUser(user)
                 if(rememberPass.isChecked){
                     Repository.remember()
                 }else{
                     Repository.unremember()
                 }
-
                 val intent = Intent(context, BottomActivity::class.java)
                 startActivity(intent)
             }else{

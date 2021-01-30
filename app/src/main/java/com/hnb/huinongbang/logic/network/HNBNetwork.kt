@@ -16,6 +16,10 @@ object HNBNetwork {
     private val userService = ServiceCreator.create<UserService>()
     suspend fun login(loginData: LoginData) = userService.login(loginData.name, loginData.password).await()
 
+    //封装Category的网络请求
+    private val categoryService = ServiceCreator.create<CategoryService>()
+    suspend fun categories(type: Int)= categoryService.categories(type).await()
+
     //协程suspend
     private suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->

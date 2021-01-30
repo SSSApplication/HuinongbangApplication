@@ -1,4 +1,4 @@
-package com.hnb.huinongbang.ui.Donate
+package com.hnb.huinongbang.ui.common
 
 import com.hnb.huinongbang.logic.network.ServiceCreator
 
@@ -20,7 +20,23 @@ class BannerDataBean {
     }
 
     companion object {
-        val testData: List<BannerDataBean> get() {
+        val shoppingData: List<BannerDataBean> get() {
+            val list: MutableList<BannerDataBean> = ArrayList()
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo+"1.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo+"2.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo+"3.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo+"4.jpg", null, 1)
+            )
+            return list
+        }
+        val donateData: List<BannerDataBean> get() {
             val list: MutableList<BannerDataBean> = ArrayList()
             list.add(
                 BannerDataBean(ServiceCreator.lunbo_donate+"sqet01.jpg", null, 1)
