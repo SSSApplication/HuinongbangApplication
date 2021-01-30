@@ -48,7 +48,7 @@ class BannerDataBean {
                 BannerDataBean(ServiceCreator.lunbo_donate+"sqet03.jpg", null, 1)
             )
             list.add(
-                BannerDataBean(ServiceCreator.lunbo_donate+"sqet04.jpg", null, 1)
+                BannerDataBean(ServiceCreator.lunbo_donate+"sqet04.png", null, 1)
             )
             return list
         }
