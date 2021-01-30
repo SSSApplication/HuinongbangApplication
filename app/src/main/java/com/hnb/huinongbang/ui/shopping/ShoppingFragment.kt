@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,6 +15,8 @@ import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.ui.common.BannerDataBean
 import com.hnb.huinongbang.ui.common.CategoryAdapter
+import com.hnb.huinongbang.ui.common.ProductAdapter
+import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
@@ -28,6 +29,7 @@ class ShoppingFragment : Fragment() {
     val viewModel by lazy { ViewModelProviders.of(this).get(ShoppingViewModel::class.java)}
 
     private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var productAdapter: ProductAdapter
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -39,18 +41,33 @@ class ShoppingFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         refreshBanner()
-        refreshCategories()
+        refreshdata()
         viewModel.categoriesLiveData.observe(this, Observer { result ->
             val categories = result.getOrNull()
             if (categories != null){
                 viewModel.categoryList.clear()
                 viewModel.categoryList.addAll(categories)
-                val layoutManager = LinearLayoutManager(activity)
-                shoppingRecycler.layoutManager = layoutManager
+                val categorylayoutManager = LinearLayoutManager(activity)
+                shoppingRecycler.layoutManager = categorylayoutManager
                 categoryAdapter = CategoryAdapter(this, viewModel.categoryList)
                 shoppingRecycler.adapter = categoryAdapter
             }else {
                 ToastUtil.show("没有分类")
+                result.exceptionOrNull()?.printStackTrace()
+            }
+        })
+        viewModel.productsLiveData.observe(this, Observer { result ->
+            val products = result.getOrNull()
+            if (products != null){
+                viewModel.productList.clear()
+                viewModel.productList.addAll(products)
+                LogUtil.d("sssssss", "dddddddddddddd+${viewModel.productList[5]}")
+                val productlayoutManager = LinearLayoutManager(activity)
+                sproductRecycler.layoutManager = productlayoutManager
+                productAdapter = ProductAdapter(this, viewModel.productList)
+                sproductRecycler.adapter = productAdapter
+            }else {
+                ToastUtil.show("没有产品")
                 result.exceptionOrNull()?.printStackTrace()
             }
             shoppingRefresh.isRefreshing = false
@@ -59,15 +76,15 @@ class ShoppingFragment : Fragment() {
         //下拉刷新
         shoppingRefresh.setColorSchemeResources(R.color.colorPrimary)
         shoppingRefresh.setOnRefreshListener {
-            refreshCategories()
+            refreshdata()
             refreshBanner()
         }
 
         //分类
 
     }
-    fun refreshCategories(){
-        viewModel.categories(0)
+    fun refreshdata(){
+        viewModel.getdata(0)
         shoppingRefresh.isRefreshing = true
     }
     fun refreshBanner(){

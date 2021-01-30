@@ -4,6 +4,8 @@ import java.util.*
 
 data class ProductsResponse(val code: Int, val data: List<Product>, val message: String)
 
+data class ProductResponse(val code: Int, val data: Product, val message: String)
+
 data class Product( val id: Int,
                     val name: String,//标题
                     val subTitle: String, //副标题

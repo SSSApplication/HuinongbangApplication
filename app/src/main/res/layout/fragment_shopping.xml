@@ -9,14 +9,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <com.youth.banner.Banner
-        android:id="@+id/sbanner"
-        android:layout_width="match_parent"
-        android:layout_height="160dp" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/shoppingRecycler"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            android:layout_height="wrap_content">
+            <com.youth.banner.Banner
+                android:id="@+id/sbanner"
+                android:layout_width="match_parent"
+                android:layout_height="160dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/shoppingRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="---------------------"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sproductRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
     </LinearLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

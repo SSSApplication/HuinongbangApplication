@@ -18,7 +18,13 @@ object HNBNetwork {
 
     //封装Category的网络请求
     private val categoryService = ServiceCreator.create<CategoryService>()
-    suspend fun categories(type: Int)= categoryService.categories(type).await()
+    suspend fun categories(type: Int) = categoryService.categories(type).await()
+
+    //封装Product的网络请求
+    private val productService = ServiceCreator.create<ProductService>()
+    suspend fun products(type: Int) = productService.products(type).await()
+    suspend fun productsbycid(cid: Int) = productService.productsbycid(cid).await()
+    suspend fun product(pid: Int) = productService.product(pid).await()
 
     //协程suspend
     private suspend fun <T> Call<T>.await(): T {

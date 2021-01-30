@@ -35,6 +35,45 @@ object Repository {
             Result.failure(RuntimeException("response status is ${categoryResponse.message}"))
         }
     }
+    //获取所有产品
+    fun products(type: Int) = fire(Dispatchers.IO) {
+        val productsResponse = HNBNetwork.products(type)
+        if (productsResponse.code == 1) { //根据状态来处理
+            LogUtil.d("产品模块", "获取产品成功，分类如下：${productsResponse.data}")
+            val products = productsResponse.data
+            Result.success(products)
+        } else {
+            LogUtil.d("产品模块", "获取产品失败，${productsResponse.message}")
+            Result.failure(RuntimeException("response status is ${productsResponse.message}"))
+        }
+    }
+    //通过分类获取产品
+    fun productsbycid(cid: Int) = fire(Dispatchers.IO) {
+        val productsResponse = HNBNetwork.productsbycid(cid)
+        if (productsResponse.code == 1) { //根据状态来处理
+            LogUtil.d("产品模块", "获取产品成功，分类如下：${productsResponse.data}")
+            val products = productsResponse.data
+            Result.success(products)
+        } else {
+            LogUtil.d("产品模块", "获取产品失败，${productsResponse.message}")
+            Result.failure(RuntimeException("response status is ${productsResponse.message}"))
+        }
+    }
+    //通过id获取单个产品
+    fun product(pid: Int) = fire(Dispatchers.IO) {
+        val productsResponse = HNBNetwork.product(pid)
+        if (productsResponse.code == 1) { //根据状态来处理
+            LogUtil.d("产品模块", "获取产品成功，分类如下：${productsResponse.data}")
+            val product = productsResponse.data
+            Result.success(product)
+        } else {
+            LogUtil.d("产品模块", "获取产品失败，${productsResponse.message}")
+            Result.failure(RuntimeException("response status is ${productsResponse.message}"))
+        }
+    }
+
+
+
     //简化函数
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) = liveData<Result<T>>(context) {
         val result = try {

@@ -15,6 +15,8 @@ import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.ui.common.BannerDataBean
 import com.hnb.huinongbang.ui.common.CategoryAdapter
+import com.hnb.huinongbang.ui.common.ProductAdapter
+import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
@@ -27,6 +29,7 @@ class DonateFragment : Fragment() {
     val viewModel by lazy { ViewModelProviders.of(this).get(DonateViewModel::class.java)}
 
     private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var productAdapter: ProductAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +42,7 @@ class DonateFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         refreshBanner()
-        refreshCategories()
+        refreshgetdata()
         viewModel.categoriesLiveData.observe(this, Observer { result ->
             val categories = result.getOrNull()
             if (categories != null){
@@ -53,18 +56,33 @@ class DonateFragment : Fragment() {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
             }
+        })
+        viewModel.productsLiveData.observe(this, Observer { result ->
+            val products = result.getOrNull()
+            if (products != null){
+                viewModel.productList.clear()
+                viewModel.productList.addAll(products)
+                LogUtil.d("sssssss", "dddddddddddddd+${viewModel.productList[5]}")
+                val productlayoutManager = LinearLayoutManager(activity)
+                dproductRecycler.layoutManager = productlayoutManager
+                productAdapter = ProductAdapter(this, viewModel.productList)
+                dproductRecycler.adapter = productAdapter
+            }else {
+                ToastUtil.show("没有产品")
+                result.exceptionOrNull()?.printStackTrace()
+            }
             donateRefresh.isRefreshing = false
         })
 
         //下拉刷新
         donateRefresh.setColorSchemeResources(R.color.colorPrimary)
         donateRefresh.setOnRefreshListener {
-            refreshCategories()
+            refreshgetdata()
             refreshBanner()
         }
     }
-    fun refreshCategories(){
-        viewModel.categories(1)
+    fun refreshgetdata(){
+        viewModel.getdata(1)
         donateRefresh.isRefreshing = true
     }
     fun refreshBanner(){
