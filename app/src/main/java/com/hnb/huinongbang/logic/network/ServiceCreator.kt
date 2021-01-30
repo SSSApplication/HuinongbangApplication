@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ServiceCreator {
     //    模拟器 "http://10.0.2.2/"
     // 域名 "https://www.huinongbang.club/"
-    private const val BASE_URL = "http://10.0.2.2/"
+    private const val BASE_URL = "https://www.huinongbang.club/"
     val lunbo = BASE_URL+"img/lunbo/"
     val lunbo_donate = BASE_URL+"webphoto/"
     private val retrofit = Retrofit.Builder()
