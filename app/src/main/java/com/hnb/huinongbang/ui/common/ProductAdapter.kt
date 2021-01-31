@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.ui.common
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,11 @@ class ProductAdapter (private val fragment: Fragment,val productList: List<Produ
         holder.firstProductImage.setOnClickListener {
             val position = holder.adapterPosition
             LogUtil.d("productListposition", "${position} ${productList[position]}")
+            val product = productList[position]
+            val intent = Intent(parent.context, ProductActivity::class.java).apply {
+                putExtra("pid", product.id)
+            }
+            fragment.startActivity(intent)
         }
         holder.name.setOnClickListener {
             val position = holder.adapterPosition
