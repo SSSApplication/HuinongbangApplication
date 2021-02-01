@@ -61,7 +61,7 @@
 <!--分类-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="wrap_content">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/donateRecycler"
                 android:layout_width="match_parent"
@@ -69,10 +69,6 @@
                 android:layout_marginTop="5dp"/>
 
         </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:text="---------------------"/>
         <!--商品展示-->
         <LinearLayout
             android:layout_width="match_parent"
