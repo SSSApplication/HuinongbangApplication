@@ -22,6 +22,5 @@ class MyFragment : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        text_my.text = viewModel.text.value
     }
 }

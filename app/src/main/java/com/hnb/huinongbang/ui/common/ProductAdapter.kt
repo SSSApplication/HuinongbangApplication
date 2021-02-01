@@ -39,6 +39,11 @@ class ProductAdapter (private val fragment: Fragment,val productList: List<Produ
         holder.name.setOnClickListener {
             val position = holder.adapterPosition
             LogUtil.d("productListposition", "${position} ${productList[position]}")
+            val product = productList[position]
+            val intent = Intent(parent.context, ProductActivity::class.java).apply {
+                putExtra("pid", product.id)
+            }
+            fragment.startActivity(intent)
         }
         return holder
     }

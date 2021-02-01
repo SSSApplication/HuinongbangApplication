@@ -66,27 +66,31 @@ class ProductActivity : AppCompatActivity() {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
             }
+            //评论
+            if (product?.type == 0){
+                viewModel.reviewsLiveData.observe(this, Observer { result ->
+                    val reviews = result.getOrNull()
+                    if (reviews != null){
+                        viewModel.reviews.clear()
+                        viewModel.reviews.addAll(reviews)
+
+                        //评价
+                        val layoutManager = LinearLayoutManager(this)
+                        reviewRecycler.layoutManager = layoutManager
+                        reviewAdapter = ReviewAdapter(this, viewModel.reviews)
+                        reviewRecycler.adapter = reviewAdapter
+
+                    }else{
+                        noreview.visibility = View.VISIBLE
+                        ToastUtil.show("没有评价")
+                        result.exceptionOrNull()?.printStackTrace()
+                    }
+
+                })
+            }
             productRefresh.isRefreshing = false
         })
-        viewModel.reviewsLiveData.observe(this, Observer { result ->
-            val reviews = result.getOrNull()
-            if (reviews != null){
-                viewModel.reviews.clear()
-                viewModel.reviews.addAll(reviews)
 
-                //评价
-                val layoutManager = LinearLayoutManager(this)
-                reviewRecycler.layoutManager = layoutManager
-                reviewAdapter = ReviewAdapter(this, viewModel.reviews)
-                reviewRecycler.adapter = reviewAdapter
-
-            }else{
-                noreview.visibility = View.VISIBLE
-                ToastUtil.show("没有评价")
-                result.exceptionOrNull()?.printStackTrace()
-            }
-
-        })
         viewModel.propertyValuesLiveData.observe(this, Observer { result ->
             val propertyValues = result.getOrNull()
             if (propertyValues != null){
