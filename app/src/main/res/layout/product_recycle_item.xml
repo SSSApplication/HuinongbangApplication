@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="5dp"
         android:layout_weight="7"
@@ -17,20 +18,26 @@
 
         <ImageView
             android:id="@+id/firstProductImage"
-            android:layout_width="200dp"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_height="200dp" />
 
         <TextView
             android:id="@+id/name"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:textSize="12sp"
+            android:layout_marginLeft="15dp"
             android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:gravity="center"
             android:orientation="horizontal"
             android:layout_marginLeft="50dp">
 
@@ -40,14 +47,15 @@
                 android:layout_height="wrap_content"
                 android:text="￥"
                 android:textSize="16sp"
+                android:paddingTop="5dp"
                 android:textColor="@color/color_price"/>
 
             <ImageView
                 android:id="@+id/donatemoney"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:layout_marginTop="13dp"
                 android:src="@drawable/huinongbi"
+                android:paddingTop="5dp"
                 android:visibility="gone" />
 
             <TextView
