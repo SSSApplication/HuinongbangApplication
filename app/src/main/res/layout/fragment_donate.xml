@@ -8,6 +8,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <!--搜索框-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="2"
+                    android:src="@drawable/logohuinongbanglogo" />
+
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/bg_searchview"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="请输入搜索内容" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_buttonview"
+
+                    android:text="搜索" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--轮播图-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -16,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="160dp" />
         </LinearLayout>
-
+<!--分类-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp">
