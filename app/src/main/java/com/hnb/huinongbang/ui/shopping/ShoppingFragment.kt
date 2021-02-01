@@ -71,8 +71,13 @@ class ShoppingFragment : Fragment() {
                 viewModel.productList.clear()
                 viewModel.productList.addAll(products)
                 LogUtil.d("sssssss", "dddddddddddddd+${viewModel.productList[5]}")
-                val productlayoutManager = LinearLayoutManager(activity)
-                sproductRecycler.layoutManager = productlayoutManager
+                /*val productlayoutManager = LinearLayoutManager(activity)
+                sproductRecycler.layoutManager = productlayoutManager*/
+
+
+                //以2列形式显示
+                sproductRecycler.layoutManager = GridLayoutManager(this.context, 2, RecyclerView.VERTICAL,false)
+
                 productAdapter = ProductAdapter(this, viewModel.productList)
                 sproductRecycler.adapter = productAdapter
             }else {

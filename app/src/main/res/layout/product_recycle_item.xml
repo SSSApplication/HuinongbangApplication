@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="80dp"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
     android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -10,33 +10,49 @@
         android:layout_marginLeft="5dp"
         android:layout_weight="7"
         android:orientation="vertical">
+
         <ImageView
             android:id="@+id/firstProductImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"/>
+            android:layout_width="200dp"
+            android:layout_height="200dp" />
+
         <TextView
             android:id="@+id/name"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:textSize="18sp"/>
-        <TextView
-            android:id="@+id/shoppingmoney"
-            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="￥"
-            android:textSize="18sp"/>
-        <ImageView
-            android:id="@+id/donatemoney"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/huinongbi"
-            android:visibility="gone"/>
-        <TextView
-            android:id="@+id/promotePrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:textSize="14sp"/>
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginLeft="50dp">
+
+            <TextView
+                android:id="@+id/shoppingmoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textSize="16sp"
+                android:textColor="@color/color_price"/>
+
+            <ImageView
+                android:id="@+id/donatemoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/huinongbi"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/promotePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:textSize="20sp"
+                android:textColor="@color/color_price"/>
+        </LinearLayout>
     </LinearLayout>
 
 
