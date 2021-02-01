@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -24,6 +25,7 @@ import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.fragment_donate.*
+import kotlinx.android.synthetic.main.fragment_shopping.*
 
 class DonateFragment : Fragment() {
 
@@ -71,8 +73,9 @@ class DonateFragment : Fragment() {
                 viewModel.productList.clear()
                 viewModel.productList.addAll(products)
                 LogUtil.d("sssssss", "dddddddddddddd+${viewModel.productList[5]}")
-                val productlayoutManager = LinearLayoutManager(activity)
-                dproductRecycler.layoutManager = productlayoutManager
+                /*val productlayoutManager = LinearLayoutManager(activity)
+                dproductRecycler.layoutManager = productlayoutManager*/
+                dproductRecycler.layoutManager = GridLayoutManager(this.context, 2,RecyclerView.VERTICAL, false)
                 productAdapter = ProductAdapter(this, viewModel.productList)
                 dproductRecycler.adapter = productAdapter
             }else {
