@@ -64,6 +64,26 @@ class ProductActivity : AppCompatActivity() {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
             }
+        })
+        viewModel.propertyValuesLiveData.observe(this, Observer { result ->
+            val propertyValues = result.getOrNull()
+            if (propertyValues != null){
+                viewModel.propertyValues.clear()
+                viewModel.propertyValues.addAll(propertyValues)
+            }else{
+                ToastUtil.show("没有属性")
+                result.exceptionOrNull()?.printStackTrace()
+            }
+        })
+        viewModel.reviewsLiveData.observe(this, Observer { result ->
+            val reviews = result.getOrNull()
+            if (reviews != null){
+                viewModel.reviews.clear()
+                viewModel.reviews.addAll(reviews)
+            }else{
+                ToastUtil.show("没有评价")
+                result.exceptionOrNull()?.printStackTrace()
+            }
             productRefresh.isRefreshing = false
         })
     }

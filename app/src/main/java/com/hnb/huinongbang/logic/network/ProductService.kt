@@ -2,6 +2,8 @@ package com.hnb.huinongbang.logic.network
 
 import com.hnb.huinongbang.logic.model.ProductResponse
 import com.hnb.huinongbang.logic.model.ProductsResponse
+import com.hnb.huinongbang.logic.model.PropertyValueResponse
+import com.hnb.huinongbang.logic.model.ReviewResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,4 +18,10 @@ interface ProductService {
     //获取单个产品
     @GET("foremproduct")
     fun product(@Query("pid") pid: Int): Call<ProductResponse>
+    //获取产品属性
+    @GET("forempropertyValues")
+    fun propertyValues(@Query("pid") pid: Int): Call<PropertyValueResponse>
+    //获取产品评价
+    @GET("foremreviews")
+    fun reviews(@Query("pid") pid: Int): Call<ReviewResponse>
 }

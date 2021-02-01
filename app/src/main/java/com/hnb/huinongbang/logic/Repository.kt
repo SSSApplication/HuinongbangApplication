@@ -71,6 +71,31 @@ object Repository {
             Result.failure(RuntimeException("response status is ${productsResponse.message}"))
         }
     }
+    //通过id获取属性
+    fun propertyValues(pid: Int) = fire(Dispatchers.IO) {
+        val propertyValueResponse = HNBNetwork.propertyValues(pid)
+        if (propertyValueResponse.code == 1) { //根据状态来处理
+            LogUtil.d("属性模块", "获取属性成功，分类如下：${propertyValueResponse.data}")
+            val propertyValues = propertyValueResponse.data
+            Result.success(propertyValues)
+        } else {
+            LogUtil.d("属性模块", "获取属性失败，${propertyValueResponse.message}")
+            Result.failure(RuntimeException("response status is ${propertyValueResponse.message}"))
+        }
+    }
+    //通过id获取评价
+    fun reviews(pid: Int) = fire(Dispatchers.IO) {
+        val reviewsResponse = HNBNetwork.reviews(pid)
+        if (reviewsResponse.code == 1) { //根据状态来处理
+            LogUtil.d("评价模块", "获取评价成功，分类如下：${reviewsResponse.data}")
+            val reviews = reviewsResponse.data
+            Result.success(reviews)
+        } else {
+            LogUtil.d("评价模块", "获取评价失败，${reviewsResponse.message}")
+            Result.failure(RuntimeException("response status is ${reviewsResponse.message}"))
+        }
+    }
+
 
 
 

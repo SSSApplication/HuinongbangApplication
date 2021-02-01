@@ -25,6 +25,8 @@ object HNBNetwork {
     suspend fun products(type: Int) = productService.products(type).await()
     suspend fun productsbycid(cid: Int) = productService.productsbycid(cid).await()
     suspend fun product(pid: Int) = productService.product(pid).await()
+    suspend fun propertyValues(pid: Int) = productService.propertyValues(pid).await()
+    suspend fun reviews(pid: Int) = productService.reviews(pid).await()
 
     //协程suspend
     private suspend fun <T> Call<T>.await(): T {
