@@ -18,11 +18,13 @@ import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.activity_product.*
+import kotlinx.android.synthetic.main.fragment_shopping.*
 
 class ProductActivity : AppCompatActivity() {
     val viewModel by lazy { ViewModelProviders.of(this).get(ProductViewModel::class.java)}
     lateinit var detailImageAdapter: DetailImageAdapter
-
+    lateinit var propertyValuesAdapter: PropertyValuesAdapter
+    lateinit var reviewAdapter: ReviewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
@@ -64,28 +66,49 @@ class ProductActivity : AppCompatActivity() {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
             }
-        })
-        viewModel.propertyValuesLiveData.observe(this, Observer { result ->
-            val propertyValues = result.getOrNull()
-            if (propertyValues != null){
-                viewModel.propertyValues.clear()
-                viewModel.propertyValues.addAll(propertyValues)
-            }else{
-                ToastUtil.show("没有属性")
-                result.exceptionOrNull()?.printStackTrace()
-            }
+            productRefresh.isRefreshing = false
         })
         viewModel.reviewsLiveData.observe(this, Observer { result ->
             val reviews = result.getOrNull()
             if (reviews != null){
                 viewModel.reviews.clear()
                 viewModel.reviews.addAll(reviews)
+
+                //评价
+                val layoutManager = LinearLayoutManager(this)
+                reviewRecycler.layoutManager = layoutManager
+                reviewAdapter = ReviewAdapter(this, viewModel.reviews)
+                reviewRecycler.adapter = reviewAdapter
+
             }else{
+                noreview.visibility = View.VISIBLE
                 ToastUtil.show("没有评价")
                 result.exceptionOrNull()?.printStackTrace()
             }
-            productRefresh.isRefreshing = false
+
         })
+        viewModel.propertyValuesLiveData.observe(this, Observer { result ->
+            val propertyValues = result.getOrNull()
+            if (propertyValues != null){
+                viewModel.propertyValues.clear()
+                viewModel.propertyValues.addAll(propertyValues)
+
+                //属性
+                val layoutManager = LinearLayoutManager(this)
+                propertyRecycler.layoutManager = layoutManager
+                propertyValuesAdapter = PropertyValuesAdapter(this, viewModel.propertyValues)
+                propertyRecycler.adapter = propertyValuesAdapter
+            }else{
+                ToastUtil.show("没有属性")
+                result.exceptionOrNull()?.printStackTrace()
+            }
+        })
+        //下拉刷新
+        productRefresh.setColorSchemeResources(R.color.colorPrimary)
+        productRefresh.setOnRefreshListener {
+            refreshdata()
+        }
+
     }
     fun refreshdata(){
         viewModel.getdata(viewModel.pid)
