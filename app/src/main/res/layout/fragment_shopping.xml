@@ -37,7 +37,7 @@
                     android:iconifiedByDefault="false"
                     android:queryHint="请输入搜索内容" />
 
-                <Button
+                <android.widget.Button
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="5dp"
