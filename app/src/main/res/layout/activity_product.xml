@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/productRefresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,9 +20,13 @@
                 android:layout_height="260dp" />
         </LinearLayout>
 
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="3dp"
+            android:outlineProvider="bounds"
+            android:translationZ="3dp">
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
@@ -45,10 +50,45 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
                 android:textSize="14sp"/>
-        </LinearLayout>
-        <LinearLayout
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="3dp"
+            android:outlineProvider="bounds"
+            android:translationZ="3dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/propertyRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="3dp"
+            android:outlineProvider="bounds"
+            android:translationZ="3dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/productRecycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="3dp"
+            android:outlineProvider="bounds"
+            android:translationZ="3dp">
             <TextView
                 android:id="@+id/noreview"
                 android:layout_width="wrap_content"
@@ -61,28 +101,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"/>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/propertyRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/productRecycler"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"/>
-
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</ScrollView>
