@@ -12,61 +12,77 @@
         android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/backgroundGrey"
             tools:context=".PersonalActivity">
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/personal"
                 android:layout_width="match_parent"
-                android:layout_height="140sp"
-                android:background="@color/color_background"/>
+                android:layout_height="wrap_content"
+                android:background="@color/color_background"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_margin="20dp">
+                    <!--头像-->
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/avatar"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@mipmap/ic_launcher"/>
+                    <!--名称-->
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:text="未登录"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp">
+                    <!--签名-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:text="美好的一天从现在开始"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            </LinearLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/avatar"
-                android:layout_width="100sp"
-                android:layout_height="100sp"
-                android:layout_marginTop="20sp"
-                android:layout_marginStart="20sp"
-                android:src="@mipmap/ic_launcher"/>
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="200sp"
-                android:layout_height="60sp"
-                android:layout_marginTop="20sp"
-                android:layout_marginStart="145sp"
-                android:gravity="center_vertical"
-                android:textColor="@color/black"
-                android:textSize="35sp"
-                android:text="未登录"
-                tools:ignore="HardcodedText" />
-            <TextView
-                android:layout_width="200sp"
-                android:layout_height="40sp"
-                android:layout_marginTop="80sp"
-                android:layout_marginStart="145sp"
-                android:gravity="center_vertical"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:text="美好的一天从现在开始"
-                tools:ignore="HardcodedText" />
+
+
+
 
             <RelativeLayout
                 android:id="@+id/information"
                 android:background="#ffffff"
                 android:layout_below="@id/personal"
-                android:layout_marginTop="10sp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
+                android:layout_height="40dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    我的信息"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/information"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -76,10 +92,10 @@
                 android:id="@+id/divide1"
                 android:layout_below="@id/information"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="1sp"
-                tools:ignore="SmallSp">
+                android:layout_height="1dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -87,17 +103,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide1"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    账号安全"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/security"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -107,10 +123,10 @@
                 android:id="@+id/divide2"
                 android:layout_below="@id/security"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="10sp"
-                tools:ignore="SmallSp">
+                android:layout_height="10dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -118,17 +134,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide2"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    购物车"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/cart"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -138,10 +154,10 @@
                 android:id="@+id/divide3"
                 android:layout_below="@id/shoppingCart"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="10sp"
-                tools:ignore="SmallSp">
+                android:layout_height="10dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -149,17 +165,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide3"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    实名认证"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/authentication"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -169,10 +185,10 @@
                 android:id="@+id/divide4"
                 android:layout_below="@id/realNameAuthentication"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="1sp"
-                tools:ignore="SmallSp">
+                android:layout_height="1dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -180,17 +196,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide4"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    专家认证"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/authentication"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -200,10 +216,10 @@
                 android:id="@+id/divide5"
                 android:layout_below="@id/expertCertification"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="1sp"
-                tools:ignore="SmallSp">
+                android:layout_height="1dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -211,17 +227,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide5"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    贫困认定"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/authentication"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -231,10 +247,10 @@
                 android:id="@+id/divide6"
                 android:layout_below="@id/povertyIdentification"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="10sp"
-                tools:ignore="SmallSp">
+                android:layout_height="10dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -242,17 +258,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide6"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    捐赠物品"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/donation"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -262,10 +278,10 @@
                 android:id="@+id/divide7"
                 android:layout_below="@id/donation"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="1sp"
-                tools:ignore="SmallSp">
+                android:layout_height="1dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -273,17 +289,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide7"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    捐赠订单"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/order"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -293,10 +309,10 @@
                 android:id="@+id/divide8"
                 android:layout_below="@id/donationOrder"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="10sp"
-                tools:ignore="SmallSp">
+                android:layout_height="10dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -304,17 +320,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide8"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    售卖物品"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/sale"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -324,10 +340,10 @@
                 android:id="@+id/divide9"
                 android:layout_below="@id/sale"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="1sp"
-                tools:ignore="SmallSp">
+                android:layout_height="1dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -335,17 +351,17 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide9"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
                 android:gravity="center_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="25sp"
-                    android:textSize="20sp"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
                     android:text="    售卖订单"
                     android:textColor="@color/black"
-                    android:paddingEnd="20sp"
+                    android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/order"
                     app:drawableRightCompat="@mipmap/right"
                     tools:ignore="HardcodedText,RtlSymmetry" />
@@ -355,10 +371,10 @@
                 android:id="@+id/divide10"
                 android:layout_below="@id/saleOrder"
                 android:layout_width="match_parent"
-                android:layout_marginStart="20sp"
+                android:layout_marginStart="20dp"
                 android:background="@color/backgroundGrey"
-                android:layout_height="10sp"
-                tools:ignore="SmallSp">
+                android:layout_height="10dp"
+                tools:ignore="Smalldp">
             </View>
 
             <RelativeLayout
@@ -366,14 +382,14 @@
                 android:background="#ffffff"
                 android:layout_below="@id/divide10"
                 android:layout_width="match_parent"
-                android:layout_height="56sp"
-                android:layout_marginTop="1sp"
-                android:layout_marginBottom="150sp"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="150dp"
                 android:gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:text="退 出 登 陆"
                     android:textColor="#FF0000"
                     tools:ignore="HardcodedText" />
