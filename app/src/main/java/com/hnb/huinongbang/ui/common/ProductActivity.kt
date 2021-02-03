@@ -52,17 +52,25 @@ class ProductActivity : AppCompatActivity() {
                     shoppingmoney.visibility = View.VISIBLE
                     donatemoney.visibility = View.GONE
 
+                    //立即购买按钮显示
                     buyNow.visibility = View.VISIBLE
+                    //加入购物车按钮显示
                     addToCart.visibility = View.VISIBLE
+                    //我需要按钮隐藏
                     needNow.visibility = View.GONE
+                    //加入清单按钮隐藏
                     addToList.visibility = View.GONE
                 }else {
                     shoppingmoney.visibility = View.GONE
                     donatemoney.visibility = View.VISIBLE
 
+                    //立即购买按钮隐藏
                     buyNow.visibility = View.GONE
+                    //加入购物车按钮隐藏
                     addToCart.visibility = View.GONE
+                    //我需要按钮显示
                     needNow.visibility = View.VISIBLE
+                    //加入清单按钮显示
                     addToList.visibility = View.VISIBLE
                 }
                 //产品属性
