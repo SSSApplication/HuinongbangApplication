@@ -51,9 +51,19 @@ class ProductActivity : AppCompatActivity() {
                 if (product.type == 0){
                     shoppingmoney.visibility = View.VISIBLE
                     donatemoney.visibility = View.GONE
+
+                    buyNow.visibility = View.VISIBLE
+                    addToCart.visibility = View.VISIBLE
+                    needNow.visibility = View.GONE
+                    addToList.visibility = View.GONE
                 }else {
                     shoppingmoney.visibility = View.GONE
                     donatemoney.visibility = View.VISIBLE
+
+                    buyNow.visibility = View.GONE
+                    addToCart.visibility = View.GONE
+                    needNow.visibility = View.VISIBLE
+                    addToList.visibility = View.VISIBLE
                 }
                 //产品属性
 
