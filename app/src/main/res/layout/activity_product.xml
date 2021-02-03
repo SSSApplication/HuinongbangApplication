@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--刷新组件-->
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--刷新组件-->
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:material="http://schemas.android.com/apk/res-auto"
     android:id="@+id/productRefresh"
     android:layout_width="match_parent"
@@ -12,6 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,6 +20,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <com.youth.banner.Banner
                     android:id="@+id/singlebanner"
                     android:layout_width="match_parent"
@@ -31,39 +31,57 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:paddingBottom="5dp"
                 material:cardCornerRadius="10dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
+                    android:orientation="vertical"
                     android:paddingBottom="3dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/shoppingmoney"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥"
+                            android:textColor="@color/color_price"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/donatemoney"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/huinongbi"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/promotePrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:textColor="@color/color_price"
+                            android:textSize="22sp" />
+                    </LinearLayout>
+
                     <TextView
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"/>
-                    <TextView
-                        android:id="@+id/shoppingmoney"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥"
-                        android:textSize="18sp"/>
-                    <ImageView
-                        android:id="@+id/donatemoney"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/huinongbi"
-                        android:visibility="gone"/>
-                    <TextView
-                        android:id="@+id/promotePrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="5dp"
-                        android:textSize="14sp"/>
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -71,49 +89,51 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 material:cardCornerRadius="10dp">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="7"
+                    android:gravity="center"
                     android:orientation="vertical">
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/propertyRecycler"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginTop="5dp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!--图片-->
-<!--            <androidx.cardview.widget.CardView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:orientation="vertical"-->
-<!--                material:cardCornerRadius="10dp">-->
-<!--                -->
-<!--            </androidx.cardview.widget.CardView>-->
 
+
+            <!--宝贝详情-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="---------宝贝详情---------"
+                android:textColor="@color/black" />
+            <!--图片-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:descendantFocusability="blocksDescendants">
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/productRecycler"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:nestedScrollingEnabled="false"/>
+                    android:nestedScrollingEnabled="false" />
             </RelativeLayout>
 
             <!--评价-->
@@ -122,18 +142,20 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 material:cardCornerRadius="10dp">
+
                 <TextView
                     android:id="@+id/noreview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="5dp"
                     android:text="没有评价"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/reviewRecycler"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp" />
 
             </androidx.cardview.widget.CardView>
         </LinearLayout>

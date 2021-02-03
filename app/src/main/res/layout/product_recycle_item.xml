@@ -52,8 +52,8 @@
 
             <ImageView
                 android:id="@+id/donatemoney"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/huinongbi"
                 android:paddingTop="5dp"
                 android:visibility="gone" />
