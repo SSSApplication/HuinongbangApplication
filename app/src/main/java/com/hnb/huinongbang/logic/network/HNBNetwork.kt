@@ -28,14 +28,10 @@ object HNBNetwork {
     suspend fun propertyValues(pid: Int) = productService.propertyValues(pid).await()
     suspend fun reviews(pid: Int) = productService.reviews(pid).await()
 
-    //封装PolicyClassify的网络请求
-    private val policyClassifyService = ServiceCreator.create<PolicyClassifyService>()
-    suspend fun classify(type: Int) = policyClassifyService.policyclassify(type).await()
-
     //封装Policy的网络请求
     private val policyService = ServiceCreator.create<PolicyService>()
-    suspend fun policy(type: Int) = policyService.policy(type).await()
-    suspend fun policybyid(pid: Int) = policyService.policybyid(pid).await()
+    suspend fun policys() = policyService.policys().await()
+    suspend fun newpolicys() = policyService.newpolicys().await()
 
     //协程suspend
     private suspend fun <T> Call<T>.await(): T {

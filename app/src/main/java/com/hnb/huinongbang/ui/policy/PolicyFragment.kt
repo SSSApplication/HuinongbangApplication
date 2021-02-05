@@ -18,6 +18,7 @@ import com.hnb.huinongbang.ui.Planting.PlantingViewModel
 import com.hnb.huinongbang.ui.common.BannerDataBean
 import com.hnb.huinongbang.ui.common.ClassifyAdapter
 import com.hnb.huinongbang.ui.common.PolicyAdapter
+import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
@@ -47,6 +48,7 @@ class PolicyFragment : Fragment() {
             if (classifies != null){
                 viewModel.classifyList.clear()
                 viewModel.classifyList.addAll(classifies)
+                LogUtil.d("分类及政策",viewModel.classifyList.toString())
                 policyClassifyRecycler.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
                 classifyAdapter = ClassifyAdapter(this, viewModel.classifyList)
                 policyClassifyRecycler.adapter = classifyAdapter

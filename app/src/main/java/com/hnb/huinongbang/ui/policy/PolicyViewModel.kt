@@ -1,6 +1,5 @@
 package com.hnb.huinongbang.ui.policy
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
@@ -13,11 +12,11 @@ class PolicyViewModel : ViewModel() {
     var policyList = ArrayList<Policy>()
 
     private val typeLiveData = MutableLiveData<Int>()
-    val classifiesLiveData = Transformations.switchMap(typeLiveData){type ->
-        Repository.policyClassify(type)
+    val classifiesLiveData = Transformations.switchMap(typeLiveData){
+        Repository.policys()
     }
-    val policiesLiveData = Transformations.switchMap(typeLiveData){type ->
-        Repository.policy(type)
+    val policiesLiveData = Transformations.switchMap(typeLiveData){
+        Repository.newpolicys()
     }
 
     fun getData(type: Int){
