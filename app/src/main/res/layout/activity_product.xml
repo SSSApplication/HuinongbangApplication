@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><!--刷新组件-->
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:material="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
     android:id="@+id/productRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background">
+    android:background="@color/color_background"
+    app:ignore="NamespaceTypo">
 
     <!--页面滚动范围-->
     <ScrollView
@@ -27,7 +29,7 @@
                     android:layout_height="260dp" />
             </LinearLayout>
 
-            <!--物品名称及价格-->
+            <!--物品名称、价格、购买和加入购物车按钮-->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -36,7 +38,7 @@
                 android:layout_marginRight="10dp"
                 android:paddingBottom="5dp"
                 material:cardCornerRadius="10dp">
-
+                <!--卡片中的布局-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -73,15 +75,69 @@
                             android:textColor="@color/color_price"
                             android:textSize="22sp" />
                     </LinearLayout>
-
+                    <!--物品名称-->
                     <TextView
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-
+                        android:textSize="18dp" />
+                    <!--立即购买和加入购物车按钮-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+                        <!--购物模块立即购买按钮-->
+                        <Button
+                            android:id="@+id/buyNow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bv_buynow"
+                            android:text="立即购买"
+                            android:textColor="@color/color_price"
+                            android:textSize="15sp" />
+                        <!--购物模块加入购物车按钮-->
+                        <Button
+                            android:id="@+id/addToCart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bv_addtocart"
+                            android:drawableStart="@drawable/cart_white"
+                            android:text="加入购物车"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+                        <!--捐赠模块立即购买按钮-->
+                        <Button
+                            android:id="@+id/needNow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bv_buynow"
+                            android:text="我需要！"
+                            android:textColor="@color/color_price"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                        <!--捐赠模块加入清单按钮-->
+                        <Button
+                            android:id="@+id/addToList"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bv_addtocart"
+                            android:drawableStart="@drawable/cart_white"
+                            android:text="加入清单"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
