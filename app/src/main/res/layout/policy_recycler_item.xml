@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="60dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     app:cardCornerRadius="4dp">
@@ -15,14 +15,17 @@
             android:id="@+id/policyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="题目111111111111111111111111111111111111111111111111111111" />
+            android:layout_weight="4"
+            android:textSize="16sp"
+             />
 
         <TextView
             android:id="@+id/policyDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="2019年10月1日" />
+            android:layout_weight="1"
+            />
 
 
     </LinearLayout>
