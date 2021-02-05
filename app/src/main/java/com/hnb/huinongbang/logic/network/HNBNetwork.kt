@@ -40,6 +40,7 @@ object HNBNetwork {
             enqueue(object : Callback<T> {
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()
+                    LogUtil.d("Test", body.toString().length.toString())
                     LogUtil.d("Test", body.toString())
                     LogUtil.d("HNBNetwork", "服务器返回成功")
                     if (body != null) continuation.resume(body) //服务器返回成功

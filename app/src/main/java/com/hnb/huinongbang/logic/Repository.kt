@@ -102,6 +102,8 @@ object Repository {
         val policyClassifyResponse = HNBNetwork.policys()
         if (policyClassifyResponse.code == 1) { //根据状态来处理
             LogUtil.d("政策模块", "获取政策成功，分类如下：${policyClassifyResponse.data}")
+            LogUtil.d("政策模块", "获取政策成功，分类如下：${policyClassifyResponse.data.toString().length}")
+            LogUtil.d("政策模块", "获取政策成功，分类如下：${policyClassifyResponse.data.toString().substring(7000)}")
             val classifies = policyClassifyResponse.data
             Result.success(classifies)
         } else {
