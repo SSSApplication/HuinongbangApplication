@@ -15,7 +15,7 @@ object ServiceCreator {
     val firstProductImage = CDN_URL + "img/productSingle_middle/"
     val productSingleImage = CDN_URL + "img/productSingle/"
     val productDetailImage = CDN_URL + "img/productDetail/"
-
+    val avatar = CDN_URL + "upload/headface/"
 
     private val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL) //所有请求的根目录
