@@ -1,6 +1,7 @@
 package com.hnb.huinongbang.logic.network
 
 import com.hnb.huinongbang.logic.model.LoginData
+import com.hnb.huinongbang.logic.model.RegisterData
 import com.hnb.huinongbang.util.LogUtil
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,6 +16,7 @@ object HNBNetwork {
     //封装user的网络请求
     private val userService = ServiceCreator.create<UserService>()
     suspend fun login(loginData: LoginData) = userService.login(loginData.name, loginData.password).await()
+    suspend fun register(registerData: RegisterData) = userService.register(registerData.phone, registerData.password).await()
 
     //封装Category的网络请求
     private val categoryService = ServiceCreator.create<CategoryService>()

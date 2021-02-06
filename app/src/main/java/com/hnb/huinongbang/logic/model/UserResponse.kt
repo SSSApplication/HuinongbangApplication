@@ -61,3 +61,6 @@ data class User(val user_ID: Int,  //id
 
 //登陆时传输到服务器的数据
 data class LoginData(val name: String, val password: String)
+
+//注册时传输到服务器的数据
+data class RegisterData(val phone: String, val password: String)

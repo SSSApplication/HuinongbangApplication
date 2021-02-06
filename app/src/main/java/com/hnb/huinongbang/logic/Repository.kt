@@ -3,6 +3,7 @@ package com.hnb.huinongbang.logic
 import androidx.lifecycle.liveData
 import com.hnb.huinongbang.logic.dao.UserDAO
 import com.hnb.huinongbang.logic.model.LoginData
+import com.hnb.huinongbang.logic.model.RegisterData
 import com.hnb.huinongbang.logic.model.User
 import com.hnb.huinongbang.logic.network.HNBNetwork
 import com.hnb.huinongbang.util.LogUtil
@@ -21,6 +22,18 @@ object Repository {
         } else {
             LogUtil.d("登录模块", "登录失败，${userResponse.message}")
             Result.failure(RuntimeException("response status is ${userResponse.message}"))
+        }
+    }
+    //注册用户
+    fun register(registerData: RegisterData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.register(registerData)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("注册模块", "注册成功，用户名：${response.data.user_name}")
+            val user = response.data
+            Result.success(user)
+        } else {
+            LogUtil.d("注册模块", "注册失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
     //获取所有分类

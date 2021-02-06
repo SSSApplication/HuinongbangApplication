@@ -9,6 +9,7 @@ import com.hnb.huinongbang.HNBApplication.Companion.context
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.LoginData
+import com.hnb.huinongbang.ui.register.RegisterActivity
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -31,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-//        登录按钮
+        //登录按钮
         loginBtn.setOnClickListener {
             val name = username.text.toString()
             val password = password.text.toString()
@@ -54,6 +55,13 @@ class LoginActivity : AppCompatActivity() {
                 ToastUtil.show("账号或密码错误")
             }
         })
+
+        //立即注册
+        toRegister.setOnClickListener {
+            //跳转至注册页面
+            val intent = Intent(context, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
