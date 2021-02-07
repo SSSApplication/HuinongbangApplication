@@ -192,6 +192,7 @@ object Repository {
 
     //    用户操作封装
     fun saveUser(user: User) = UserDAO.saveUser(user)
+    fun clearUser(user: User) = UserDAO.clearUser(user)
     fun getUser() = UserDAO.getUser()
     fun isUserSaved() = UserDAO.isUserSaved()
     //记住密码
