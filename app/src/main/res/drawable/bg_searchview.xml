@@ -3,5 +3,5 @@
     <!-- 角度 -->
     <corners android:radius="35dp"/>
     <!-- 填充色 -->
-    <solid android:color="#FFFACD"/>
+    <solid android:color="@color/bg_searchview_color"/>
 </shape>

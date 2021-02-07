@@ -21,14 +21,7 @@ class CategoryAdapter(private val fragment: Fragment, val categoryList: List<Cat
         var categorybutton: Button = itemView.findViewById(R.id.categorybutton)
     }
 
-    /* class ResourceMan {
-         companion object {
-             fun getResId(variableName:String, c:Class<*>):Int{
-                 val idField: Field = c.getDeclaredField(variableName)
-                 return idField.getInt(idField)
-             }
-         }
-     }*/
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.category_recycle_item, parent, false)
@@ -38,10 +31,6 @@ class CategoryAdapter(private val fragment: Fragment, val categoryList: List<Cat
             LogUtil.d("categoryListposition", "${position} ${categoryList[position]}")
         }
 
-        holder.categorybutton.setOnClickListener {
-            val position = holder.adapterPosition
-            LogUtil.d("categoryListposition", "${position} ${categoryList[position]}")
-        }
         return holder
     }
 

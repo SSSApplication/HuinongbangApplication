@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_planting"
-        android:name="com.hnb.huinongbang.ui.Planting.PlantingFragment"
+        android:name="com.hnb.huinongbang.ui.planting.PlantingFragment"
         android:label="@string/title_planting"
         tools:layout="@layout/fragment_planting" />
     <fragment

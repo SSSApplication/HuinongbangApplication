@@ -1,6 +1,7 @@
 package com.hnb.huinongbang.logic.network
 
 import com.hnb.huinongbang.logic.model.LoginData
+import com.hnb.huinongbang.logic.network.HNBNetwork.await
 import com.hnb.huinongbang.util.LogUtil
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,6 +28,14 @@ object HNBNetwork {
     suspend fun product(pid: Int) = productService.product(pid).await()
     suspend fun propertyValues(pid: Int) = productService.propertyValues(pid).await()
     suspend fun reviews(pid: Int) = productService.reviews(pid).await()
+
+    //封装PlantingCategory的网络请求
+    private val plantingCategoryService = ServiceCreator.create<PlantingCategoryService>()
+    suspend fun plantingCategories(type: Int) = plantingCategoryService.plantingCategories(type).await()
+    //plantsNews的网络请求
+    suspend fun plantsNews(type: Int) = plantingCategoryService.plantsNews(type).await()
+    //plantsNewsOfCategory的网络请求
+    suspend fun plantsNewsOfCategory(classify:String,item:String) = plantingCategoryService.plantsNewsOfCategory(classify,item).await()
 
     //协程suspend
     private suspend fun <T> Call<T>.await(): T {

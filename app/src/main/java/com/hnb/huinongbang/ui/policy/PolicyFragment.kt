@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.hnb.huinongbang.R
-import com.hnb.huinongbang.ui.Planting.PlantingViewModel
 import kotlinx.android.synthetic.main.fragment_policy.*
 
 class PolicyFragment : Fragment() {

@@ -27,7 +27,8 @@ object Repository {
     fun categories(type: Int) = fire(Dispatchers.IO) {
         val categoryResponse = HNBNetwork.categories(type)
         if (categoryResponse.code == 1) { //根据状态来处理
-            LogUtil.d("分类模块", "获取分类成功，分类如下：${categoryResponse.data}")
+            LogUtil.d("分" +
+                    ".000000000000000000000000000000000000类模块", "获取分类成功，分类如下：${categoryResponse.data}")
             val categories = categoryResponse.data
             Result.success(categories)
         } else {
@@ -96,7 +97,48 @@ object Repository {
         }
     }
 
+    //种植模块获取所有分类
+    fun plantingCategories(type: Int) = fire(Dispatchers.IO) {
+        val plantingCategoryResponse = HNBNetwork.plantingCategories(type)
+        if (plantingCategoryResponse.code == 1) { //根据状态来处理
+            LogUtil.d("种植模块分类", "获取分类成功，分类如下：${plantingCategoryResponse.data}")
+            val plantingCategories = plantingCategoryResponse.data
+            Result.success(plantingCategories)
+        } else {
+            LogUtil.d("种植模块分类", "获取分类失败，${plantingCategoryResponse.message}")
+            Result.failure(RuntimeException("response status is ${plantingCategoryResponse.message}"))
+        }
 
+    }
+    //种植模块获取最新文章
+    fun plantsNews(type: Int) = fire(Dispatchers.IO) {
+        val plantsNewsResponse = HNBNetwork.plantsNews(type)
+        if (plantsNewsResponse.code == 1) { //根据状态来处理
+            LogUtil.d("种植模块最新文章", "获取最新文章成功，分类如下：${plantsNewsResponse.data}")
+            val plantsNews = plantsNewsResponse.data
+            Result.success(plantsNews)
+        } else {
+            LogUtil.d("种植模块最新文章", "获取最新文章失败，${plantsNewsResponse.message}")
+            Result.failure(RuntimeException("response status is ${plantsNewsResponse.message}"))
+        }
+
+    }
+
+
+    //种植模块根据分类获取文章
+    fun plantsNewsOfCategory(classify:String,item:String) = fire(Dispatchers.IO) {
+        val plantsNewsOfCategoryResponse = HNBNetwork.plantsNewsOfCategory(classify,item)
+
+        if (plantsNewsOfCategoryResponse.code == 1) { //根据状态来处理
+            LogUtil.d("种植模块根据分类获取文章", "根据分类获取文章成功，如下：${plantsNewsOfCategoryResponse.data}")
+            val plantsNews = plantsNewsOfCategoryResponse.data
+            Result.success(plantsNews)
+        } else {
+            LogUtil.d("根据分类获取文章", "根据分类获取文章失败，${plantsNewsOfCategoryResponse.message}")
+            Result.failure(RuntimeException("response status is ${plantsNewsOfCategoryResponse.message}"))
+        }
+
+    }
 
 
     //简化函数
