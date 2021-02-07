@@ -15,6 +15,12 @@ object UserDAO {
             putString("user", Gson().toJson(user))
         }
     }
+    //清除用户
+    fun clearUser(user: User) {
+        sharedPreferences().edit {
+            putString("user", null)
+        }
+    }
     //获取用户
     fun getUser(): User {
         val userJson = sharedPreferences().getString("user", "")

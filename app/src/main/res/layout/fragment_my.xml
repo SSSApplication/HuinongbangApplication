@@ -64,10 +64,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-
-
-
-
             <RelativeLayout
                 android:id="@+id/information"
                 android:background="#ffffff"
