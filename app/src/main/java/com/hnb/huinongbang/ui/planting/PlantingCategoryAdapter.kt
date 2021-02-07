@@ -42,11 +42,23 @@ class PlantingCategoryAdapter(
         fun bindView( position: Int, plantingCategory: PlantingCategory) {
             plantingCategoryButton.text = plantingCategory.names
             val smallPlantingCategorydd = plantingCategoryList[position]
+            val length=smallPlantingCategorydd.plant.size
             smallPlantingCategoryAdapter =
                 SmallPlantingCategoryAdapter(fragment, smallPlantingCategorydd)
-            smallPlantingCategoryRecycler.layoutManager =
-                GridLayoutManager(fragment.context, 1, RecyclerView.VERTICAL, false)
-            smallPlantingCategoryRecycler.adapter = smallPlantingCategoryAdapter
+            if(length<6){
+                smallPlantingCategoryRecycler.layoutManager =
+                    GridLayoutManager(fragment.context, 1, RecyclerView.VERTICAL, false)
+
+            }else if(length<11){
+                smallPlantingCategoryRecycler.layoutManager =
+                    GridLayoutManager(fragment.context, 2, RecyclerView.VERTICAL, false)
+
+            }else {
+                smallPlantingCategoryRecycler.layoutManager =
+                    GridLayoutManager(fragment.context, 3, RecyclerView.VERTICAL, false)
+
+            }
+           smallPlantingCategoryRecycler.adapter = smallPlantingCategoryAdapter
             if (position == opened) {
                 plantingCategoryButton.isActivated=true
                 smallPlantingCategoryRecycler.visibility = View.VISIBLE
@@ -83,15 +95,6 @@ class PlantingCategoryAdapter(
             .inflate(R.layout.plantingcategory_recycle_item, parent, false)
         val holder = ViewHolder(view)
 
-        /*holder.plantingCategoryButton.setOnClickListener {
-
-
-
-            *//*val intent: Intent=Intent(parent.context,SmallPlantingActivity::class.java).apply { putStringArrayListExtra("plantingCategoryList",smallPlantingCategorydd)}
-            this.fragment.startActivity(intent)*//*
-
-            LogUtil.d("categoryListposition", "${position} ${plantingCategoryList[position]}")
-        }*/
 
 
         return holder

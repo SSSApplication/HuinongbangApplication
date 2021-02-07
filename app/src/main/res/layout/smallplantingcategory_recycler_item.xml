@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="@color/bg_buttonview_color">
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:id="@+id/smallPlantingCategoryButton"
         android:background="@drawable/plant_button_hovered"
