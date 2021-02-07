@@ -53,6 +53,26 @@ class BannerDataBean {
             return list
         }
 
+        val policyData: List<BannerDataBean> get() {
+            val list: MutableList<BannerDataBean> = ArrayList()
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_policy+"policy1.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_policy+"policy3.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_policy+"p4.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_policy+"policy4.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_policy+"policy2.jpg", null, 1)
+            )
+            return list
+        }
+
     }
 
 }

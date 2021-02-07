@@ -3,6 +3,7 @@ package com.hnb.huinongbang.logic
 import androidx.lifecycle.liveData
 import com.hnb.huinongbang.logic.dao.UserDAO
 import com.hnb.huinongbang.logic.model.LoginData
+import com.hnb.huinongbang.logic.model.RegisterData
 import com.hnb.huinongbang.logic.model.User
 import com.hnb.huinongbang.logic.network.HNBNetwork
 import com.hnb.huinongbang.util.LogUtil
@@ -27,8 +28,7 @@ object Repository {
     fun categories(type: Int) = fire(Dispatchers.IO) {
         val categoryResponse = HNBNetwork.categories(type)
         if (categoryResponse.code == 1) { //根据状态来处理
-            LogUtil.d("分" +
-                    ".000000000000000000000000000000000000类模块", "获取分类成功，分类如下：${categoryResponse.data}")
+            LogUtil.d("分类模块", "获取分类成功，分类如下：${categoryResponse.data}")
             val categories = categoryResponse.data
             Result.success(categories)
         } else {
@@ -138,6 +138,33 @@ object Repository {
             Result.failure(RuntimeException("response status is ${plantsNewsOfCategoryResponse.message}"))
         }
 
+    }
+    //获取政策
+    fun policys() = fire(Dispatchers.IO) {
+        val policyClassifyResponse = HNBNetwork.policys()
+        if (policyClassifyResponse.code == 1) { //根据状态来处理
+            LogUtil.d("政策模块", "获取政策成功，分类如下：${policyClassifyResponse.data}")
+            LogUtil.d("政策模块", "获取政策成功，分类如下：${policyClassifyResponse.data.toString().length}")
+            LogUtil.d("政策模块", "获取政策成功，分类如下：${policyClassifyResponse.data.toString().substring(7000)}")
+            val classifies = policyClassifyResponse.data
+            Result.success(classifies)
+        } else {
+            LogUtil.d("政策模块", "获取政策失败，${policyClassifyResponse.message}")
+            Result.failure(RuntimeException("response status is ${policyClassifyResponse.message}"))
+        }
+    }
+
+    //获取最新10条政策
+    fun newpolicys() = fire(Dispatchers.IO) {
+        val policyResponse = HNBNetwork.newpolicys()
+        if (policyResponse.code == 1) { //根据状态来处理
+            LogUtil.d("政策模块", "分类获取政策成功，分类如下：${policyResponse.data}")
+            val policys = policyResponse.data
+            Result.success(policys)
+        } else {
+            LogUtil.d("政策模块", "分类获取政策失败，${policyResponse.message}")
+            Result.failure(RuntimeException("response status is ${policyResponse.message}"))
+        }
     }
 
 

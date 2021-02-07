@@ -13,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Huinongbang">
-        <activity android:name=".ui.planting.SmallPlantingActivity"></activity>
+        <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.common.ProductActivity" />
+        <activity android:name=".ui.planting.SmallPlantingActivity"></activity>
         <activity
             android:name=".BottomActivity"
             android:label="@string/title_activity_bottom" />

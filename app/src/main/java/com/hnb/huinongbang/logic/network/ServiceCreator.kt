@@ -11,9 +11,12 @@ object ServiceCreator {
     private const val CDN_URL = "https://huinongbang.club/"
     val lunbo = CDN_URL+"img/lunbo/"
     val lunbo_donate = CDN_URL+"webphoto/"
+    val lunbo_policy = CDN_URL+"webphoto/"
     val firstProductImage = CDN_URL + "img/productSingle_middle/"
     val productSingleImage = CDN_URL + "img/productSingle/"
     val productDetailImage = CDN_URL + "img/productDetail/"
+    val avatar = CDN_URL + "upload/headface/"
+
     private val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL) //所有请求的根目录
             .addConverterFactory(GsonConverterFactory.create()) //解析数据使用的转换库 --Gson直接转成对象

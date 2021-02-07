@@ -2,6 +2,7 @@ package com.hnb.huinongbang.logic.network
 
 import com.hnb.huinongbang.logic.model.LoginData
 import com.hnb.huinongbang.logic.network.HNBNetwork.await
+import com.hnb.huinongbang.logic.model.RegisterData
 import com.hnb.huinongbang.util.LogUtil
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,6 +17,7 @@ object HNBNetwork {
     //封装user的网络请求
     private val userService = ServiceCreator.create<UserService>()
     suspend fun login(loginData: LoginData) = userService.login(loginData.name, loginData.password).await()
+    suspend fun register(registerData: RegisterData) = userService.register(registerData.phone, registerData.password).await()
 
     //封装Category的网络请求
     private val categoryService = ServiceCreator.create<CategoryService>()
@@ -36,6 +38,11 @@ object HNBNetwork {
     suspend fun plantsNews(type: Int) = plantingCategoryService.plantsNews(type).await()
     //plantsNewsOfCategory的网络请求
     suspend fun plantsNewsOfCategory(classify:String,item:String) = plantingCategoryService.plantsNewsOfCategory(classify,item).await()
+
+    //封装Policy的网络请求
+    private val policyService = ServiceCreator.create<PolicyService>()
+    suspend fun policys() = policyService.policys().await()
+    suspend fun newpolicys() = policyService.newpolicys().await()
 
     //协程suspend
     private suspend fun <T> Call<T>.await(): T {
