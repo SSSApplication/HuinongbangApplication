@@ -24,9 +24,9 @@ class MyFragment : Fragment() {
     val viewModel by lazy { ViewModelProviders.of(this).get(MyViewModel::class.java)}
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_my, container, false)
     }

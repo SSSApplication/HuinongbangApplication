@@ -24,6 +24,18 @@ object Repository {
             Result.failure(RuntimeException("response status is ${userResponse.message}"))
         }
     }
+    //注册用户
+    fun register(registerData: RegisterData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.register(registerData)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("注册模块", "注册成功，用户名：${response.data.user_name}")
+            val user = response.data
+            Result.success(user)
+        } else {
+            LogUtil.d("注册模块", "注册失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
     //获取所有分类
     fun categories(type: Int) = fire(Dispatchers.IO) {
         val categoryResponse = HNBNetwork.categories(type)

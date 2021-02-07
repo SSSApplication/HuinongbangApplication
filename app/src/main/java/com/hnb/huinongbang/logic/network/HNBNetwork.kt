@@ -1,7 +1,6 @@
 package com.hnb.huinongbang.logic.network
 
 import com.hnb.huinongbang.logic.model.LoginData
-import com.hnb.huinongbang.logic.network.HNBNetwork.await
 import com.hnb.huinongbang.logic.model.RegisterData
 import com.hnb.huinongbang.util.LogUtil
 import retrofit2.Call
@@ -43,6 +42,8 @@ object HNBNetwork {
     private val policyService = ServiceCreator.create<PolicyService>()
     suspend fun policys() = policyService.policys().await()
     suspend fun newpolicys() = policyService.newpolicys().await()
+
+
 
     //协程suspend
     private suspend fun <T> Call<T>.await(): T {

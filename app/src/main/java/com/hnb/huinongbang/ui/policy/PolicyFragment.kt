@@ -14,7 +14,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
-import com.hnb.huinongbang.ui.Planting.PlantingViewModel
 import com.hnb.huinongbang.ui.common.BannerDataBean
 import com.hnb.huinongbang.ui.common.ClassifyAdapter
 import com.hnb.huinongbang.ui.common.PolicyAdapter
@@ -45,7 +44,6 @@ class PolicyFragment : Fragment() {
         refreshData()
         viewModel.classifiesLiveData.observe(this, {result ->
             val classifies = result.getOrNull()
-            LogUtil.d("政策模块", "获取政策成功，分类如下：${classifies}")
             if (classifies != null){
                 viewModel.classifyList.clear()
                 viewModel.classifyList.addAll(classifies)
@@ -53,7 +51,6 @@ class PolicyFragment : Fragment() {
                 policyClassifyRecycler.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
                 classifyAdapter = ClassifyAdapter(this, viewModel.classifyList)
                 policyClassifyRecycler.adapter = classifyAdapter
-                LogUtil.d("adapter", "${classifyAdapter.itemCount}")
             }else {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
