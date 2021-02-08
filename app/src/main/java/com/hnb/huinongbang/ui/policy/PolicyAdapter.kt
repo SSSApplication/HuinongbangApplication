@@ -1,4 +1,4 @@
-package com.hnb.huinongbang.ui.common
+package com.hnb.huinongbang.ui.policy
 
 import android.view.LayoutInflater
 import android.view.View

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -14,9 +13,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
+import com.hnb.huinongbang.logic.model.Policy
 import com.hnb.huinongbang.ui.common.BannerDataBean
-import com.hnb.huinongbang.ui.common.ClassifyAdapter
-import com.hnb.huinongbang.ui.common.PolicyAdapter
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
@@ -30,6 +28,7 @@ class PolicyFragment : Fragment() {
     val viewModel by lazy { ViewModelProviders.of(this).get(PolicyViewModel::class.java)}
 
     private lateinit var policyAdapter: PolicyAdapter
+    private lateinit var policyAdapterbyclassify: PolicyAdapter
     private lateinit var classifyAdapter: ClassifyAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,6 +50,7 @@ class PolicyFragment : Fragment() {
                 policyClassifyRecycler.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
                 classifyAdapter = ClassifyAdapter(this, viewModel.classifyList)
                 policyClassifyRecycler.adapter = classifyAdapter
+
             }else {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
@@ -82,6 +82,11 @@ class PolicyFragment : Fragment() {
     fun refreshData(){
         viewModel.getData(0)
         policyRefresh.isRefreshing = true
+    }
+    fun showpolicy(policyListbyclassify: List<Policy>){
+        policyRecyclerbyclassify.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
+        policyAdapterbyclassify = PolicyAdapter(this, policyListbyclassify)
+        policyRecyclerbyclassify.adapter = policyAdapterbyclassify
     }
     fun refreshBanner(){
         //轮播图
