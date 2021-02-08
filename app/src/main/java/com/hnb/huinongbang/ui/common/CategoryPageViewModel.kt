@@ -4,15 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.hnb.huinongbang.logic.Repository
-import com.hnb.huinongbang.logic.model.getItemDataByCid
 
 class CategoryPageViewModel : ViewModel() {
-    private val productsDataLiveData = MutableLiveData<getItemDataByCid>()
-    val productsLiveData = Transformations.switchMap(productsDataLiveData){ productsData ->
-        Repository.getItemDataByCid(productsData)
+    private val cidDataLiveData = MutableLiveData<Int>()
+    val productsLiveData = Transformations.switchMap(cidDataLiveData){ cid ->
+        Repository.productsbycid(cid)
     }
     //外部调用函数
-    fun getProducts(productsData: getItemDataByCid){
-        productsDataLiveData.value = productsData
+    fun getProducts(cid: Int){
+        cidDataLiveData.value = cid
     }
 }

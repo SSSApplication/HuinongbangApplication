@@ -4,8 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import com.hnb.huinongbang.R
-import com.hnb.huinongbang.logic.Repository
-import com.hnb.huinongbang.logic.model.getItemDataByCid
+import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.fragment_my.*
 
@@ -20,14 +19,14 @@ class CategoryPageActivity : AppCompatActivity() {
         //获取传递过来的分类id
         val cid = intent.extras!!.getInt("cid")
         //请求数据
-        viewModel.getProducts(getItemDataByCid(cid))
+        viewModel.getProducts(cid)
 
         //监听请求结果
         viewModel.productsLiveData.observe(this, {result ->
-            val data = result.getOrNull()
-            if(data != null){
+            val products = result.getOrNull()
+            if(products != null){
                 ToastUtil.show("请求成功")
-//                data.products
+                LogUtil.d("获取到的产品", "${products}")
             }else{
                 ToastUtil.show("请求失败")
             }

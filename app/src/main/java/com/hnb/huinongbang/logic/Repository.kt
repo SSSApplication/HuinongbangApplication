@@ -5,7 +5,6 @@ import com.hnb.huinongbang.logic.dao.UserDAO
 import com.hnb.huinongbang.logic.model.LoginData
 import com.hnb.huinongbang.logic.model.RegisterData
 import com.hnb.huinongbang.logic.model.User
-import com.hnb.huinongbang.logic.model.getItemDataByCid
 import com.hnb.huinongbang.logic.network.HNBNetwork
 import com.hnb.huinongbang.util.LogUtil
 import kotlinx.coroutines.Dispatchers
@@ -48,20 +47,6 @@ object Repository {
             LogUtil.d("分类模块", "获取分类失败，${categoryResponse.message}")
             Result.failure(RuntimeException("response status is ${categoryResponse.message}"))
         }
-    }
-    //通过分类id获取数据
-    fun getItemDataByCid(cid: getItemDataByCid) = fire(Dispatchers.IO) {
-        val productResponse = HNBNetwork.getItemDataByCid(cid)
-
-        if (productResponse.code == 1) { //根据状态来处理
-            LogUtil.d("数据获取成功", "该分类产品数据成功")
-            val data = productResponse.data
-            Result.success(data)
-        } else {
-            LogUtil.d("数据获取失败", "该分类产品数据失败，${productResponse.message}")
-            Result.failure(RuntimeException("response status is ${productResponse.message}"))
-        }
-
     }
     //获取所有产品
     fun products(type: Int) = fire(Dispatchers.IO) {

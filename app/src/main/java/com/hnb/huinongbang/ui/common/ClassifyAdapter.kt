@@ -25,7 +25,7 @@ class ClassifyAdapter (private val fragment: Fragment, val classifyList: List<Cl
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val classify = classifyList[position]
         holder.policyClassify.text = classify.names
-//        classify.policy 获取对应分类的文章 
+//        classify.policy 获取对应分类的文章
     }
 
     override fun getItemCount() = classifyList.size
