@@ -43,7 +43,7 @@ class SmallPlantingActivity : AppCompatActivity() {
                 //设置为一行显示
                 //shoppingRecycler.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
                 plantsNewsOfCategoryRecycler.layoutManager = GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
-                plantsNewsAdapter = PlantsNewsAdapter( viewModel.plantsNewsOfCategoryList)
+                plantsNewsAdapter = PlantsNewsAdapter(this, viewModel.plantsNewsOfCategoryList)
 
                 plantsNewsOfCategoryRecycler.adapter = plantsNewsAdapter
 

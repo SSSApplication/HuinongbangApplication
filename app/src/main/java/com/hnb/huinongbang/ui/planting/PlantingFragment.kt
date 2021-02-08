@@ -67,7 +67,7 @@ class PlantingFragment : Fragment() {
                 //shoppingRecycler.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
                 plantsnewsRecycler.layoutManager =
                     GridLayoutManager(this.context, 1, RecyclerView.VERTICAL, false)
-                plantsNewsAdapter = PlantsNewsAdapter(viewModel.plantsNewsList)
+                plantsNewsAdapter = PlantsNewsAdapter(activity!!, viewModel.plantsNewsList)
 
                 plantsnewsRecycler.adapter = plantsNewsAdapter
             } else {
