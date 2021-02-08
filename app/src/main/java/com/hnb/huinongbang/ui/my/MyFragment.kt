@@ -15,7 +15,6 @@ import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.network.ServiceCreator
 import com.hnb.huinongbang.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.fragment_my.*
-import kotlinx.android.synthetic.main.fragment_shopping.*
 
 class MyFragment : Fragment() {
 
@@ -39,7 +38,7 @@ class MyFragment : Fragment() {
             getData()
         }
 
-        //点击事件监听器
+        //设置点击事件监听器
         setClickListener()
     }
 
@@ -54,15 +53,18 @@ class MyFragment : Fragment() {
         val avatarUrl = ServiceCreator.avatar + user.user_ID + ".jpg" + "?" + (Math.random()*100).toInt()
         Glide.with(HNBApplication.context).load(avatarUrl).into(avatar)
 
+        //关闭刷新
         myRefresh.isRefreshing = false
     }
 
+    //设置监听器函数
     fun setClickListener() {
         information.setOnClickListener {
             val intent = Intent(HNBApplication.context, BottomActivity::class.java)
             startActivity(intent)
         }
 
+        //退出登录
         signOut.setOnClickListener {
             Repository.clearUser(Repository.getUser())
             val intent = Intent(HNBApplication.context, LoginActivity::class.java)
