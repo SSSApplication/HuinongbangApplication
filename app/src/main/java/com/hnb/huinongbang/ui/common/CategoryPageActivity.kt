@@ -3,10 +3,13 @@ package com.hnb.huinongbang.ui.common
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
-import kotlinx.android.synthetic.main.fragment_my.*
+import kotlinx.android.synthetic.main.activity_category_page.*
 
 class CategoryPageActivity : AppCompatActivity() {
 
@@ -25,8 +28,13 @@ class CategoryPageActivity : AppCompatActivity() {
         viewModel.productsLiveData.observe(this, {result ->
             val products = result.getOrNull()
             if(products != null){
-                ToastUtil.show("请求成功")
                 LogUtil.d("获取到的产品", "${products}")
+
+                //瀑布流形式
+                itemsRecycler.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+                //网格形式
+                //itemsRecycler.layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL,false)
+                itemsRecycler.adapter = CategoryPageItemsAdapter(this, products)
             }else{
                 ToastUtil.show("请求失败")
             }
