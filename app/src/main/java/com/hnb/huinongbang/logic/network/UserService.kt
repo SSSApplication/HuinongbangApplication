@@ -26,4 +26,12 @@ interface UserService {
         @Query("phone") phone: String,
         @Query("password") password: String
     ): Call<UserResponse>
+
+    //更新个人信息
+    @GET("foremupdatePassword")
+    fun changePassword(
+        @Query("phone") phone: String,
+        @Query("oldPassword") oldPassword: String,
+        @Query("newPassword") newPassword: String
+    ): Call<UserResponse>
 }

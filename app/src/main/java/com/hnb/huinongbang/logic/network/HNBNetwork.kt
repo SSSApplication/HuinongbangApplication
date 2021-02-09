@@ -1,8 +1,6 @@
 package com.hnb.huinongbang.logic.network
 
-import com.hnb.huinongbang.logic.model.LoginData
-import com.hnb.huinongbang.logic.model.RegisterData
-import com.hnb.huinongbang.logic.model.UpdateMyInformationData
+import com.hnb.huinongbang.logic.model.*
 import com.hnb.huinongbang.util.LogUtil
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,6 +25,11 @@ object HNBNetwork {
         data.user_introduce,
         data.phone,
         data.password
+    ).await()
+    suspend fun changePassword(data: ChangePasswordData) = userService.changePassword(
+        data.phone,
+        data.oldPassword,
+        data.newPassword
     ).await()
 
     //封装Category的网络请求

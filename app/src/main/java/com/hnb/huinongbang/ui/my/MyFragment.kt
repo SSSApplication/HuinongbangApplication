@@ -68,6 +68,13 @@ class MyFragment : Fragment() {
             startActivity(intent)
         }
 
+        //账号安全
+        security.setOnClickListener {
+            val intent = Intent(HNBApplication.context, MySecurityActivity::class.java)
+            startActivity(intent)
+        }
+
+
         //退出登录
         signOut.setOnClickListener {
             Repository.clearUser(Repository.getUser())

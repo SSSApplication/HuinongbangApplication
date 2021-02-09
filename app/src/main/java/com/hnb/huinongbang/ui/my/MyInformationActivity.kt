@@ -11,6 +11,8 @@ import com.hnb.huinongbang.logic.model.UpdateMyInformationData
 import com.hnb.huinongbang.logic.model.User
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_my_information.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class MyInformationActivity : AppCompatActivity() {
 
@@ -54,7 +56,6 @@ class MyInformationActivity : AppCompatActivity() {
             if (user != null) {
                 Repository.clearUser(Repository.getUser())
                 Repository.saveUser(user)
-                getData(user)
                 val intent = Intent(HNBApplication.context, MyFragment::class.java)
                 startActivity(intent)
             } else {

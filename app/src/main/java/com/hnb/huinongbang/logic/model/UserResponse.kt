@@ -77,3 +77,6 @@ data class UpdateMyInformationData(
     val phone: String,
     val password: String
 )
+
+//更改密码时传输到服务器的数据
+data class ChangePasswordData(val phone: String, val oldPassword: String, val newPassword: String)

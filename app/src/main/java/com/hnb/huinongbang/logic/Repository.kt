@@ -2,10 +2,7 @@ package com.hnb.huinongbang.logic
 
 import androidx.lifecycle.liveData
 import com.hnb.huinongbang.logic.dao.UserDAO
-import com.hnb.huinongbang.logic.model.LoginData
-import com.hnb.huinongbang.logic.model.RegisterData
-import com.hnb.huinongbang.logic.model.UpdateMyInformationData
-import com.hnb.huinongbang.logic.model.User
+import com.hnb.huinongbang.logic.model.*
 import com.hnb.huinongbang.logic.network.HNBNetwork
 import com.hnb.huinongbang.util.LogUtil
 import kotlinx.coroutines.Dispatchers
@@ -46,6 +43,18 @@ object Repository {
             Result.success(user)
         } else {
             LogUtil.d("我的信息", "更新失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+    //更新用户信息
+    fun changePassword( data: ChangePasswordData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.changePassword(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("更改密码", "更改成功")
+            val user = response.data
+            Result.success(user)
+        } else {
+            LogUtil.d("更改密码", "更改失败，${response.message}")
             Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
