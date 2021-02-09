@@ -117,7 +117,6 @@ object Repository {
             val plantingCategories = plantingCategoryResponse.data
             Result.success(plantingCategories)
         } else {
-            LogUtil.d("种植模块分类", "获取分类失败，${plantingCategoryResponse.message}")
             Result.failure(RuntimeException("response status is ${plantingCategoryResponse.message}"))
         }
 
@@ -130,7 +129,6 @@ object Repository {
             val plantsNews = plantsNewsResponse.data
             Result.success(plantsNews)
         } else {
-            LogUtil.d("种植模块最新文章", "获取最新文章失败，${plantsNewsResponse.message}")
             Result.failure(RuntimeException("response status is ${plantsNewsResponse.message}"))
         }
 
@@ -146,7 +144,6 @@ object Repository {
             val plantsNews = plantsNewsOfCategoryResponse.data
             Result.success(plantsNews)
         } else {
-            LogUtil.d("根据分类获取文章", "根据分类获取文章失败，${plantsNewsOfCategoryResponse.message}")
             Result.failure(RuntimeException("response status is ${plantsNewsOfCategoryResponse.message}"))
         }
 

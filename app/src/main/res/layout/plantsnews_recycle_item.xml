@@ -31,7 +31,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#696969"
+            android:textColor="@color/text_plant_information_color"
             android:id="@+id/plant_information"/>
         <TextView
             android:layout_width="match_parent"

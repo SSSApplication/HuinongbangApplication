@@ -16,6 +16,7 @@
     <color name="bg_searchview_color">#FFFACD</color>
     <color name="bg_buttonview_color">#FFA500</color>
     <color name="color_background">#FFFAF0</color>
+    <color name="text_plant_information_color">#696969</color>
 
 
 </resources>

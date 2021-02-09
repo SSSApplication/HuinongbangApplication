@@ -13,11 +13,7 @@
         android:layout_weight="7"
         android:background="@color/bg_searchview_color"
         android:orientation="vertical">
-        <!--<TextView
-            android:id="@+id/categoryname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"/>-->
+
         <!--修改，分类-->
         <Button
             android:id="@+id/plantingcategorybutton"

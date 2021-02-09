@@ -2,6 +2,7 @@ package com.hnb.huinongbang.ui.planting
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +16,7 @@ import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.activity_small_planting.*
 import kotlinx.android.synthetic.main.fragment_planting.*
+import kotlinx.android.synthetic.main.toolbar_back.*
 
 class SmallPlantingActivity : AppCompatActivity() {
     val viewModel by lazy { ViewModelProviders.of(this).get(PlantingViewModel::class.java) }
@@ -29,8 +31,6 @@ class SmallPlantingActivity : AppCompatActivity() {
             viewModel.plant_Class=intent.getStringExtra("plantsCategoryClass")?:""
            }
         plantsNewsOfCategory=PlantsNewsOfCategory(viewModel.plant_Class,viewModel.plant_Name)
-
-
         refreshdata(plantsNewsOfCategory)
         viewModel.plantsNewsOfCategoryLivepData.observe(this, Observer { result ->
             val plantsNews = result.getOrNull()
@@ -40,8 +40,6 @@ class SmallPlantingActivity : AppCompatActivity() {
                 viewModel.plantsNewsOfCategoryList.addAll(plantsNews)
 
 
-                //设置为一行显示
-                //shoppingRecycler.layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
                 plantsNewsOfCategoryRecycler.layoutManager = GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
                 plantsNewsAdapter = PlantsNewsAdapter(this, viewModel.plantsNewsOfCategoryList)
 
@@ -56,8 +54,19 @@ class SmallPlantingActivity : AppCompatActivity() {
         })
 
 
+        var toolBar: Toolbar =findViewById(R.id.toolBarBack)
+        toolBarBack(toolBar)
+        toolBarBackTitle.text=viewModel.plant_Name
+
     }
     fun refreshdata(plantsNewsOfCategory: PlantsNewsOfCategory){
         viewModel.getPlantsNewsOfCategory(plantsNewsOfCategory)
+    }
+
+    private fun toolBarBack(toolbar:Toolbar){
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)//添加默认的返回图标
+        supportActionBar?.setHomeButtonEnabled(true); //设置返回键可用
+        toolbar.setNavigationOnClickListener { finish() }
     }
 }
