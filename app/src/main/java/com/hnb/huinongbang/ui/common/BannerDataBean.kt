@@ -73,6 +73,27 @@ class BannerDataBean {
             return list
         }
 
+        val plantingData: List<BannerDataBean> get() {
+            val list: MutableList<BannerDataBean> = ArrayList()
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_plant+"n4.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_plant+"n3.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_plant+"1553497932.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_plant+"n5.jpg", null, 1)
+            )
+            list.add(
+                BannerDataBean(ServiceCreator.lunbo_plant+"nongye.jpg", null, 1)
+            )
+            return list
+        }
+
     }
 
-}
+    }
+

@@ -9,8 +9,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
+import com.hnb.huinongbang.ui.common.BannerDataBean
 import com.hnb.huinongbang.util.ToastUtil
+import com.youth.banner.Banner
+import com.youth.banner.adapter.BannerImageAdapter
+import com.youth.banner.holder.BannerImageHolder
+import com.youth.banner.indicator.CircleIndicator
 import kotlinx.android.synthetic.main.fragment_planting.*
 import kotlinx.android.synthetic.main.fragment_shopping.*
 
@@ -31,6 +40,7 @@ class PlantingFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         refreshdata()
+        refreshBanner()
         //分类
         viewModel.plantingcategoriesLiveData.observe(this, Observer { result ->
             val plantingCategories = result.getOrNull()
@@ -90,5 +100,24 @@ class PlantingFragment : Fragment() {
     fun refreshdata() {
         viewModel.getdata(0)
         plantRefresh.isRefreshing = true
+        refreshBanner()
+    }
+
+    fun refreshBanner(){
+        //轮播图
+        var banner: Banner<BannerDataBean, BannerImageAdapter<BannerDataBean>> = activity!!.findViewById(R.id.plantingBanner)
+        banner.setAdapter(object : BannerImageAdapter<BannerDataBean>(BannerDataBean.plantingData) {
+            override fun onBindView(
+                holder: BannerImageHolder,
+                data: BannerDataBean,
+                position: Int,
+                size: Int
+            ) {
+                Glide.with(holder.itemView)
+                    .load(data.imageUrl)
+                    .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
+                    .into(holder.imageView)
+            }
+        }).addBannerLifecycleObserver(this).setIndicator(CircleIndicator(HNBApplication.context))
     }
 }

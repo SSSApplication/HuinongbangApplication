@@ -12,6 +12,7 @@ object ServiceCreator {
     val lunbo = CDN_URL+"img/lunbo/"
     val lunbo_donate = CDN_URL+"webphoto/"
     val lunbo_policy = CDN_URL+"webphoto/"
+    val lunbo_plant = CDN_URL+"webphoto/"
     val firstProductImage = CDN_URL + "img/productSingle_middle/"
     val productSingleImage = CDN_URL + "img/productSingle/"
     val productDetailImage = CDN_URL + "img/productDetail/"

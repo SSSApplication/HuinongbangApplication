@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content">
 
                     <com.youth.banner.Banner
-                        android:id="@+id/plantingbanner"
+                        android:id="@+id/plantingBanner"
                         android:layout_width="match_parent"
                         android:layout_height="160dp" />
                 </LinearLayout>
