@@ -4,6 +4,7 @@ import androidx.lifecycle.liveData
 import com.hnb.huinongbang.logic.dao.UserDAO
 import com.hnb.huinongbang.logic.model.LoginData
 import com.hnb.huinongbang.logic.model.RegisterData
+import com.hnb.huinongbang.logic.model.UpdateMyInformationData
 import com.hnb.huinongbang.logic.model.User
 import com.hnb.huinongbang.logic.network.HNBNetwork
 import com.hnb.huinongbang.util.LogUtil
@@ -33,6 +34,18 @@ object Repository {
             Result.success(user)
         } else {
             LogUtil.d("注册模块", "注册失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+    //更新用户信息
+    fun updateMyInformation( updateData: UpdateMyInformationData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.updateMyInformation(updateData)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("我的信息", "更新成功")
+            val user = response.data
+            Result.success(user)
+        } else {
+            LogUtil.d("我的信息", "更新失败，${response.message}")
             Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }

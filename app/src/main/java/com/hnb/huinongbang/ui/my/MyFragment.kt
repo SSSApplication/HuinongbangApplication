@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
-import com.hnb.huinongbang.BottomActivity
 import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
+import com.hnb.huinongbang.logic.model.User
 import com.hnb.huinongbang.logic.network.ServiceCreator
 import com.hnb.huinongbang.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.fragment_my.*
@@ -29,22 +29,25 @@ class MyFragment : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //获取数据
-        getData()
+
+        //获取用户类
+        val user = Repository.getUser()
+
+        //获取头像并赋值数据
+        getData(user)
 
         //下拉刷新
         myRefresh.setColorSchemeResources(R.color.colorPrimary)
         myRefresh.setOnRefreshListener {
-            getData()
+            getData(user)
         }
 
         //设置点击事件监听器
-        setClickListener()
+        setClickListener(user)
     }
 
-    fun getData() {
-        //获取用户类
-        val user = Repository.getUser()
+    fun getData(user: User) {
+
         //用户名赋值
         username.text = user.user_name
         //个人简介赋值
@@ -58,9 +61,10 @@ class MyFragment : Fragment() {
     }
 
     //设置监听器函数
-    fun setClickListener() {
+    fun setClickListener(user: User ) {
+        //我的信息
         information.setOnClickListener {
-            val intent = Intent(HNBApplication.context, BottomActivity::class.java)
+            val intent = Intent(HNBApplication.context, MyInformationActivity::class.java)
             startActivity(intent)
         }
 

@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.logic.model
 
+import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -7,7 +8,7 @@ import java.util.*
 //code(返回状态) user（用户）
 data class UserResponse(val code: Int, val data: User, val message: String)
 
-data class User(val user_ID: Int,  //id
+data class User (val user_ID: Int,  //id
                 val user_phone: String, //电话号码
                 val user_password: String, //密码
                 val user_name: String, //用户名称
@@ -64,3 +65,15 @@ data class LoginData(val name: String, val password: String)
 
 //注册时传输到服务器的数据
 data class RegisterData(val phone: String, val password: String)
+
+//更新我的信息时传输到服务器的数据
+data class UpdateMyInformationData(
+    val user_name: String,
+    val user_nickname: String,
+    val user_sex: String,
+    val user_birthday: String,
+    val user_address: String,
+    val user_introduce: String,
+    val phone: String,
+    val password: String
+)
