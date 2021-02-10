@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
+import com.hnb.huinongbang.BottomActivity
 import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
@@ -40,8 +41,8 @@ class MyInformationActivity : AppCompatActivity() {
                 UpdateMyInformationData(
                     userName.text.toString(),
                     userNickName.text.toString(),
-                    userBirthdayYear.text.toString() + "-" + userBirthdayMonth.text.toString() + "-" + userBirthdayDay.text.toString(),
                     userSex.text.toString(),
+                    userBirthdayYear.text.toString() + "-" + userBirthdayMonth.text.toString() + "-" + userBirthdayDay.text.toString(),
                     userAddress.text.toString(),
                     userIntroduce.text.toString(),
                     user.user_phone,
@@ -56,7 +57,7 @@ class MyInformationActivity : AppCompatActivity() {
             if (user != null) {
                 Repository.clearUser(Repository.getUser())
                 Repository.saveUser(user)
-                val intent = Intent(HNBApplication.context, MyFragment::class.java)
+                val intent = Intent(HNBApplication.context, BottomActivity::class.java)
                 startActivity(intent)
             } else {
                 ToastUtil.show("保存失败")
