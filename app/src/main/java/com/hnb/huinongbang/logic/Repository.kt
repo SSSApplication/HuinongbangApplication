@@ -34,7 +34,7 @@ object Repository {
             Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
-    //更新用户信息
+    //更改密码
     fun updateMyInformation( updateData: UpdateMyInformationData) = fire(Dispatchers.IO) {
         val response = HNBNetwork.updateMyInformation(updateData)
         if (response.code == 1) { //根据状态来处理
@@ -43,6 +43,18 @@ object Repository {
             Result.success(user)
         } else {
             LogUtil.d("我的信息", "更新失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+    //实名认证
+    fun identity( submitData: IdentityData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.identity(submitData)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("实名认证", "提交成功")
+            val user = response.data
+            Result.success(user)
+        } else {
+            LogUtil.d("实名认证", "提交失败，${response.message}")
             Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }

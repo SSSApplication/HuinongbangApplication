@@ -80,3 +80,10 @@ data class UpdateMyInformationData(
 
 //更改密码时传输到服务器的数据
 data class ChangePasswordData(val phone: String, val oldPassword: String, val newPassword: String)
+
+//实名认证时传输到服务器的数据
+data class IdentityData(val phone: String,
+                        val password: String,
+                        val name: String,
+                        val type: String,
+                        val number: String)

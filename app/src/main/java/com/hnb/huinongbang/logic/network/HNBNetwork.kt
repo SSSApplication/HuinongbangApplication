@@ -31,6 +31,13 @@ object HNBNetwork {
         data.oldPassword,
         data.newPassword
     ).await()
+    suspend fun identity(data: IdentityData) = userService.identity(
+        data.phone,
+        data.password,
+        data.name,
+        data.type,
+        data.number
+    ).await()
 
     //封装Category的网络请求
     private val categoryService = ServiceCreator.create<CategoryService>()

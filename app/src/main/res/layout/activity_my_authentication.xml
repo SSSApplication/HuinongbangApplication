@@ -2,7 +2,7 @@
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:material="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools"
-    android:id="@+id/mySecurityRefresh"
+    android:id="@+id/myAuthenticationRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background"
@@ -16,7 +16,7 @@
         <!--页面布局-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <!--卡片-->
@@ -39,16 +39,14 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:orientation="vertical"
-                        android:paddingBottom="3dp"
-                        app:ignore="UselessParent">
+                        android:paddingBottom="3dp">
 
-                        <!--设置密码和状态在一行显示-->
+                        <!--实名认证和状态在一行显示-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingBottom="3dp"
-                            android:baselineAligned="false">
+                            android:paddingBottom="3dp">
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -58,7 +56,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textSize="22sp"
-                                    android:text="设置密码"/>
+                                    android:text="实名认证"/>
                             </LinearLayout>
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -66,11 +64,12 @@
                                 android:layout_weight="1"
                                 android:layout_gravity="center_vertical">
                                 <TextView
+                                    android:id="@+id/identityCheck"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:textSize="22sp"
-                                    android:text="状态：已设置"
+                                    android:text="状态："
                                     app:ignore="NestedWeights" />
                             </LinearLayout>
                         </LinearLayout>
@@ -81,10 +80,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_gravity="center_vertical">
                             <Button
-                                android:id="@+id/changePassword"
+                                android:id="@+id/identity"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:text="更 改 密 码"
+                                android:text="立 即 认 证"
                                 android:textSize="20sp"
                                 android:textColor="@color/white"
                                 android:background="@color/colorPrimary"/>
@@ -114,16 +113,88 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:orientation="vertical"
-                        android:paddingBottom="3dp"
-                        app:ignore="UselessParent">
+                        android:paddingBottom="3dp">
 
-                        <!--绑定手机和状态在一行显示-->
+                        <!--专家认证和状态在一行显示-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingBottom="3dp"
-                            android:baselineAligned="false">
+                            android:paddingBottom="3dp">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_gravity="center_vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="22sp"
+                                    android:text="专家认证"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_gravity="center_vertical">
+                                <TextView
+                                    android:id="@+id/doctorCheck"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="22sp"
+                                    android:text="状态："
+                                    app:ignore="NestedWeights" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center_vertical">
+                            <Button
+                                android:id="@+id/doctor"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:text="立 即 认 证"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                android:background="@color/colorPrimary"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!--绑定手机卡片-->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                material:cardCornerRadius="10dp">
+                <!--卡片中的布局-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="3dp">
+                    <!--整体-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical"
+                        android:paddingBottom="3dp">
+
+                        <!--贫困认定和状态在一行显示-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="3dp">
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -141,12 +212,12 @@
                                 android:layout_weight="1"
                                 android:layout_gravity="center_vertical">
                                 <TextView
-                                    android:id="@+id/phoneCheck"
+                                    android:id="@+id/poorCheck"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:textSize="22sp"
-                                    android:text="状态：已绑定"
+                                    android:text="状态："
                                     app:ignore="NestedWeights" />
                             </LinearLayout>
                         </LinearLayout>
@@ -157,10 +228,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_gravity="center_vertical">
                             <Button
-                                android:id="@+id/changePhone"
+                                android:id="@+id/poor"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:text="更 改 手 机"
+                                android:text="立 即 认 定"
                                 android:textSize="20sp"
                                 android:textColor="@color/white"
                                 android:background="@color/colorPrimary"/>

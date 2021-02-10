@@ -74,6 +74,11 @@ class MyFragment : Fragment() {
             startActivity(intent)
         }
 
+        //认证相关
+        authentication.setOnClickListener {
+            val intent = Intent(HNBApplication.context, MyAuthenticationActivity::class.java)
+            startActivity(intent)
+        }
 
         //退出登录
         signOut.setOnClickListener {

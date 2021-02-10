@@ -34,4 +34,14 @@ interface UserService {
         @Query("oldPassword") oldPassword: String,
         @Query("newPassword") newPassword: String
     ): Call<UserResponse>
+
+    //实名认证
+    @GET("foremuploadIdentity")
+    fun identity(
+        @Query("phone") phone: String,
+        @Query("password") password: String,
+        @Query("name") name: String,
+        @Query("type") type: String,
+        @Query("number") number: String
+    ): Call<UserResponse>
 }
