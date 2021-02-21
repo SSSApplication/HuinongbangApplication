@@ -65,6 +65,9 @@ object HNBNetwork {
     suspend fun policys() = policyService.policys().await()
     suspend fun newpolicys() = policyService.newpolicys().await()
 
+    //封装测试的网络请求
+    private val testService = ServiceCreator.create<BuyService>()
+    suspend fun test(oiid: Array<String>, type: Int) = testService.buy(oiid, type).await()
 
 
     //协程suspend

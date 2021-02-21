@@ -210,6 +210,18 @@ object Repository {
         }
     }
 
+    //测试的封装
+    fun test(oiid: Array<String>, type: Int) = fire(Dispatchers.IO) {
+        val userResponse = HNBNetwork.test(oiid, type)
+        if (userResponse.code == 1) { //根据状态来处理
+            LogUtil.d("HNBNetwork", "分类获取政策成功，分类如下：${userResponse}")
+            Result.success(userResponse)
+        } else {
+            LogUtil.d("HNBNetwork", "分类获取政策失败，${userResponse}")
+            Result.failure(RuntimeException("response status is ${userResponse}"))
+        }
+    }
+
 
     //简化函数
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) = liveData<Result<T>>(context) {

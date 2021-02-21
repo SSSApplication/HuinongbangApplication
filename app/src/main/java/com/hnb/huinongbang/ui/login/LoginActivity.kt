@@ -9,9 +9,16 @@ import com.hnb.huinongbang.HNBApplication.Companion.context
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.LoginData
+import com.hnb.huinongbang.logic.model.OrderItemResponse
+import com.hnb.huinongbang.logic.network.ServiceCreator
+import com.hnb.huinongbang.logic.network.BuyService
 import com.hnb.huinongbang.ui.register.RegisterActivity
+import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_login.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
@@ -38,6 +45,21 @@ class LoginActivity : AppCompatActivity() {
             val password = password.text.toString()
             val loginData = LoginData(name, password)
             viewModel.login(loginData)
+            LogUtil.d("测试", "测试开始")
+            val testService = ServiceCreator.create<BuyService>()
+            LogUtil.d("测试", "测试开始1")
+            testService.buy(arrayOf("70", "72"), 0).enqueue(object : Callback<OrderItemResponse> {
+                override fun onResponse(call: Call<OrderItemResponse>, response: Response<OrderItemResponse>) {
+                    val OrderItemResponse = response.body()
+                    LogUtil.d("测试", "1")
+                    LogUtil.d("测试", "${OrderItemResponse}")
+                }
+
+                override fun onFailure(call: Call<OrderItemResponse>, t: Throwable) {
+                    t.printStackTrace()
+                    LogUtil.d("测试", "测试开始2")
+                }
+            })
         }
         //监听登录结果
         viewModel.loginLiveData.observe(this, {result ->
