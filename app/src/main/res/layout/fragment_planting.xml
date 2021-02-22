@@ -78,6 +78,15 @@
                         android:layout_gravity="center" />
 
                 </LinearLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_buttonview"
+                    android:text="专家问答"
+                    android:textColor="#FFFFFF"/>
                 <!--最新文章-->
                 <TextView
                     android:layout_width="match_parent"
