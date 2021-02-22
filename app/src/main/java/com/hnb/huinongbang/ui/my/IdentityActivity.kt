@@ -22,6 +22,9 @@ class IdentityActivity : AppCompatActivity() {
         //获取用户类
         val user = Repository.getUser()
 
+        return_btn.setOnClickListener {
+            onBackPressed()
+        }
         //提交按钮
         submit.setOnClickListener {
             viewModel.submit(

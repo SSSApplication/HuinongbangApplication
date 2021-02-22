@@ -16,6 +16,9 @@ class MySecurityActivity : AppCompatActivity() {
         //下拉刷新
         mySecurityRefresh.setColorSchemeResources(R.color.colorPrimary)
 
+        return_btn.setOnClickListener {
+            onBackPressed()
+        }
         //设置点击事件监听器
         setClickListener()
     }

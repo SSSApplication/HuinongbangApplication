@@ -13,163 +13,205 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--页面布局-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--卡片-->
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                material:cardCornerRadius="10dp">
-                <!--卡片中的布局-->
-                <LinearLayout
+                android:background="@color/color_background">
+
+                <Button
+                    android:id="@+id/return_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_background"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#707070"
+                    android:text="@string/back"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:textColor="#707070"
+                    android:text="账号安全"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:background="@color/color_background"/>
+
+            </LinearLayout>
+
+            <!--页面布局-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--卡片-->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:orientation="vertical"
-                    android:paddingBottom="3dp">
-                    <!--整体-->
+                    android:padding="10dp"
+                    material:cardCornerRadius="10dp">
+                    <!--卡片中的布局-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:orientation="vertical"
-                        android:paddingBottom="3dp"
-                        app:ignore="UselessParent">
-
-                        <!--设置密码和状态在一行显示-->
+                        android:paddingBottom="3dp">
+                        <!--整体-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical"
                             android:paddingBottom="3dp"
-                            android:baselineAligned="false">
+                            app:ignore="UselessParent">
+
+                            <!--设置密码和状态在一行显示-->
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_gravity="center_vertical">
-                                <TextView
+                                android:orientation="horizontal"
+                                android:paddingBottom="3dp"
+                                android:baselineAligned="false">
+                                <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="22sp"
-                                    android:text="设置密码"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_gravity="center_vertical">
-                                <TextView
-                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center_vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="22sp"
+                                        android:text="设置密码"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:textSize="22sp"
-                                    android:text="状态：已设置"
-                                    app:ignore="NestedWeights" />
+                                    android:layout_gravity="center_vertical">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:textSize="22sp"
+                                        android:text="状态：已设置"
+                                        app:ignore="NestedWeights" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center_vertical">
+                                <Button
+                                    android:id="@+id/changePassword"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:text="更 改 密 码"
+                                    android:textSize="20sp"
+                                    android:textColor="@color/white"
+                                    android:background="@color/colorPrimary"/>
                             </LinearLayout>
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_gravity="center_vertical">
-                            <Button
-                                android:id="@+id/changePassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:text="更 改 密 码"
-                                android:textSize="20sp"
-                                android:textColor="@color/white"
-                                android:background="@color/colorPrimary"/>
-                        </LinearLayout>
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!--绑定手机卡片-->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                material:cardCornerRadius="10dp">
-                <!--卡片中的布局-->
-                <LinearLayout
+                <!--绑定手机卡片-->
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:orientation="vertical"
-                    android:paddingBottom="3dp">
-                    <!--整体-->
+                    android:padding="10dp"
+                    material:cardCornerRadius="10dp">
+                    <!--卡片中的布局-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:orientation="vertical"
-                        android:paddingBottom="3dp"
-                        app:ignore="UselessParent">
-
-                        <!--绑定手机和状态在一行显示-->
+                        android:paddingBottom="3dp">
+                        <!--整体-->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical"
                             android:paddingBottom="3dp"
-                            android:baselineAligned="false">
+                            app:ignore="UselessParent">
+
+                            <!--绑定手机和状态在一行显示-->
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_gravity="center_vertical">
-                                <TextView
+                                android:orientation="horizontal"
+                                android:paddingBottom="3dp"
+                                android:baselineAligned="false">
+                                <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="22sp"
-                                    android:text="绑定手机"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:layout_gravity="center_vertical">
-                                <TextView
-                                    android:id="@+id/phoneCheck"
-                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_gravity="center_vertical">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="22sp"
+                                        android:text="绑定手机"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:textSize="22sp"
-                                    android:text="状态：已绑定"
-                                    app:ignore="NestedWeights" />
+                                    android:layout_gravity="center_vertical">
+                                    <TextView
+                                        android:id="@+id/phoneCheck"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:textSize="22sp"
+                                        android:text="状态：已绑定"
+                                        app:ignore="NestedWeights" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_gravity="center_vertical">
+                                <Button
+                                    android:id="@+id/changePhone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:text="更 改 手 机"
+                                    android:textSize="20sp"
+                                    android:textColor="@color/white"
+                                    android:background="@color/colorPrimary"/>
                             </LinearLayout>
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:layout_gravity="center_vertical">
-                            <Button
-                                android:id="@+id/changePhone"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:text="更 改 手 机"
-                                android:textSize="20sp"
-                                android:textColor="@color/white"
-                                android:background="@color/colorPrimary"/>
-                        </LinearLayout>
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+            </LinearLayout>
         </LinearLayout>
+
+
     </ScrollView>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

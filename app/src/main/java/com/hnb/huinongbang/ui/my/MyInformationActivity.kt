@@ -23,6 +23,9 @@ class MyInformationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_information)
 
+        return_btn.setOnClickListener {
+            onBackPressed()
+        }
         //获取当前用户信息
         val user = Repository.getUser()
 

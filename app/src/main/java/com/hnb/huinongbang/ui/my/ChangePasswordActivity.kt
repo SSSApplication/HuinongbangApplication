@@ -19,6 +19,9 @@ class ChangePasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_password)
 
+        return_btn.setOnClickListener {
+            onBackPressed()
+        }
         //更改按钮
         change.setOnClickListener {
             if( oldPassword.text.toString().equals(newPassword.text.toString())){

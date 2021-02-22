@@ -15,4 +15,5 @@
     <string name="title_planting">种植</string>
     <string name="title_policy">政策</string>
     <string name="title_my">我的</string>
+    <string name="back"><![CDATA[<]]></string>
 </resources>
