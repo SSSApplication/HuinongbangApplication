@@ -55,7 +55,7 @@ class PlantingCategoryAdapter(
 
             }else {
                 smallPlantingCategoryRecycler.layoutManager =
-                    GridLayoutManager(fragment.context, 3, RecyclerView.VERTICAL, false)
+                    GridLayoutManager(fragment.context, 5, RecyclerView.VERTICAL, false)
 
             }
            smallPlantingCategoryRecycler.adapter = smallPlantingCategoryAdapter

@@ -4,83 +4,89 @@
     android:id="@+id/donateRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_background"
-        android:orientation="vertical">
 
-        <!--搜索框-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background"
             android:orientation="vertical">
 
+            <!--搜索框-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="55dp"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="2"
-                    android:src="@drawable/logohuinongbanglogo" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="5"
-                    android:background="@drawable/bg_searchview"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="请输入搜索内容" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="2"
+                        android:src="@drawable/logohuinongbanglogo" />
 
-                <android.widget.Button
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_buttonview"
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/bg_button"
+                        android:iconifiedByDefault="false"
+                        android:queryHint="请输入搜索内容" />
 
-                    android:text="搜索" />
+                    <android.widget.Button
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_buttonview"
+                        android:textColor="@color/white"
+                        android:text="搜索" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--轮播图-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.youth.banner.Banner
+                    android:id="@+id/dbanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp" />
+            </LinearLayout>
+            <!--分类-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/donateRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+            <!--商品展示-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dproductRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp" />
+
             </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
-        <!--轮播图-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.youth.banner.Banner
-                android:id="@+id/dbanner"
-                android:layout_width="match_parent"
-                android:layout_height="160dp" />
-        </LinearLayout>
-<!--分类-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/donateRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"/>
-
-        </LinearLayout>
-        <!--商品展示-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/dproductRecycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp" />
-
-        </LinearLayout>
-    </LinearLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

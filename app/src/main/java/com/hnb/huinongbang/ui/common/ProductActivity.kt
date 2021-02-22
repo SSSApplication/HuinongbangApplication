@@ -131,6 +131,10 @@ class ProductActivity : AppCompatActivity() {
             refreshdata()
         }
 
+        return_btn.setOnClickListener {
+            onBackPressed()
+        }
+
     }
     fun refreshdata(){
         viewModel.getdata(viewModel.pid)

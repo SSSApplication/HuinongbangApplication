@@ -4,50 +4,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_background"
-        android:orientation="vertical">
-        <!--搜索框-->
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background"
             android:orientation="vertical">
-
+            <!--搜索框-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="55dp"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="2"
-                    android:src="@drawable/logohuinongbanglogo" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="0dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="5"
-                    android:background="@drawable/bg_searchview"
-                    android:iconifiedByDefault="false"
-                    android:queryHint="请输入搜索内容" />
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="2"
+                        android:src="@drawable/logohuinongbanglogo" />
 
-                <android.widget.Button
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_buttonview"
+                    <SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="5"
+                        android:background="@drawable/bg_button"
+                        android:iconifiedByDefault="false"
+                        android:queryHint="请输入搜索内容" />
 
-                    android:text="搜索" />
+                    <android.widget.Button
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_buttonview"
+                        android:textColor="@color/white"
+                        android:text="搜索" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
 
 
@@ -97,17 +100,22 @@
                     android:textColor="@color/black" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/plantsnewsRecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         />
                 </LinearLayout>
             </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

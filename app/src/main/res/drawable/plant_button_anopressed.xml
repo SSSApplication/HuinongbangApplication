@@ -4,7 +4,7 @@
     <stroke android:width="0dip" android:color="#ffffff"/>
 
     <!-- 背景色-->
-    <solid android:color="@color/bg_buttonview_color" />
+    <solid android:color="@color/bg_button_pressed" />
     <!-- 边距 -->
     <!--<padding
         android:bottom="5dp"
