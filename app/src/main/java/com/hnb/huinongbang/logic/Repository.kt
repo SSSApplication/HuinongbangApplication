@@ -144,6 +144,7 @@ object Repository {
     }
     //创建订单之前信息准备
     fun beforeCreateOrder(data: GetOrderItemData) = fire(Dispatchers.IO) {
+        LogUtil.d("测试","开始传输2")
         val response = HNBNetwork.beforeCreateOrder(data)
         if (response.code == 1) { //根据状态来处理
             LogUtil.d("订单信息", "准备成功，${response.data}")

@@ -29,7 +29,7 @@ class CreateOrderActivity : AppCompatActivity() {
             getData()
         }
 
-        //设置点击事件监听器
+//        //设置点击事件监听器
         setClickListener(pid,type)
     }
 
@@ -41,12 +41,13 @@ class CreateOrderActivity : AppCompatActivity() {
         //付款
         pay.setOnClickListener {
             if(
-                address.text.toString() == "" ||
-//                post.text.toString() == "" ||
-//                userMessage.text.toString() == "" ||
-                receiver.text.toString() == "" ||
-                mobile.text.toString() == "" ||
-                num.text.toString() == ""
+                false
+//                address.text.toString() == "" ||
+////                post.text.toString() == "" ||
+////                userMessage.text.toString() == "" ||
+//                receiver.text.toString() == "" ||
+//                mobile.text.toString() == "" ||
+//                num.text.toString() == ""
             ){
                 ToastUtil.show("请完善信息")
             }else{
@@ -69,11 +70,15 @@ class CreateOrderActivity : AppCompatActivity() {
                         for(orderItem in values.data){
                             oiidList.add(orderItem.id.toString())
                         }
+                        LogUtil.d("oiidList","${oiidList}")
+                        val oiid = Array(oiidList.size){"0"}
+                        oiidList.toArray(oiid)
+                        LogUtil.d("oiid","${oiid[0]}+${arrayOf("d13")[0]}")
                         //创建订单
                         viewModel.pay(
                             CreateOrderData(
                                 Repository.getUser().user_ID.toString(),
-                                oiidList.toArray() as Array<String>,
+                                oiid,
                                 address.text.toString(),
                                 post.text.toString(),
                                 receiver.text.toString(),
