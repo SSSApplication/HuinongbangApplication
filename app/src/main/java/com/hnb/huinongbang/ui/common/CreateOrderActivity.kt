@@ -65,11 +65,16 @@ class CreateOrderActivity : AppCompatActivity() {
                     val values = result.getOrNull()
                     if (values != null){
                         LogUtil.d("返回1", "${values}")
+                        //获取oiid
+                        val oiidList = ArrayList<String>()
+                        for(orderItem in values.data){
+                            oiidList.add(orderItem.id.toString())
+                        }
                         //创建订单
                         viewModel.pay(
                             CreateOrderData(
                                 Repository.getUser().user_ID.toString(),
-                                values.data.id,
+                                oiidList.toArray() as Array<String>,
                                 address.text.toString(),
                                 post.text.toString(),
                                 receiver.text.toString(),
