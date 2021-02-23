@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.logic.model
 
+import java.io.Serializable
 import java.util.*
 
 data class ProductsResponse(val code: Int, val data: List<Product>, val message: String)

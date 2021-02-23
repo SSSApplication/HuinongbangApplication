@@ -46,11 +46,28 @@ object HNBNetwork {
 
     //封装Product的网络请求
     private val productService = ServiceCreator.create<ProductService>()
+    private val buyService = ServiceCreator.create<BuyService>()
     suspend fun products(type: Int) = productService.products(type).await()
     suspend fun productsbycid(cid: Int) = productService.productsbycid(cid).await()
     suspend fun product(pid: Int) = productService.product(pid).await()
     suspend fun propertyValues(pid: Int) = productService.propertyValues(pid).await()
     suspend fun reviews(pid: Int) = productService.reviews(pid).await()
+    suspend fun beforeCreateOrder(data: GetOrderItemData) = buyService.beforeCreateOrder(
+        data.pid,
+        data.type,
+        data.uid,
+        data.num
+    ).await()
+    suspend fun createOrder(data: CreateOrderData) = buyService.createOrder(
+        data.uid,
+        data.oiid,
+        data.address,
+        data.post,
+        data.receiver,
+        data.mobile,
+        data.userMessage,
+        data.type
+    ).await()
 
     //封装PlantingCategory的网络请求
     private val plantingCategoryService = ServiceCreator.create<PlantingCategoryService>()

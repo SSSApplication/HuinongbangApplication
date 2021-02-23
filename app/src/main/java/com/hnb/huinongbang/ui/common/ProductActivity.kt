@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.ui.common
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -80,6 +81,9 @@ class ProductActivity : AppCompatActivity() {
                 productRecycler.layoutManager = layoutManager
                 detailImageAdapter = DetailImageAdapter(this, viewModel.productDetailImages)
                 productRecycler.adapter = detailImageAdapter
+
+                //设置点击事件监听器
+                setClickListener()
             }else {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
@@ -156,5 +160,32 @@ class ProductActivity : AppCompatActivity() {
                     .into(holder.imageView)
             }
         }).addBannerLifecycleObserver(this).setIndicator(CircleIndicator(HNBApplication.context))
+    }
+    //设置监听器函数
+    fun setClickListener() {
+        //立即购买
+        buyNow.setOnClickListener {
+            createOrder()
+        }
+        //加入购物车
+        addToCart.setOnClickListener {
+            ToastUtil.show("加入购物车")
+        }
+        //我需要
+        needNow.setOnClickListener {
+            createOrder()
+        }
+        //加入计划清单
+        addToList.setOnClickListener {
+            ToastUtil.show("加入计划清单")
+        }
+    }
+
+    fun createOrder(){
+        val intent = Intent(HNBApplication.context, CreateOrderActivity::class.java).apply {
+            putExtra("pid", viewModel.product.id)
+            putExtra("type", viewModel.product.type)
+        }
+        startActivity(intent)
     }
 }

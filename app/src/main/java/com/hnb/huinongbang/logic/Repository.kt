@@ -142,6 +142,30 @@ object Repository {
             Result.failure(RuntimeException("response status is ${reviewsResponse.message}"))
         }
     }
+    //创建订单之前信息准备
+    fun beforeCreateOrder(data: GetOrderItemData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.beforeCreateOrder(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("订单信息", "准备成功，${response.data}")
+            val reviews = response
+            Result.success(reviews)
+        } else {
+            LogUtil.d("订单信息", "准备失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+    //创建订单
+    fun createOrder(data: CreateOrderData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.createOrder(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("订单信息", "创建成功，${response.data}")
+            val reviews = response
+            Result.success(reviews)
+        } else {
+            LogUtil.d("订单信息", "创建失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
 
     //种植模块获取所有分类
     fun plantingCategories(type: Int) = fire(Dispatchers.IO) {

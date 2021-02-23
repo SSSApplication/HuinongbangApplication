@@ -10,4 +10,26 @@ interface BuyService {
     //注册 测试内容 实际需要你自己写
     @GET("forembuy")
     fun buy(@Query("oiid") oiid: Array<String>, @Query("type") type: Int): Call<OrderItemResponse>
+
+    //创建订单必要信息获取
+    @GET("forembuyone")
+    fun beforeCreateOrder(
+        @Query("pid") pid: String,
+        @Query("type") type: String,
+        @Query("uid") uid: String,
+        @Query("num") num: String
+    ): Call<OrderItemResponse>
+
+    //创建订单
+    @GET("foremcreateOrder")
+    fun createOrder(
+        @Query("uid") uid: String,
+        @Query("oiid") oiid: Array<String>,
+        @Query("address") address: String,
+        @Query("post") post: String,
+        @Query("receiver") receiver: String,
+        @Query("mobile") mobile: String,
+        @Query("userMessage") userMessage: String,
+        @Query("type") type: String
+    ): Call<OrderItemResponse>
 }
