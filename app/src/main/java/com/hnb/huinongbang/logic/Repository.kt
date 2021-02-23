@@ -167,6 +167,18 @@ object Repository {
             Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
+    //扣除慧农币
+    fun payForDonation(data: PayForDonationData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.payForDonation(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("扣除慧农币", "扣除成功，${response.data}")
+            val reviews = response
+            Result.success(reviews)
+        } else {
+            LogUtil.d("扣除慧农币", "扣除失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
 
     //种植模块获取所有分类
     fun plantingCategories(type: Int) = fire(Dispatchers.IO) {

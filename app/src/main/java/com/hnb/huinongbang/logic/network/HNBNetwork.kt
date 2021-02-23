@@ -68,6 +68,11 @@ object HNBNetwork {
         data.userMessage,
         data.type
     ).await()
+    suspend fun payForDonation(data: PayForDonationData) = buyService.payForDonation(
+        data.oid,
+        data.uid,
+        data.total
+    ).await()
 
     //封装PlantingCategory的网络请求
     private val plantingCategoryService = ServiceCreator.create<PlantingCategoryService>()

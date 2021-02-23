@@ -1,9 +1,11 @@
 package com.hnb.huinongbang.ui.common
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.CreateOrderData
@@ -29,7 +31,7 @@ class CreateOrderActivity : AppCompatActivity() {
             getData()
         }
 
-//        //设置点击事件监听器
+        //设置点击事件监听器
         setClickListener(pid,type)
     }
 
@@ -41,13 +43,12 @@ class CreateOrderActivity : AppCompatActivity() {
         //付款
         pay.setOnClickListener {
             if(
-                false
-//                address.text.toString() == "" ||
-////                post.text.toString() == "" ||
-////                userMessage.text.toString() == "" ||
-//                receiver.text.toString() == "" ||
-//                mobile.text.toString() == "" ||
-//                num.text.toString() == ""
+                address.text.toString() == "" ||
+//                post.text.toString() == "" ||
+//                userMessage.text.toString() == "" ||
+                receiver.text.toString() == "" ||
+                mobile.text.toString() == "" ||
+                num.text.toString() == ""
             ){
                 ToastUtil.show("请完善信息")
             }else{
@@ -91,8 +92,13 @@ class CreateOrderActivity : AppCompatActivity() {
                         viewModel.payResult.observe(this, Observer { result ->
                             val response = result.getOrNull()
                             if (response != null){
-                                LogUtil.d("返回2", "${values}")
-                                ToastUtil.show("订单生成成功")
+                                LogUtil.d("返回2", "${response}")
+                                val intent = Intent(HNBApplication.context, PayActivity::class.java).apply {
+                                    putExtra("total", response.message.toFloat())
+                                    putExtra("oid", response.data.id)
+                                    putExtra("type", response.data.type)
+                                }
+                                startActivity(intent)
                             }else{
                                 ToastUtil.show("订单生成失败2")
                                 result.exceptionOrNull()?.printStackTrace()

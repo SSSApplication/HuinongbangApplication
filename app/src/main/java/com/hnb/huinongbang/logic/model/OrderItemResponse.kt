@@ -53,3 +53,9 @@ data class CreateOrderData(
     val userMessage: String,
     val type: String
 )
+
+data class PayForDonationData(
+    val oid: String,
+    val uid: String,
+    val total: String
+)
