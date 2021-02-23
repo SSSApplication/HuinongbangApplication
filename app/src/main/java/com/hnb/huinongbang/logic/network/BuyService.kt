@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.logic.network
 
+import com.hnb.huinongbang.logic.model.CreateOrderResponse
 import com.hnb.huinongbang.logic.model.OrderItemResponse
 import com.hnb.huinongbang.logic.model.UserResponse
 import retrofit2.Call
@@ -31,5 +32,5 @@ interface BuyService {
         @Query("mobile") mobile: String,
         @Query("userMessage") userMessage: String,
         @Query("type") type: String
-    ): Call<OrderItemResponse>
+    ): Call<CreateOrderResponse>
 }

@@ -23,7 +23,6 @@ class CreateOrderActivity : AppCompatActivity() {
         var pid = intent.getIntExtra("pid",0)
         var type = intent.getIntExtra("type",-1)
 
-        ToastUtil.show(pid.toString() + type.toString())
         //下拉刷新
         createOrderRefresh.setColorSchemeResources(R.color.colorPrimary)
         createOrderRefresh.setOnRefreshListener {
@@ -43,8 +42,8 @@ class CreateOrderActivity : AppCompatActivity() {
         pay.setOnClickListener {
             if(
                 address.text.toString() == "" ||
-                post.text.toString() == "" ||
-                userMessage.text.toString() == "" ||
+//                post.text.toString() == "" ||
+//                userMessage.text.toString() == "" ||
                 receiver.text.toString() == "" ||
                 mobile.text.toString() == "" ||
                 num.text.toString() == ""
@@ -85,17 +84,17 @@ class CreateOrderActivity : AppCompatActivity() {
                         )
                         //监听创建订单返回结果
                         viewModel.payResult.observe(this, Observer { result ->
-                            val values = result.getOrNull()
-                            if (values != null){
+                            val response = result.getOrNull()
+                            if (response != null){
                                 LogUtil.d("返回2", "${values}")
-
+                                ToastUtil.show("订单生成成功")
                             }else{
-                                ToastUtil.show("订单生成失败")
+                                ToastUtil.show("订单生成失败2")
                                 result.exceptionOrNull()?.printStackTrace()
                             }
                         })
                     }else{
-                        ToastUtil.show("订单生成失败")
+                        ToastUtil.show("订单生成失败1")
                         result.exceptionOrNull()?.printStackTrace()
                     }
                 })
