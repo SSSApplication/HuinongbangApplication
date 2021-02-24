@@ -51,7 +51,7 @@
                                 android:id="@+id/shouldPay"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="22sp"
+                                android:textSize="16sp"
                                 android:text="应支付："/>
                         </LinearLayout>
                         <LinearLayout
@@ -62,7 +62,7 @@
                                 android:id="@+id/balance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="22sp"
+                                android:textSize="16sp"
                                 android:text="余额："/>
                         </LinearLayout>
                         <LinearLayout
@@ -87,9 +87,9 @@
                         android:padding="10dp"
                         android:layout_gravity="center_horizontal"
                         android:text="付  款"
-                        android:textSize="25sp"
+                        android:textSize="16sp"
                         android:textColor="@color/white"
-                        android:background="@color/colorPrimary"/>
+                        android:background="@drawable/bg_buttonview"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

@@ -95,7 +95,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="实名认证"/>
                                 </LinearLayout>
                                 <LinearLayout
@@ -108,7 +108,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="状态："
                                         app:ignore="NestedWeights" />
                                 </LinearLayout>
@@ -122,11 +122,11 @@
                                 <Button
                                     android:id="@+id/identity"
                                     android:layout_width="match_parent"
-                                    android:layout_height="40dp"
+                                    android:layout_height="30dp"
                                     android:text="立 即 认 证"
-                                    android:textSize="20sp"
+                                    android:textSize="16sp"
                                     android:textColor="@color/white"
-                                    android:background="@color/colorPrimary"/>
+                                    android:background="@drawable/bg_buttonview"/>
                             </LinearLayout>
                         </LinearLayout>
 
@@ -169,7 +169,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="专家认证"/>
                                 </LinearLayout>
                                 <LinearLayout
@@ -182,7 +182,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="状态："
                                         app:ignore="NestedWeights" />
                                 </LinearLayout>
@@ -196,11 +196,11 @@
                                 <Button
                                     android:id="@+id/doctor"
                                     android:layout_width="match_parent"
-                                    android:layout_height="40dp"
+                                    android:layout_height="30dp"
                                     android:text="立 即 认 证"
-                                    android:textSize="20sp"
+                                    android:textSize="16sp"
                                     android:textColor="@color/white"
-                                    android:background="@color/colorPrimary"/>
+                                    android:background="@drawable/bg_buttonview"/>
                             </LinearLayout>
                         </LinearLayout>
 
@@ -243,7 +243,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="绑定手机"/>
                                 </LinearLayout>
                                 <LinearLayout
@@ -256,7 +256,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="状态："
                                         app:ignore="NestedWeights" />
                                 </LinearLayout>
@@ -270,11 +270,11 @@
                                 <Button
                                     android:id="@+id/poor"
                                     android:layout_width="match_parent"
-                                    android:layout_height="40dp"
+                                    android:layout_height="30dp"
                                     android:text="立 即 认 定"
-                                    android:textSize="20sp"
+                                    android:textSize="16sp"
                                     android:textColor="@color/white"
-                                    android:background="@color/colorPrimary"/>
+                                    android:background="@drawable/bg_buttonview"/>
                             </LinearLayout>
                         </LinearLayout>
 

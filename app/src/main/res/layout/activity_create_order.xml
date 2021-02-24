@@ -21,6 +21,40 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@color/color_background">
+
+        <Button
+            android:id="@+id/return_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/color_background"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:textColor="#707070"
+            android:text="@string/back"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:textColor="#707070"
+            android:text="订单信息"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@color/color_background"/>
+
+      </LinearLayout>
+
       <!--卡片-->
       <androidx.cardview.widget.CardView
           android:layout_width="match_parent"
@@ -49,7 +83,7 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:textSize="22sp"
+                  android:textSize="16sp"
                   android:text="详细地址"/>
             </LinearLayout>
             <LinearLayout
@@ -83,7 +117,7 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:textSize="22sp"
+                  android:textSize="16sp"
                   android:text="买家留言"/>
             </LinearLayout>
             <LinearLayout
@@ -117,7 +151,7 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:textSize="22sp"
+                  android:textSize="16sp"
                   android:text="邮政编码"/>
             </LinearLayout>
             <LinearLayout
@@ -128,7 +162,7 @@
               <EditText
                   android:id="@+id/post"
                   android:layout_width="match_parent"
-                  android:layout_height="40dp"
+                  android:layout_height="30dp"
                   android:layout_gravity="center_horizontal"
                   android:inputType="number"
                   android:singleLine="true"
@@ -151,7 +185,7 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:textSize="22sp"
+                  android:textSize="16sp"
                   android:text="收货人姓名"/>
             </LinearLayout>
             <LinearLayout
@@ -162,7 +196,7 @@
               <EditText
                   android:id="@+id/receiver"
                   android:layout_width="match_parent"
-                  android:layout_height="40dp"
+                  android:layout_height="30dp"
                   android:layout_gravity="center_horizontal"
                   android:inputType="text"
                   android:singleLine="true"
@@ -185,7 +219,7 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:textSize="22sp"
+                  android:textSize="16sp"
                   android:text="手机号码"/>
             </LinearLayout>
             <LinearLayout
@@ -196,7 +230,7 @@
               <EditText
                   android:id="@+id/mobile"
                   android:layout_width="match_parent"
-                  android:layout_height="40dp"
+                  android:layout_height="30dp"
                   android:layout_gravity="center_horizontal"
                   android:inputType="number"
                   android:singleLine="true"
@@ -219,7 +253,7 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:textSize="22sp"
+                  android:textSize="16sp"
                   android:text="数量"/>
             </LinearLayout>
             <LinearLayout
@@ -230,7 +264,7 @@
               <EditText
                   android:id="@+id/num"
                   android:layout_width="match_parent"
-                  android:layout_height="40dp"
+                  android:layout_height="30dp"
                   android:layout_gravity="center_horizontal"
                   android:inputType="number"
                   android:singleLine="true"
@@ -247,9 +281,9 @@
               android:padding="10dp"
               android:layout_gravity="center_horizontal"
               android:text="付  款"
-              android:textSize="25sp"
+              android:textSize="16sp"
               android:textColor="@color/white"
-              android:background="@color/colorPrimary"/>
+              android:background="@drawable/bg_buttonview"/>
         </LinearLayout>
       </androidx.cardview.widget.CardView>
 

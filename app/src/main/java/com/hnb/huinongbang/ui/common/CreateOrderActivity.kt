@@ -31,6 +31,9 @@ class CreateOrderActivity : AppCompatActivity() {
             getData()
         }
 
+        return_btn.setOnClickListener {
+            onBackPressed()
+        }
         //设置点击事件监听器
         setClickListener(pid,type)
     }
