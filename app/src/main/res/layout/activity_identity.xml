@@ -75,7 +75,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22sp"
+                        android:textSize="16sp"
                         android:text="姓名"/>
                 </LinearLayout>
                 <LinearLayout
@@ -86,7 +86,7 @@
                     <EditText
                         android:id="@+id/name"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center_horizontal"
                         android:inputType="text"
                         android:background="@drawable/input_text"
@@ -108,7 +108,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22sp"
+                        android:textSize="16sp"
                         android:text="证件类型"/>
                 </LinearLayout>
                 <LinearLayout
@@ -119,7 +119,7 @@
                     <EditText
                         android:id="@+id/type"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center_horizontal"
                         android:inputType="text"
                         android:background="@drawable/input_text"/>
@@ -140,7 +140,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="22sp"
+                        android:textSize="16sp"
                         android:text="证件号码"/>
                 </LinearLayout>
                 <LinearLayout
@@ -151,7 +151,7 @@
                     <EditText
                         android:id="@+id/number"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center_horizontal"
                         android:inputType="text"
                         android:background="@drawable/input_text"/>
@@ -166,9 +166,9 @@
                 android:padding="10dp"
                 android:layout_gravity="center_horizontal"
                 android:text="提  交"
-                android:textSize="25sp"
+                android:textSize="16sp"
                 android:textColor="@color/white"
-                android:background="@color/colorPrimary"/>
+                android:background="@drawable/bg_buttonview"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

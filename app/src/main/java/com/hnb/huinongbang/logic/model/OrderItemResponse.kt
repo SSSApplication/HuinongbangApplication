@@ -1,6 +1,7 @@
 package com.hnb.huinongbang.logic.model
 
-import androidx.work.Data
+
+import java.util.*
 
 data class OrderItemResponse(val code: Int, val data: List<OrderItem>, val message: String)
 
@@ -13,15 +14,15 @@ data class Order(
     val receiver: String,
     val mobile: String,
     val userMessage: String,
-    val createDate: Data,
-//    val payDate: Data,
-//    val deliveryDate: Data,
-//    val postCode: String,
-//    val postnu: String,
-//    val confirmDate: Data,
+    val createDate: Date,
+    val payDate: Date,
+    val deliveryDate: Date,
+    val postCode: String,
+    val postnu: String,
+    val confirmDate: Date,
     val user: User,
     val id: Int,
-//    val orderItems: List<OrderItem>,
+    val orderItems: List<OrderItem>,
     val total: Float,
     val totalNumber: Int,
     val status: String,
@@ -51,4 +52,10 @@ data class CreateOrderData(
     val mobile: String,
     val userMessage: String,
     val type: String
+)
+
+data class PayForDonationData(
+    val oid: String,
+    val uid: String,
+    val total: String
 )

@@ -1,9 +1,11 @@
 package com.hnb.huinongbang.ui.common
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.CreateOrderData
@@ -29,6 +31,9 @@ class CreateOrderActivity : AppCompatActivity() {
             getData()
         }
 
+        return_btn.setOnClickListener {
+            onBackPressed()
+        }
         //设置点击事件监听器
         setClickListener(pid,type)
     }
@@ -69,11 +74,15 @@ class CreateOrderActivity : AppCompatActivity() {
                         for(orderItem in values.data){
                             oiidList.add(orderItem.id.toString())
                         }
+                        LogUtil.d("oiidList","${oiidList}")
+                        val oiid = Array(oiidList.size){"0"}
+                        oiidList.toArray(oiid)
+                        LogUtil.d("oiid","${oiid[0]}+${arrayOf("d13")[0]}")
                         //创建订单
                         viewModel.pay(
                             CreateOrderData(
                                 Repository.getUser().user_ID.toString(),
-                                oiidList.toArray() as Array<String>,
+                                oiid,
                                 address.text.toString(),
                                 post.text.toString(),
                                 receiver.text.toString(),
@@ -86,8 +95,13 @@ class CreateOrderActivity : AppCompatActivity() {
                         viewModel.payResult.observe(this, Observer { result ->
                             val response = result.getOrNull()
                             if (response != null){
-                                LogUtil.d("返回2", "${values}")
-                                ToastUtil.show("订单生成成功")
+                                LogUtil.d("返回2", "${response}")
+                                val intent = Intent(HNBApplication.context, PayActivity::class.java).apply {
+                                    putExtra("total", response.message.toFloat())
+                                    putExtra("oid", response.data.id)
+                                    putExtra("type", response.data.type)
+                                }
+                                startActivity(intent)
                             }else{
                                 ToastUtil.show("订单生成失败2")
                                 result.exceptionOrNull()?.printStackTrace()

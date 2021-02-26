@@ -96,7 +96,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="设置密码"/>
                                 </LinearLayout>
                                 <LinearLayout
@@ -108,7 +108,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="状态：已设置"
                                         app:ignore="NestedWeights" />
                                 </LinearLayout>
@@ -122,11 +122,11 @@
                                 <Button
                                     android:id="@+id/changePassword"
                                     android:layout_width="match_parent"
-                                    android:layout_height="40dp"
+                                    android:layout_height="30dp"
                                     android:text="更 改 密 码"
-                                    android:textSize="20sp"
+                                    android:textSize="16sp"
                                     android:textColor="@color/white"
-                                    android:background="@color/colorPrimary"/>
+                                    android:background="@drawable/bg_buttonview"/>
                             </LinearLayout>
                         </LinearLayout>
 
@@ -171,7 +171,7 @@
                                     <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="绑定手机"/>
                                 </LinearLayout>
                                 <LinearLayout
@@ -184,7 +184,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:textSize="22sp"
+                                        android:textSize="16sp"
                                         android:text="状态：已绑定"
                                         app:ignore="NestedWeights" />
                                 </LinearLayout>
@@ -198,11 +198,11 @@
                                 <Button
                                     android:id="@+id/changePhone"
                                     android:layout_width="match_parent"
-                                    android:layout_height="40dp"
+                                    android:layout_height="30dp"
                                     android:text="更 改 手 机"
-                                    android:textSize="20sp"
+                                    android:textSize="16sp"
                                     android:textColor="@color/white"
-                                    android:background="@color/colorPrimary"/>
+                                    android:background="@drawable/bg_buttonview"/>
                             </LinearLayout>
                         </LinearLayout>
 
