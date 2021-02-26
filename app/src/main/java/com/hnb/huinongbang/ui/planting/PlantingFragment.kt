@@ -1,9 +1,11 @@
 package com.hnb.huinongbang.ui.planting
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +17,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.ui.common.BannerDataBean
+import com.hnb.huinongbang.ui.planting.doctormodule.DoctorActivity
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
@@ -41,6 +44,13 @@ class PlantingFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         refreshdata()
         refreshBanner()
+        //专家按钮的点击事件
+        doctorButton.setOnClickListener {
+            val intent: Intent = Intent(this.context,DoctorActivity::class.java)
+            this.startActivity(intent)
+        }
+
+
         //分类
         viewModel.plantingcategoriesLiveData.observe(this, Observer { result ->
             val plantingCategories = result.getOrNull()

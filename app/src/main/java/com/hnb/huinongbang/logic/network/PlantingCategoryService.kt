@@ -11,11 +11,11 @@ import retrofit2.http.Query
 interface PlantingCategoryService {
     //分类
     @GET("forempclassifys")
-    fun plantingCategories(@Query("type") type: Int): Call<PlantingCategoryResponse>
+    fun plantingCategories(): Call<PlantingCategoryResponse>
 
     //最新10篇
     @GET("foremnewplants")
-    fun plantsNews(@Query("type") type: Int): Call<PlantsNewsResponse>
+    fun plantsNews(): Call<PlantsNewsResponse>
 
     //根据分类获取文章
     @GET("foremplants")

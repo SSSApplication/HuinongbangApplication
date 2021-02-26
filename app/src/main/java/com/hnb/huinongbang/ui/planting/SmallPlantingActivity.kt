@@ -13,6 +13,7 @@ import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.PlantsNewsOfCategory
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
+import kotlinx.android.synthetic.main.activity_doctor.*
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.activity_small_planting.*
 import kotlinx.android.synthetic.main.fragment_planting.*
@@ -26,6 +27,7 @@ class SmallPlantingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_small_planting)
+
         if (viewModel.plant_Name.isEmpty()) {
             viewModel.plant_Name=intent.getStringExtra("plantsCategoryName")?:""
             viewModel.plant_Class=intent.getStringExtra("plantsCategoryClass")?:""
@@ -38,28 +40,30 @@ class SmallPlantingActivity : AppCompatActivity() {
             if (plantsNews != null) {
                 viewModel.plantsNewsOfCategoryList.clear()
                 viewModel.plantsNewsOfCategoryList.addAll(plantsNews)
-
-
                 plantsNewsOfCategoryRecycler.layoutManager = GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
                 plantsNewsAdapter = PlantsNewsAdapter(this, viewModel.plantsNewsOfCategoryList)
 
                 plantsNewsOfCategoryRecycler.adapter = plantsNewsAdapter
-
+                smallplantRefresh.isRefreshing=false
             } else {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
             }
-
-
         })
 
-
+//顶部返回导航
         var toolBar: Toolbar =findViewById(R.id.toolBarBack)
         toolBarBack(toolBar)
         toolBarBackTitle.text=viewModel.plant_Name
-
+//下拉刷新
+        smallplantRefresh.setColorSchemeResources(R.color.colorPrimary)
+        smallplantRefresh.setOnRefreshListener {
+            refreshdata(plantsNewsOfCategory)
+        }
     }
+
     fun refreshdata(plantsNewsOfCategory: PlantsNewsOfCategory){
+        smallplantRefresh.isRefreshing=true
         viewModel.getPlantsNewsOfCategory(plantsNewsOfCategory)
     }
 

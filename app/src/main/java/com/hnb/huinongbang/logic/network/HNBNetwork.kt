@@ -1,6 +1,7 @@
 package com.hnb.huinongbang.logic.network
 
 import com.hnb.huinongbang.logic.model.*
+import com.hnb.huinongbang.logic.network.HNBNetwork.await
 import com.hnb.huinongbang.util.LogUtil
 import retrofit2.Call
 import retrofit2.Callback
@@ -71,11 +72,16 @@ object HNBNetwork {
 
     //封装PlantingCategory的网络请求
     private val plantingCategoryService = ServiceCreator.create<PlantingCategoryService>()
-    suspend fun plantingCategories(type: Int) = plantingCategoryService.plantingCategories(type).await()
+    suspend fun plantingCategories() = plantingCategoryService.plantingCategories().await()
     //plantsNews的网络请求
-    suspend fun plantsNews(type: Int) = plantingCategoryService.plantsNews(type).await()
+    suspend fun plantsNews() = plantingCategoryService.plantsNews().await()
     //plantsNewsOfCategory的网络请求
     suspend fun plantsNewsOfCategory(classify:String,item:String) = plantingCategoryService.plantsNewsOfCategory(classify,item).await()
+
+    //封装Doctor栏目的网络请求
+    private val doctorService = ServiceCreator.create<DoctorService>()
+    suspend fun doctorInformation() = doctorService.doctorInformation().await()
+
 
     //封装Policy的网络请求
     private val policyService = ServiceCreator.create<PolicyService>()

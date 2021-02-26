@@ -5,25 +5,23 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.hnb.huinongbang.logic.Repository
-import com.hnb.huinongbang.logic.model.LoginData
 import com.hnb.huinongbang.logic.model.PlantingCategory
 import com.hnb.huinongbang.logic.model.PlantsNews
 import com.hnb.huinongbang.logic.model.PlantsNewsOfCategory
-import com.hnb.huinongbang.util.LogUtil
 
 class PlantingViewModel : ViewModel() {
     private val typeLiveData = MutableLiveData<Int>()
 
     //种植模块分类
     var plantingcategoryList = ArrayList<PlantingCategory>()
-    val plantingcategoriesLiveData = Transformations.switchMap(typeLiveData) { type ->
-        Repository.plantingCategories(type)
+    val plantingcategoriesLiveData = Transformations.switchMap(typeLiveData) {
+        Repository.plantingCategories()
     }
 
     //最新文章
     var plantsNewsList = ArrayList<PlantsNews>()
-    val plantsNewsLiveData = Transformations.switchMap(typeLiveData) { type ->
-        Repository.plantsNews(type)
+    val plantsNewsLiveData = Transformations.switchMap(typeLiveData) {
+        Repository.plantsNews()
     }
 
     fun getdata(type: Int) {

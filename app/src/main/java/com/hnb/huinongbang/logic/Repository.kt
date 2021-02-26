@@ -168,8 +168,8 @@ object Repository {
     }
 
     //种植模块获取所有分类
-    fun plantingCategories(type: Int) = fire(Dispatchers.IO) {
-        val plantingCategoryResponse = HNBNetwork.plantingCategories(type)
+    fun plantingCategories() = fire(Dispatchers.IO) {
+        val plantingCategoryResponse = HNBNetwork.plantingCategories()
         if (plantingCategoryResponse.code == 1) { //根据状态来处理
             LogUtil.d("种植模块分类", "获取分类成功，分类如下：${plantingCategoryResponse.data}")
             val plantingCategories = plantingCategoryResponse.data
@@ -180,8 +180,8 @@ object Repository {
 
     }
     //种植模块获取最新文章
-    fun plantsNews(type: Int) = fire(Dispatchers.IO) {
-        val plantsNewsResponse = HNBNetwork.plantsNews(type)
+    fun plantsNews() = fire(Dispatchers.IO) {
+        val plantsNewsResponse = HNBNetwork.plantsNews()
         if (plantsNewsResponse.code == 1) { //根据状态来处理
             LogUtil.d("种植模块最新文章", "获取最新文章成功，分类如下：${plantsNewsResponse.data}")
             val plantsNews = plantsNewsResponse.data
@@ -206,6 +206,21 @@ object Repository {
         }
 
     }
+
+    //获取专家信息
+    fun doctorInformation() = fire(Dispatchers.IO) {
+        val doctorInformationResponse = HNBNetwork.doctorInformation()
+        if (doctorInformationResponse.code == 1) { //根据状态来处理
+            LogUtil.d("获取专家信息", "获取专家信息成功，如下：${doctorInformationResponse.data}")
+            val doctorInformation = doctorInformationResponse.data
+            Result.success(doctorInformation)
+        } else {
+            Result.failure(RuntimeException("获取专家信息失败response status is ${doctorInformationResponse.message}"))
+        }
+
+    }
+
+
     //获取政策
     fun policys() = fire(Dispatchers.IO) {
         val policyClassifyResponse = HNBNetwork.policys()

@@ -20,7 +20,7 @@ data class PlantsNews(
         val plant_Class:String,
         val plant_Number:Int,
         val plant_View:Int,
-        val  plant_CreateTime: Date,
+        val  plant_CreateTime: Date
 )
 
 //根据分类查询文章信息
