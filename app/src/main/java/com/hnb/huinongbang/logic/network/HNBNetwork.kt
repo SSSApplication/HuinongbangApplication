@@ -86,6 +86,7 @@ object HNBNetwork {
     //封装Doctor栏目的网络请求
     private val doctorService = ServiceCreator.create<DoctorService>()
     suspend fun doctorInformation() = doctorService.doctorInformation().await()
+    suspend fun doctorComments(id:Int) = doctorService.doctorComments(id).await()
 
 
     //封装Policy的网络请求
@@ -103,6 +104,7 @@ object HNBNetwork {
         return suspendCoroutine { continuation ->
 
             enqueue(object : Callback<T> {
+
                 override fun onResponse(call: Call<T>, response: Response<T>) {
                     val body = response.body()
                     LogUtil.d("Test", body.toString())

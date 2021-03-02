@@ -233,6 +233,20 @@ object Repository {
 
     }
 
+    //根据·专家id获取专家评论链表
+    fun doctorComments(id:Int) = fire(Dispatchers.IO) {
+        LogUtil.d("获取专家评论链表", "获取专家评论链表成功，如下：")
+        val doctorCommentsResponse = HNBNetwork.doctorComments(id)
+         if (doctorCommentsResponse.code == 1) { //根据状态来处理
+            LogUtil.d("获取专家评论链表", "获取专家评论链表成功，如下：${doctorCommentsResponse.data}")
+            val doctorComments = doctorCommentsResponse.data
+            Result.success(doctorComments)
+        } else {
+            Result.failure(RuntimeException("获取专家评论链表失败response status is ${doctorCommentsResponse.message}"))
+        }
+
+    }
+
 
     //获取政策
     fun policys() = fire(Dispatchers.IO) {
