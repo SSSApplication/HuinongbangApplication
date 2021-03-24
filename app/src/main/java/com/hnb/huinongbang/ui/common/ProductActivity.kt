@@ -12,7 +12,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
+import com.hnb.huinongbang.logic.Repository
+import com.hnb.huinongbang.logic.model.AddCartData
+import com.hnb.huinongbang.logic.model.PayForDonationData
 import com.hnb.huinongbang.logic.network.ServiceCreator
+import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
@@ -169,7 +173,7 @@ class ProductActivity : AppCompatActivity() {
         }
         //加入购物车
         addToCart.setOnClickListener {
-            ToastUtil.show("加入购物车")
+            addCart()
         }
         //我需要
         needNow.setOnClickListener {
@@ -177,7 +181,7 @@ class ProductActivity : AppCompatActivity() {
         }
         //加入计划清单
         addToList.setOnClickListener {
-            ToastUtil.show("加入计划清单")
+            addCart()
         }
     }
 
@@ -187,5 +191,28 @@ class ProductActivity : AppCompatActivity() {
             putExtra("type", viewModel.product.type)
         }
         startActivity(intent)
+    }
+    fun addCart(){
+        //加入购物车或清单
+        viewModel.addCart(
+            AddCartData(
+                viewModel.product.id.toString(),
+                viewModel.product.type.toString(),
+                Repository.getUser().user_ID.toString(),
+                1.toString()
+            )
+        )
+        //监听加入购物车或清单返回结果
+        viewModel.addCartResult.observe(this, Observer { result ->
+            val response = result.getOrNull()
+//            LogUtil.d("加入购物车", "${response}")
+            ToastUtil.show(response.toString())
+//            if (response != null){
+//                ToastUtil.show("加入成功")
+//            }else{
+//                ToastUtil.show("加入失败")
+//                result.exceptionOrNull()?.printStackTrace()
+//            }
+        })
     }
 }

@@ -5,6 +5,7 @@ import com.hnb.huinongbang.logic.dao.UserDAO
 import com.hnb.huinongbang.logic.model.*
 import com.hnb.huinongbang.logic.network.HNBNetwork
 import com.hnb.huinongbang.util.LogUtil
+import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
@@ -116,6 +117,18 @@ object Repository {
         } else {
             LogUtil.d("产品模块", "获取产品失败，${productsResponse.message}")
             Result.failure(RuntimeException("response status is ${productsResponse.message}"))
+        }
+    }
+    //加入购物车(清单)
+    fun addCart(data: AddCartData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.addCart(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("产品详情", "产品加入购物车成功，分类如下：${response.data}")
+            val product = response.data
+            Result.success(product)
+        } else {
+            LogUtil.d("产品详情", "产品加入购物车失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
     //通过id获取属性

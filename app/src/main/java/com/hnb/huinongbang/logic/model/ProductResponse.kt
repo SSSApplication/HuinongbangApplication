@@ -27,3 +27,10 @@ data class ProductImage(val id: Int, //id
                         val product: Product, //产品
                         val type: String //类别，展示图片和详情图片
 )
+
+data class AddCartData(
+    val pid: String, //商品id
+    val type: String, //类别
+    val uid: String, //用户id
+    val num: String //数量
+)

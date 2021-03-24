@@ -4,10 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.hnb.huinongbang.logic.Repository
-import com.hnb.huinongbang.logic.model.Product
-import com.hnb.huinongbang.logic.model.ProductImage
-import com.hnb.huinongbang.logic.model.PropertyValue
-import com.hnb.huinongbang.logic.model.Review
+import com.hnb.huinongbang.logic.model.*
 
 class ProductViewModel : ViewModel() {
     var pid = 0
@@ -30,5 +27,13 @@ class ProductViewModel : ViewModel() {
     }
     fun getdata(pid: Int){
         pidLiveData.value = pid
+    }
+
+    private val addCartLiveData = MutableLiveData<AddCartData>()
+    val addCartResult = Transformations.switchMap(addCartLiveData){ data ->
+        Repository.addCart(data)
+    }
+    fun addCart(data: AddCartData) {
+        addCartLiveData.value = data
     }
 }
