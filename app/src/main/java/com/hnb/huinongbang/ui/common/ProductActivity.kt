@@ -205,14 +205,14 @@ class ProductActivity : AppCompatActivity() {
         //监听加入购物车或清单返回结果
         viewModel.addCartResult.observe(this, Observer { result ->
             val response = result.getOrNull()
-//            LogUtil.d("加入购物车", "${response}")
+            LogUtil.d("加入购物车", "${response}")
             ToastUtil.show(response.toString())
-//            if (response != null){
-//                ToastUtil.show("加入成功")
-//            }else{
-//                ToastUtil.show("加入失败")
-//                result.exceptionOrNull()?.printStackTrace()
-//            }
+            if (response != null){
+                ToastUtil.show("加入成功")
+            }else{
+                ToastUtil.show("加入失败")
+                result.exceptionOrNull()?.printStackTrace()
+            }
         })
     }
 }

@@ -27,5 +27,5 @@ interface ProductService {
                 @Query("type") type: String,
                 @Query("uid") uid: String,
                 @Query("num") num: String
-    ): Call<ProductResponse>
+    ): Call<GeneralResponse>
 }

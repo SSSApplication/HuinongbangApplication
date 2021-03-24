@@ -7,6 +7,8 @@ data class ProductsResponse(val code: Int, val data: List<Product>, val message:
 
 data class ProductResponse(val code: Int, val data: Product, val message: String)
 
+data class GeneralResponse(val code: Int, val data: String, val message: String)
+
 data class Product( val id: Int,
                     val name: String,//标题
                     val subTitle: String, //副标题

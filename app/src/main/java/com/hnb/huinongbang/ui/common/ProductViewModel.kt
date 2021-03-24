@@ -5,6 +5,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.*
+import com.hnb.huinongbang.util.LogUtil
 
 class ProductViewModel : ViewModel() {
     var pid = 0
@@ -35,5 +36,6 @@ class ProductViewModel : ViewModel() {
     }
     fun addCart(data: AddCartData) {
         addCartLiveData.value = data
+        LogUtil.d("ssss", "${data}")
     }
 }

@@ -121,7 +121,9 @@ object Repository {
     }
     //加入购物车(清单)
     fun addCart(data: AddCartData) = fire(Dispatchers.IO) {
+        LogUtil.d("hhhhh", "${data}")
         val response = HNBNetwork.addCart(data)
+        LogUtil.d("hhhhh1", "${data}")
         if (response.code == 1) { //根据状态来处理
             LogUtil.d("产品详情", "产品加入购物车成功，分类如下：${response.data}")
             val product = response.data
