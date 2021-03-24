@@ -39,6 +39,10 @@ object HNBNetwork {
         data.type,
         data.number
     ).await()
+    suspend fun getCart(data: GetCartData) = userService.getCart(
+        data.uid,
+        data.type
+    ).await()
 
     //封装Category的网络请求
     private val categoryService = ServiceCreator.create<CategoryService>()

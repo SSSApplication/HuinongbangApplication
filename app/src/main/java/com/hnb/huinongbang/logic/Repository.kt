@@ -59,6 +59,18 @@ object Repository {
             Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
+    //获取购物车
+    fun getCart( data: GetCartData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.getCart(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("获取购物车", "获取成功")
+            val data = response.data
+            Result.success(data)
+        } else {
+            LogUtil.d("获取购物车", "获取失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
     //更新用户信息
     fun changePassword( data: ChangePasswordData) = fire(Dispatchers.IO) {
         val response = HNBNetwork.changePassword(data)

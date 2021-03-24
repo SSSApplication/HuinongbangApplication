@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.logic.network
 
+import com.hnb.huinongbang.logic.model.OrderItemResponse
 import com.hnb.huinongbang.logic.model.UserResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -44,4 +45,12 @@ interface UserService {
         @Query("type") type: String,
         @Query("number") number: String
     ): Call<UserResponse>
+
+    //获取购物车
+    @GET("foremcarts")
+    fun getCart(
+        @Query("uid") uid: String,
+        @Query("type") type: String
+    ): Call<OrderItemResponse>
+
 }

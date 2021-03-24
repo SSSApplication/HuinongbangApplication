@@ -74,6 +74,18 @@ class MyFragment : Fragment() {
             startActivity(intent)
         }
 
+        //购物车
+        shoppingCart.setOnClickListener {
+            val intent = Intent(HNBApplication.context, CartActivity::class.java)
+            startActivity(intent)
+        }
+
+        //计划清单
+        addToList.setOnClickListener {
+            val intent = Intent(HNBApplication.context, ListActivity::class.java)
+            startActivity(intent)
+        }
+
         //认证相关
         authentication.setOnClickListener {
             val intent = Intent(HNBApplication.context, MyAuthenticationActivity::class.java)
