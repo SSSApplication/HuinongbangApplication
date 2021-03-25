@@ -43,6 +43,10 @@ object HNBNetwork {
         data.uid,
         data.type
     ).await()
+    suspend fun getOrder(data: GetOrderData) = userService.getOrder(
+        data.uid,
+        data.type
+    ).await()
     suspend fun deleteCart(oiid: Int) = userService.deleteCart(oiid).await()
 
     //封装Category的网络请求

@@ -54,6 +54,13 @@ interface UserService {
         @Query("type") type: String
     ): Call<OrderItemResponse>
 
+    //获取订单
+    @GET("forembought")
+    fun getOrder(
+        @Query("uid") uid: String,
+        @Query("type") type: String
+    ): Call<OrderItemResponse>
+
     //删除购物车
     @GET("foremdeleteCart")
     fun deleteCart(@Query("oiid") oiid: Int): Call<GeneralResponse>

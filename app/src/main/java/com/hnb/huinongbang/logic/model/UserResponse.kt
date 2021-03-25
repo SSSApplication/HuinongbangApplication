@@ -95,3 +95,9 @@ data class GetCartData(
     val uid: String,
     val type: String
 )
+
+//获取订单信息
+data class GetOrderData(
+    val uid: String,
+    val type: String
+)

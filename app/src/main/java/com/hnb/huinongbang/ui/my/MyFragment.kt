@@ -13,7 +13,9 @@ import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.User
 import com.hnb.huinongbang.logic.network.ServiceCreator
+import com.hnb.huinongbang.ui.common.CreateOrderActivity
 import com.hnb.huinongbang.ui.login.LoginActivity
+import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.fragment_my.*
 
 class MyFragment : Fragment() {
@@ -89,6 +91,32 @@ class MyFragment : Fragment() {
         //认证相关
         authentication.setOnClickListener {
             val intent = Intent(HNBApplication.context, MyAuthenticationActivity::class.java)
+            startActivity(intent)
+        }
+
+        //捐赠物品
+        donation.setOnClickListener {
+            ToastUtil.show("请移步至官网进行该操作！")
+        }
+
+        //已申请捐赠订单
+        donationOrder.setOnClickListener {
+            val intent = Intent(HNBApplication.context, OrderActivity::class.java).apply {
+                putExtra("type", 1)
+            }
+            startActivity(intent)
+        }
+
+        //购买物品
+        sale.setOnClickListener {
+            ToastUtil.show("请移步至官网进行该操作！")
+        }
+
+        //已购买售卖订单
+        saleOrder.setOnClickListener {
+            val intent = Intent(HNBApplication.context, OrderActivity::class.java).apply {
+                putExtra("type", 0)
+            }
             startActivity(intent)
         }
 
