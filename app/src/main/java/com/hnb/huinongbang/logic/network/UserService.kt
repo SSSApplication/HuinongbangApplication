@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.logic.network
 
+import com.hnb.huinongbang.logic.model.GeneralResponse
 import com.hnb.huinongbang.logic.model.OrderItemResponse
 import com.hnb.huinongbang.logic.model.UserResponse
 import retrofit2.Call
@@ -53,4 +54,7 @@ interface UserService {
         @Query("type") type: String
     ): Call<OrderItemResponse>
 
+    //删除购物车
+    @GET("foremdeleteCart")
+    fun deleteCart(@Query("oiid") oiid: Int): Call<GeneralResponse>
 }

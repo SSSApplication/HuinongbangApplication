@@ -43,6 +43,7 @@ object HNBNetwork {
         data.uid,
         data.type
     ).await()
+    suspend fun deleteCart(oiid: Int) = userService.deleteCart(oiid).await()
 
     //封装Category的网络请求
     private val categoryService = ServiceCreator.create<CategoryService>()

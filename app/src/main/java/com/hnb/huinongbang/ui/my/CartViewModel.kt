@@ -16,4 +16,13 @@ class CartViewModel : ViewModel() {
     fun getCart(data: GetCartData){
         cartLiveData.value = data
     }
+
+    private val deleteCartLiveData = MutableLiveData<Int>()
+    val deleteCartResult = Transformations.switchMap(deleteCartLiveData){ oiid ->
+        Repository.deleteCart(oiid)
+    }
+    //外部调用函数
+    fun delete(oiid: Int){
+        deleteCartLiveData.value = oiid
+    }
 }

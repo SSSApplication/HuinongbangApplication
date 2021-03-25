@@ -35,4 +35,18 @@ class ListActivity : AppCompatActivity() {
             }
         })
     }
+
+    //删除购物车中的一项
+    fun delete(oiid:Int){
+        viewModel.delete(oiid)
+        //监听提交结果
+        viewModel.deleteCartResult.observe(this, { result ->
+            val list = result.getOrNull()
+            if (list != null) {
+                ToastUtil.show("删除成功")
+            } else {
+                ToastUtil.show("删除失败")
+            }
+        })
+    }
 }
