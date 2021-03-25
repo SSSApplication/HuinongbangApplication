@@ -20,7 +20,8 @@ class OrderActivity : AppCompatActivity() {
         //获取用户类
         val user = Repository.getUser()
 
-        val type = intent.getIntExtra("pid", -1)
+        val type = intent.getIntExtra("type", -1)
+        ToastUtil.show(type.toString())
 
         viewModel.getOrder(
             GetOrderData(
