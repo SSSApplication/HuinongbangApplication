@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/doctorCommentsRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView
     xmlns:material="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -64,6 +68,15 @@
             android:textColor="@color/text_plant_information_color" />
     </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/askForDoctorButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="向专家提出问题"/>
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -82,3 +95,4 @@
     </androidx.cardview.widget.CardView>
 </LinearLayout>
 </androidx.cardview.widget.CardView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

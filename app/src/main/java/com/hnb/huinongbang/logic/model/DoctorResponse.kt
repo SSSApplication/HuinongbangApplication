@@ -58,23 +58,19 @@ data class Comment(//带有指针的评论类
 )
 
 
-/*data class Nodes (
-    var discuss_ID:Int,
-    var dUserup_ID: User,
-    var dUser_ID: User,
-    var discuss_root: Discuss_root,
-    var discuss_Values: String,
-    var discuss_CreateTime: Date
+//评论回复功能
+data class DoctorCommentBack(
+    val uid: Int,  //用户id
+    val DUserup_ID: Int, //专家id
+    val Discuss_root: Int,//子评论的父评论的评论id
+    val Discuss_Values:String  //评论内容
+)
+data class DoctorCommentBackResponse(
+    val code: Int,
+    val data: String,
+    val message: String
 )
 
 
-class Discuss_root (
-    var discuss_ID:Int,
-    var dUserup_ID: User,
-    var dUser_ID: User,
-    var discuss_Values: String,
-    var discuss_CreateTime: Date
-
-)*/
 
 

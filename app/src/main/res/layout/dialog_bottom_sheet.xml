@@ -17,7 +17,6 @@
         android:paddingStart="10dp"
         android:minLines="5"
         android:layout_gravity="center"
-        android:hint="hhhhh"
         android:gravity="top"/>
     <TextView
         android:id="@+id/callContentButton"

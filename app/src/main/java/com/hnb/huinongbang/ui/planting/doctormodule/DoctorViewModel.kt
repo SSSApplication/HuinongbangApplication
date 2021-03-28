@@ -4,10 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.hnb.huinongbang.logic.Repository
-import com.hnb.huinongbang.logic.model.DoctorComments
-import com.hnb.huinongbang.logic.model.DoctorInformation
-import com.hnb.huinongbang.logic.model.PlantsNews
-import com.hnb.huinongbang.logic.model.PlantsNewsOfCategory
+import com.hnb.huinongbang.logic.model.*
 import com.hnb.huinongbang.util.LogUtil
 
 class DoctorViewModel : ViewModel() {
@@ -30,6 +27,16 @@ class DoctorViewModel : ViewModel() {
     }
     fun getComments(id: Int){
         idLiveData.value = id
+    }
+
+    //评论回复功能
+    private val doctorCommentBackDataLiveData = MutableLiveData<DoctorCommentBack>()
+    val doctorCommentBackLiveData = Transformations.switchMap(doctorCommentBackDataLiveData){doctorCommentBack ->
+        Repository.doctorCommentBack(doctorCommentBack)
+    }
+    //外部调用函数
+    fun doctorCommentBack(doctorCommentBack: DoctorCommentBack){
+        doctorCommentBackDataLiveData.value =doctorCommentBack
     }
 
 }

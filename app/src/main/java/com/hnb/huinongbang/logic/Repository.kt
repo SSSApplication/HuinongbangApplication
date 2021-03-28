@@ -232,7 +232,6 @@ object Repository {
         }
 
     }
-
     //根据·专家id获取专家评论链表
     fun doctorComments(id:Int) = fire(Dispatchers.IO) {
         LogUtil.d("获取专家评论链表", "获取专家评论链表成功，如下：")
@@ -246,6 +245,18 @@ object Repository {
         }
 
     }
+    //专家模块评论回复功能
+    fun doctorCommentBack(doctorCommentBack:DoctorCommentBack) = fire(Dispatchers.IO) {
+        val doctorCommentBackResponse = HNBNetwork.doctorCommentBack(doctorCommentBack)
+        if (doctorCommentBackResponse.code == 1) { //根据状态来处理
+            val doctorCommentBack = doctorCommentBackResponse.data
+            Result.success(doctorCommentBack)
+        } else {
+            Result.failure(RuntimeException("专家模块评论回复功能response status is ${doctorCommentBackResponse.message}"))
+        }
+
+    }
+
 
 
     //获取政策

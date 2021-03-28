@@ -87,6 +87,7 @@ object HNBNetwork {
     private val doctorService = ServiceCreator.create<DoctorService>()
     suspend fun doctorInformation() = doctorService.doctorInformation().await()
     suspend fun doctorComments(id:Int) = doctorService.doctorComments(id).await()
+    suspend fun doctorCommentBack(doctorCommentBack:DoctorCommentBack) = doctorService.doctorCommentBack(doctorCommentBack.uid,doctorCommentBack.DUserup_ID,doctorCommentBack.Discuss_root,doctorCommentBack.Discuss_Values).await()
 
 
     //封装Policy的网络请求
