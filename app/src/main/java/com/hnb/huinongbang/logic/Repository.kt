@@ -5,6 +5,7 @@ import com.hnb.huinongbang.logic.dao.UserDAO
 import com.hnb.huinongbang.logic.model.*
 import com.hnb.huinongbang.logic.network.HNBNetwork
 import com.hnb.huinongbang.util.LogUtil
+import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
@@ -55,6 +56,42 @@ object Repository {
             Result.success(user)
         } else {
             LogUtil.d("实名认证", "提交失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+    //删除购物车
+    fun deleteCart( data: Int) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.deleteCart(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("删除购物车", "删除成功")
+            val data = response.data
+            Result.success(data)
+        } else {
+            LogUtil.d("删除购物车", "删除失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+    //获取购物车
+    fun getCart( data: GetCartData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.getCart(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("获取购物车", "获取成功")
+            val data = response.data
+            Result.success(data)
+        } else {
+            LogUtil.d("获取购物车", "获取失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+    //获取订单
+    fun getOrder( data: GetOrderData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.getOrder(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("获取订单", "获取成功")
+            val data = response.data
+            Result.success(data)
+        } else {
+            LogUtil.d("获取订单", "获取失败，${response.message}")
             Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
@@ -116,6 +153,20 @@ object Repository {
         } else {
             LogUtil.d("产品模块", "获取产品失败，${productsResponse.message}")
             Result.failure(RuntimeException("response status is ${productsResponse.message}"))
+        }
+    }
+    //加入购物车(清单)
+    fun addCart(data: AddCartData) = fire(Dispatchers.IO) {
+        LogUtil.d("hhhhh", "${data}")
+        val response = HNBNetwork.addCart(data)
+        LogUtil.d("hhhhh1", "${data}")
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("产品详情", "产品加入购物车成功，分类如下：${response.data}")
+            val product = response.data
+            Result.success(product)
+        } else {
+            LogUtil.d("产品详情", "产品加入购物车失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
     //通过id获取属性

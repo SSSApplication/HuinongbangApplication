@@ -7,6 +7,8 @@ data class ProductsResponse(val code: Int, val data: List<Product>, val message:
 
 data class ProductResponse(val code: Int, val data: Product, val message: String)
 
+data class GeneralResponse(val code: Int, val data: String, val message: String)
+
 data class Product( val id: Int,
                     val name: String,//标题
                     val subTitle: String, //副标题
@@ -26,4 +28,11 @@ data class Product( val id: Int,
 data class ProductImage(val id: Int, //id
                         val product: Product, //产品
                         val type: String //类别，展示图片和详情图片
+)
+
+data class AddCartData(
+    val pid: String, //商品id
+    val type: String, //类别
+    val uid: String, //用户id
+    val num: String //数量
 )

@@ -39,6 +39,15 @@ object HNBNetwork {
         data.type,
         data.number
     ).await()
+    suspend fun getCart(data: GetCartData) = userService.getCart(
+        data.uid,
+        data.type
+    ).await()
+    suspend fun getOrder(data: GetOrderData) = userService.getOrder(
+        data.uid,
+        data.type
+    ).await()
+    suspend fun deleteCart(oiid: Int) = userService.deleteCart(oiid).await()
 
     //封装Category的网络请求
     private val categoryService = ServiceCreator.create<CategoryService>()
@@ -53,6 +62,12 @@ object HNBNetwork {
     suspend fun product(pid: Int) = productService.product(pid).await()
     suspend fun propertyValues(pid: Int) = productService.propertyValues(pid).await()
     suspend fun reviews(pid: Int) = productService.reviews(pid).await()
+    suspend fun addCart(data: AddCartData) = productService.addCart(
+        data.pid,
+        data.type,
+        data.uid,
+        data.num
+    ).await()
     suspend fun beforeCreateOrder(data: GetOrderItemData) = buyService.beforeCreateOrder(
         data.pid,
         data.type,

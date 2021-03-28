@@ -150,6 +150,36 @@
                 android:layout_width="match_parent"
                 android:layout_marginStart="20dp"
                 android:background="@color/color_background"
+                android:layout_height="1dp"
+                tools:ignore="Smalldp">
+            </View>
+
+            <RelativeLayout
+                android:id="@+id/addToList"
+                android:background="#ffffff"
+                android:layout_below="@id/divide3"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="1dp"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:textSize="15sp"
+                    android:text="    需求清单"
+                    android:paddingEnd="20dp"
+                    app:drawableLeftCompat="@mipmap/cart"
+                    app:drawableRightCompat="@mipmap/right"
+                    tools:ignore="HardcodedText,RtlSymmetry" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divide4"
+                android:layout_below="@id/addToList"
+                android:layout_width="match_parent"
+                android:layout_marginStart="20dp"
+                android:background="@color/color_background"
                 android:layout_height="10dp"
                 tools:ignore="Smalldp">
             </View>
@@ -157,7 +187,7 @@
             <RelativeLayout
                 android:id="@+id/authentication"
                 android:background="#ffffff"
-                android:layout_below="@id/divide3"
+                android:layout_below="@id/divide4"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="1dp"
@@ -175,7 +205,7 @@
             </RelativeLayout>
 
             <View
-                android:id="@+id/divide4"
+                android:id="@+id/divide5"
                 android:layout_below="@id/authentication"
                 android:layout_width="match_parent"
                 android:layout_marginStart="20dp"
@@ -184,13 +214,10 @@
                 tools:ignore="Smalldp">
             </View>
 
-
-
-
             <RelativeLayout
                 android:id="@+id/donation"
                 android:background="#ffffff"
-                android:layout_below="@id/divide4"
+                android:layout_below="@id/divide5"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="1dp"
@@ -208,7 +235,7 @@
             </RelativeLayout>
 
             <View
-                android:id="@+id/divide5"
+                android:id="@+id/divide6"
                 android:layout_below="@id/donation"
                 android:layout_width="match_parent"
                 android:layout_marginStart="20dp"
@@ -220,7 +247,7 @@
             <RelativeLayout
                 android:id="@+id/donationOrder"
                 android:background="#ffffff"
-                android:layout_below="@id/divide5"
+                android:layout_below="@id/divide6"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="1dp"
@@ -230,7 +257,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:textSize="15sp"
-                    android:text="    捐赠订单"
+                    android:text="    已申请捐赠订单"
                     android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/order"
                     app:drawableRightCompat="@mipmap/right"
@@ -238,7 +265,7 @@
             </RelativeLayout>
 
             <View
-                android:id="@+id/divide6"
+                android:id="@+id/divide7"
                 android:layout_below="@id/donationOrder"
                 android:layout_width="match_parent"
                 android:layout_marginStart="20dp"
@@ -250,7 +277,7 @@
             <RelativeLayout
                 android:id="@+id/sale"
                 android:background="#ffffff"
-                android:layout_below="@id/divide6"
+                android:layout_below="@id/divide7"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="1dp"
@@ -268,7 +295,7 @@
             </RelativeLayout>
 
             <View
-                android:id="@+id/divide7"
+                android:id="@+id/divide8"
                 android:layout_below="@id/sale"
                 android:layout_width="match_parent"
                 android:layout_marginStart="20dp"
@@ -280,7 +307,7 @@
             <RelativeLayout
                 android:id="@+id/saleOrder"
                 android:background="#ffffff"
-                android:layout_below="@id/divide7"
+                android:layout_below="@id/divide8"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="1dp"
@@ -290,7 +317,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="25dp"
                     android:textSize="15sp"
-                    android:text="    售卖订单"
+                    android:text="    已购买订单"
                     android:paddingEnd="20dp"
                     app:drawableLeftCompat="@mipmap/order"
                     app:drawableRightCompat="@mipmap/right"
@@ -298,7 +325,7 @@
             </RelativeLayout>
 
             <View
-                android:id="@+id/divide8"
+                android:id="@+id/divide9"
                 android:layout_below="@id/saleOrder"
                 android:layout_width="match_parent"
                 android:layout_marginStart="20dp"
@@ -310,7 +337,7 @@
             <RelativeLayout
                 android:id="@+id/signOut"
                 android:background="#ffffff"
-                android:layout_below="@id/divide8"
+                android:layout_below="@id/divide9"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="1dp"
