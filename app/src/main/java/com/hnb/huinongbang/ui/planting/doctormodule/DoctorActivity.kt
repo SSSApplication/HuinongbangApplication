@@ -1,20 +1,14 @@
 package com.hnb.huinongbang.ui.planting.doctormodule
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hnb.huinongbang.R
-import com.hnb.huinongbang.ui.planting.PlantingCategoryAdapter
-import com.hnb.huinongbang.ui.planting.PlantingViewModel
-import com.hnb.huinongbang.ui.planting.SmallPlantingCategoryAdapter
-import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_doctor.*
-import kotlinx.android.synthetic.main.activity_small_planting.*
-import kotlinx.android.synthetic.main.fragment_planting.*
 
 class DoctorActivity : AppCompatActivity() {
 
@@ -36,7 +30,6 @@ class DoctorActivity : AppCompatActivity() {
                     GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
                 doctorRecycler.adapter=doctorCategoryAdapter
 
-                doctorRefresh.isRefreshing = false
             } else {
                 ToastUtil.show("没有分类")
                 result.exceptionOrNull()?.printStackTrace()
@@ -48,12 +41,26 @@ class DoctorActivity : AppCompatActivity() {
         doctorRefresh.setOnRefreshListener {
             refreshdata()
         }
+
+        doctorRecycler.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                //解决滑动冲突
+                doctorRefresh.isEnabled=false
+            }
+        })
+
     }
 
 
     fun refreshdata() {
-        viewModel.getData(0)
         doctorRefresh.isRefreshing = true
+        viewModel.getData(0)
+        doctorRefresh.isRefreshing = false
     }
 
 }

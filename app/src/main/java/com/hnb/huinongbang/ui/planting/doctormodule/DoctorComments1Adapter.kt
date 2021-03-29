@@ -64,7 +64,6 @@ class DoctorComments1Adapter (val activity: Activity, private val commentRootLis
         holder.itemView.setOnClickListener {
             commentsOnItemClickListener1?.onItemClick1(commentRoot,position)
         }
-
         //适配小聊天RecycleView
         doctorComments2Adapter= DoctorComments2Adapter(this.activity,commentRoot.nodes)
         holder.doctorCommentsRecyclerViewSmall.layoutManager =

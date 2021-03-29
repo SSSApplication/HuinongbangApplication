@@ -31,7 +31,7 @@ class DoctorCategoryAdapter (val activity: Activity, val doctorCategoryList: Lis
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val doctorInformation = doctorCategoryList[position]
-        holder.doctorName.text =doctorInformation.names
+        holder.doctorName.text =doctorInformation.names+"专家"
         doctorItemAdapter= DoctorItemAdapter(this.activity,doctorInformation.doctorfile)
         holder.doctorItemRecycler.layoutManager =GridLayoutManager(this.activity,1,RecyclerView.VERTICAL, false)
         holder.doctorItemRecycler.adapter=doctorItemAdapter

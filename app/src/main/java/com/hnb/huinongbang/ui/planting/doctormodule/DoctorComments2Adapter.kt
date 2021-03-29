@@ -62,6 +62,7 @@ class DoctorComments2Adapter (val activity: Activity, val commentNodeList: List<
             commentsOnItemClickListener2?.onItemClick2(commentNode,position)
             }
 
+
     }
 
     override fun getItemCount() = commentNodeList.size

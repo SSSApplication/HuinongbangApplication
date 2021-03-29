@@ -16,7 +16,9 @@
             android:id="@+id/doctor_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textColor="@color/black"/>
 
 
