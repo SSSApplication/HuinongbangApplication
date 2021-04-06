@@ -21,7 +21,6 @@ class OrderActivity : AppCompatActivity() {
         val user = Repository.getUser()
 
         val type = intent.getIntExtra("type", -1)
-        ToastUtil.show(type.toString())
 
         viewModel.getOrder(
             GetOrderData(

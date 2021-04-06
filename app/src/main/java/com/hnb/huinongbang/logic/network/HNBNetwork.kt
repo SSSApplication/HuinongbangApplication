@@ -43,6 +43,10 @@ object HNBNetwork {
         data.uid,
         data.type
     ).await()
+    suspend fun buyCart(data: BuyCartData) = userService.buyCart(
+        data.oiid,
+        data.type
+    ).await()
     suspend fun getOrder(data: GetOrderData) = userService.getOrder(
         data.uid,
         data.type

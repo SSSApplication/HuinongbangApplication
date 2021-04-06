@@ -96,6 +96,12 @@ data class GetCartData(
     val type: String
 )
 
+//付款购物车
+data class BuyCartData(
+    val oiid: Array<String>,
+    val type: String
+)
+
 //获取订单信息
 data class GetOrderData(
     val uid: String,

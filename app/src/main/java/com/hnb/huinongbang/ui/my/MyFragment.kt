@@ -78,13 +78,17 @@ class MyFragment : Fragment() {
 
         //购物车
         shoppingCart.setOnClickListener {
-            val intent = Intent(HNBApplication.context, CartActivity::class.java)
+            val intent = Intent(HNBApplication.context, CartActivity::class.java).apply {
+                putExtra("type", 0)
+            }
             startActivity(intent)
         }
 
         //计划清单
         addToList.setOnClickListener {
-            val intent = Intent(HNBApplication.context, ListActivity::class.java)
+            val intent = Intent(HNBApplication.context, CartActivity::class.java).apply {
+                putExtra("type", 1)
+            }
             startActivity(intent)
         }
 

@@ -83,6 +83,17 @@ object Repository {
             Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
+    //购买购物车
+    fun buyCart( data: BuyCartData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.buyCart(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("购买购物车", "获取返回成功")
+            Result.success(response)
+        } else {
+            LogUtil.d("购买购物车", "获取返回失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
     //获取订单
     fun getOrder( data: GetOrderData) = fire(Dispatchers.IO) {
         val response = HNBNetwork.getOrder(data)
