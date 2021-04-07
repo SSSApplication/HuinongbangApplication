@@ -36,3 +36,9 @@ data class AddCartData(
     val uid: String, //用户id
     val num: String //数量
 )
+
+//查询时携带的数据
+data class SearchData(
+    val keyword: String, //关键词
+    val type: String //类别
+)

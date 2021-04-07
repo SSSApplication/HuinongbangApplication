@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.ui.shopping
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,13 +18,14 @@ import com.hnb.huinongbang.R
 import com.hnb.huinongbang.ui.common.BannerDataBean
 import com.hnb.huinongbang.ui.common.CategoryAdapter
 import com.hnb.huinongbang.ui.common.ProductAdapter
+import com.hnb.huinongbang.ui.common.SearchResultActivity
+import com.hnb.huinongbang.ui.my.CartActivity
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
-import kotlinx.android.synthetic.main.fragment_donate.*
 import kotlinx.android.synthetic.main.fragment_shopping.*
 
 class ShoppingFragment : Fragment() {
@@ -94,8 +96,14 @@ class ShoppingFragment : Fragment() {
             refreshBanner()
         }
 
-        //分类
-
+        //搜索按钮监听
+        search.setOnClickListener {
+            val intent = Intent(HNBApplication.context, SearchResultActivity::class.java).apply {
+                putExtra("keyword", searchView.text.toString())
+                putExtra("type", 0)
+            }
+            startActivity(intent)
+        }
     }
     fun refreshdata(){
         viewModel.getdata(0)

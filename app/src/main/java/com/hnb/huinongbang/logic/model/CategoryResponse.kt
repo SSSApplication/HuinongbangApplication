@@ -1,4 +1,4 @@
-package com.hnb.huinongbang.logic.model
+        package com.hnb.huinongbang.logic.model
 
 data class CategoryResponse(val code: Int, val data: List<Category>, val message: String)
 

@@ -166,6 +166,18 @@ object Repository {
             Result.failure(RuntimeException("response status is ${productsResponse.message}"))
         }
     }
+    //搜索
+    fun search(data: SearchData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.search(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("搜索", "搜索成功：${response.data}")
+            val products = response.data
+            Result.success(products)
+        } else {
+            LogUtil.d("搜索", "搜索失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
     //加入购物车(清单)
     fun addCart(data: AddCartData) = fire(Dispatchers.IO) {
         LogUtil.d("hhhhh", "${data}")

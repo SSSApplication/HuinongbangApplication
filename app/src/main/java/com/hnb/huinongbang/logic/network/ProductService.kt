@@ -21,6 +21,12 @@ interface ProductService {
     //获取产品评价
     @GET("foremreviews")
     fun reviews(@Query("pid") pid: Int): Call<ReviewResponse>
+    //搜索
+    @GET("foremsearch")
+    fun search(
+        @Query("keyword") keyword: String,
+        @Query("type") type: String
+    ): Call<ProductsResponse>
     //加入购物车
     @GET("foremaddCart")
     fun addCart(@Query("pid") pid: String,

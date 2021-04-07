@@ -5,7 +5,6 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.BuyCartData
-import com.hnb.huinongbang.logic.model.ChangePasswordData
 import com.hnb.huinongbang.logic.model.GetCartData
 
 class CartViewModel : ViewModel() {

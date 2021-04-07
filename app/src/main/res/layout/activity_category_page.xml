@@ -43,13 +43,14 @@
                         android:iconifiedByDefault="false"
                         android:queryHint="请输入搜索内容" />
 
-                    <android.widget.Button
-                        android:layout_width="0dp"
+                    <Button
+                        android:id="@+id/search"
+                        android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="2dp"
+                        android:layout_marginStart="2dp"
                         android:layout_marginTop="12dp"
                         android:layout_weight="1"
-                        android:background="@drawable/bg_buttonview"
+                        android:background="@drawable/bv_addtocart"
                         android:textColor="@color/white"
                         android:text="搜索" />
                 </LinearLayout>

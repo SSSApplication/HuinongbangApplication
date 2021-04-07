@@ -317,15 +317,15 @@
 
                         <Button
                             android:id="@+id/save"
-                            android:layout_width="wrap_content"
+                            android:layout_width="82dp"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:padding="10dp"
                             android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/bg_buttonview"
+                            android:padding="10dp"
                             android:text="保  存"
-                            android:textSize="16sp"
                             android:textColor="@color/white"
-                            android:background="@drawable/bg_buttonview"/>
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

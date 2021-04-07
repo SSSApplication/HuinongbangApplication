@@ -1,15 +1,25 @@
 package com.hnb.huinongbang.ui.common
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
+import com.hnb.huinongbang.logic.Repository
+import com.hnb.huinongbang.logic.model.CreateOrderData
+import com.hnb.huinongbang.logic.model.GetOrderItemData
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_category_page.*
+import kotlinx.android.synthetic.main.activity_category_page.searchView
+import kotlinx.android.synthetic.main.activity_create_order.*
+
 
 class CategoryPageActivity : AppCompatActivity() {
 
@@ -25,9 +35,9 @@ class CategoryPageActivity : AppCompatActivity() {
         viewModel.getProducts(cid)
 
         //监听请求结果
-        viewModel.productsLiveData.observe(this, {result ->
+        viewModel.productsLiveData.observe(this, { result ->
             val products = result.getOrNull()
-            if(products != null){
+            if (products != null) {
                 LogUtil.d("获取到的产品", "${products}")
 
                 //瀑布流形式
@@ -35,7 +45,7 @@ class CategoryPageActivity : AppCompatActivity() {
                 //网格形式
                 //itemsRecycler.layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL,false)
                 itemsRecycler.adapter = CategoryPageItemsAdapter(this, products)
-            }else{
+            } else {
                 ToastUtil.show("请求失败")
             }
         })
@@ -45,10 +55,16 @@ class CategoryPageActivity : AppCompatActivity() {
         myRefresh.setOnRefreshListener {
             getData()
         }
+
+        //搜索按钮监听
+        search.setOnClickListener {
+            ToastUtil.show("搜索")
+        }
     }
 
-    fun getData() {
 
+
+    fun getData() {
         myRefresh.isRefreshing = false
     }
 }

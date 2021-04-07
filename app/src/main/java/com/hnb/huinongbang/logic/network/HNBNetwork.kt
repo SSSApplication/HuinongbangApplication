@@ -66,6 +66,10 @@ object HNBNetwork {
     suspend fun product(pid: Int) = productService.product(pid).await()
     suspend fun propertyValues(pid: Int) = productService.propertyValues(pid).await()
     suspend fun reviews(pid: Int) = productService.reviews(pid).await()
+    suspend fun search(data: SearchData) = productService.search(
+        data.keyword,
+        data.type
+    ).await()
     suspend fun addCart(data: AddCartData) = productService.addCart(
         data.pid,
         data.type,

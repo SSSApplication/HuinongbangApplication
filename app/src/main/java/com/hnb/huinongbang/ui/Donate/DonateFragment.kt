@@ -24,7 +24,9 @@ import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
+import kotlinx.android.synthetic.main.activity_category_page.*
 import kotlinx.android.synthetic.main.fragment_donate.*
+import kotlinx.android.synthetic.main.fragment_donate.search
 import kotlinx.android.synthetic.main.fragment_shopping.*
 
 class DonateFragment : Fragment() {
@@ -90,6 +92,11 @@ class DonateFragment : Fragment() {
         donateRefresh.setOnRefreshListener {
             refreshgetdata()
             refreshBanner()
+        }
+
+        //搜索按钮监听
+        search.setOnClickListener {
+            ToastUtil.show("搜索")
         }
     }
     fun refreshgetdata(){
