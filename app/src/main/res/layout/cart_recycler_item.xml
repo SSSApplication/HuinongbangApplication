@@ -2,16 +2,13 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp"
-    android:layout_margin="5dp">
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp">
         <ImageView
-            android:id="@+id/order_img"
+            android:id="@+id/cartImage"
             android:layout_width="100dp"
             android:layout_height="100dp"/>
         <LinearLayout
@@ -21,7 +18,7 @@
             android:layout_gravity="center"
             android:layout_margin="5dp">
             <TextView
-                android:id="@+id/order_title"
+                android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <LinearLayout
@@ -32,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:text="数量："/>
                 <TextView
-                    android:id="@+id/buy_number"
+                    android:id="@+id/cart_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
@@ -45,43 +42,21 @@
                     android:layout_height="wrap_content"
                     android:text="总金额："/>
                 <TextView
-                    android:id="@+id/pay_price"
+                    android:id="@+id/cart_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
-                <TextView
-                    android:id="@+id/order_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/delete"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:text="删除"
+                    android:background="@drawable/bg_buttonview"
+                    android:textColor="@color/white"/>
 
             </LinearLayout>
-            <Button
-                android:id="@+id/buy_now"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:text="立即付款"
-                android:background="@drawable/bg_buttonview"
-                android:visibility="gone"
-                android:textColor="@color/white"/>
-            <Button
-                android:id="@+id/morderConfirmed"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:text="确认收货"
-                android:background="@drawable/bg_buttonview"
-                android:visibility="gone"
-                android:textColor="@color/white"/>
-            <Button
-                android:id="@+id/addReview"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:text="去评价"
-                android:background="@drawable/bg_buttonview"
-                android:visibility="gone"
-                android:textColor="@color/white"/>
+
 
         </LinearLayout>
 

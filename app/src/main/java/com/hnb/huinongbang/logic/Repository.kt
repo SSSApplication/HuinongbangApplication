@@ -266,6 +266,30 @@ object Repository {
         }
     }
 
+    //确认收货
+    fun morderConfirmed(oid: String) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.morderConfirmed(oid)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("确认收货", "成功，${response.data}")
+            Result.success(response)
+        } else {
+            LogUtil.d("确认收货", "失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+
+    //评价
+    fun addReview(data: AddReviewData) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.addReview(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("评价", "成功，${response.data}")
+            Result.success(response)
+        } else {
+            LogUtil.d("评价", "失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+
     //种植模块获取所有分类
     fun plantingCategories() = fire(Dispatchers.IO) {
         val plantingCategoryResponse = HNBNetwork.plantingCategories()

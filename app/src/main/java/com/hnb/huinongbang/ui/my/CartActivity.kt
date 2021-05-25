@@ -1,22 +1,22 @@
 package com.hnb.huinongbang.ui.my
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
-import com.hnb.huinongbang.HNBApplication
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.*
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_cart.*
-import kotlinx.android.synthetic.main.activity_cart.pay
 import kotlinx.android.synthetic.main.activity_create_order.*
+import kotlinx.android.synthetic.main.activity_order.*
 
 class CartActivity : AppCompatActivity() {
 
     val viewModel by lazy { ViewModelProviders.of(this).get(CartViewModel::class.java)}
+    private lateinit var cartAdapter: CartAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,10 +24,13 @@ class CartActivity : AppCompatActivity() {
 
         //获取用户类
         val user = Repository.getUser()
+        LogUtil.d("user","${user}")
 
         val type = intent.getIntExtra("type", -1)
 
-
+        return_cart.setOnClickListener {
+            onBackPressed()
+        }
         viewModel.getCart(
             GetCartData(
                 user.user_ID.toString(),
@@ -38,41 +41,27 @@ class CartActivity : AppCompatActivity() {
         viewModel.getCartResult.observe(this, { result ->
             val list = result.getOrNull()
             if (list != null) {
-
-                //支付
-                pay.setOnClickListener {
-                    LogUtil.d("返回1", "${list}")
-                    //获取oiid
-                    val oiidList = ArrayList<String>()
-                    for(orderItem in list){
-                        oiidList.add(orderItem.id.toString())
-                    }
-                    LogUtil.d("oiidList","${oiidList}")
-                    val oiid = Array(oiidList.size){"0"}
-                    oiidList.toArray(oiid)
-                    LogUtil.d("oiid","${oiid[0]}+${arrayOf("d13")[0]}")
-                    viewModel.buy(BuyCartData(
-                        oiid,
-                        type.toString()
-                    ))
-                    //监听提交结果
-                    viewModel.buyCartResult.observe(this, { result ->
-                        val response = result.getOrNull()
-                        if (response != null) {
-                            if(type == 0){
-                                ToastUtil.show("购买请求成功："+response.message+"元")
-                            }else{
-                                ToastUtil.show("捐赠请求成功："+response.message+"慧农币")
-                            }
-                        } else {
-                            ToastUtil.show("购买请求失败")
-                        }
-                    })
-                }
+                viewModel.cartList.clear()
+                viewModel.cartList.addAll(list)
+                val layoutManager = LinearLayoutManager(this)
+                cart_recycler.layoutManager = layoutManager
+                cartAdapter = CartAdapter(this, viewModel.cartList)
+                cart_recycler.adapter = cartAdapter
             } else {
                 ToastUtil.show("获取失败")
             }
+            cartRefresh.isRefreshing = false
         })
+        cartRefresh.setColorSchemeResources(R.color.color_price)
+        cartRefresh.setOnRefreshListener {
+            viewModel.getCart(
+                GetCartData(
+                    user.user_ID.toString(),
+                    type.toString()
+                )
+            )
+            cartRefresh.isRefreshing = true
+        }
     }
 
 

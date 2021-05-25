@@ -6,8 +6,11 @@ import androidx.lifecycle.ViewModel
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.BuyCartData
 import com.hnb.huinongbang.logic.model.GetCartData
+import com.hnb.huinongbang.logic.model.Order
+import com.hnb.huinongbang.logic.model.OrderItem
 
 class CartViewModel : ViewModel() {
+    var cartList = ArrayList<OrderItem>()
     private val cartLiveData = MutableLiveData<GetCartData>()
     val getCartResult = Transformations.switchMap(cartLiveData){ data ->
         Repository.getCart(data)

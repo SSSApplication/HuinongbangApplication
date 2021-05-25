@@ -101,6 +101,13 @@ object HNBNetwork {
         data.oid,
         data.total
     ).await()
+    suspend fun morderConfirmed(oid: String) = buyService.morderConfirmed(oid).await()
+    suspend fun addReview(data: AddReviewData) = buyService.review(
+        data.oid,
+        data.pid,
+        data.uid,
+        data.content
+    ).await()
 
     //封装PlantingCategory的网络请求
     private val plantingCategoryService = ServiceCreator.create<PlantingCategoryService>()

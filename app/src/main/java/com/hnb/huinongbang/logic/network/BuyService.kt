@@ -1,6 +1,7 @@
 package com.hnb.huinongbang.logic.network
 
 import com.hnb.huinongbang.logic.model.CreateOrderResponse
+import com.hnb.huinongbang.logic.model.GeneralResponse
 import com.hnb.huinongbang.logic.model.Order
 import com.hnb.huinongbang.logic.model.OrderItemResponse
 import retrofit2.Call
@@ -47,4 +48,19 @@ interface BuyService {
         @Query("oid") oid: String,
         @Query("total") total: String
     ): Call<CreateOrderResponse>
+
+    //确认收货
+    @GET("foremorderConfirmed")
+    fun morderConfirmed(
+        @Query("oid") oid: String
+    ): Call<GeneralResponse>
+
+    //评价
+    @GET("foremdoreview")
+    fun review(
+        @Query("oid") oid: String,
+        @Query("pid") pid: String,
+        @Query("uid") uid: String,
+        @Query("content") content: String
+    ): Call<GeneralResponse>
 }

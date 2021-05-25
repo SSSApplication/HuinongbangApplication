@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.model.Review
 import com.hnb.huinongbang.util.LogUtil
+import java.text.SimpleDateFormat
 
 class ReviewAdapter (private val activity: Activity, val reviewList: List<Review>) : RecyclerView.Adapter<ReviewAdapter.ViewHolder>(){
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -25,9 +26,11 @@ class ReviewAdapter (private val activity: Activity, val reviewList: List<Review
 
     override fun onBindViewHolder(holder: ReviewAdapter.ViewHolder, position: Int) {
         val review = reviewList[position]
-        holder.anonymousname.text = review.user.getAnonymousName()
+        holder.anonymousname.text = review.users.user_name
         holder.content.text = review.content
-        holder.date.text = review.date.toString()
+        val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val newDate = date.format(review.createDate)
+        holder.date.text = newDate.toString()
         LogUtil.d("评论详情", "${position} ${reviewList[position]}")
     }
 
