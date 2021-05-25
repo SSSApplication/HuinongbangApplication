@@ -1,16 +1,20 @@
 package com.hnb.huinongbang.ui.my
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hnb.huinongbang.BottomActivity
+import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.GetCartData
 import com.hnb.huinongbang.logic.model.GetOrderData
 import com.hnb.huinongbang.logic.model.Order
+import com.hnb.huinongbang.ui.common.PayActivity
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_order.*
@@ -53,7 +57,8 @@ class OrderActivity : AppCompatActivity() {
             order_refresh.isRefreshing = false
         })
         return_order.setOnClickListener {
-            onBackPressed()
+            val intent = Intent(HNBApplication.context, BottomActivity::class.java)
+            startActivity(intent)
         }
         all_order.setOnClickListener {
             viewModel.status = viewModel.allOrder
