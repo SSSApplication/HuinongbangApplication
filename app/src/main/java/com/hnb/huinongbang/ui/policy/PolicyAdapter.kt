@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.ui.policy
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,9 @@ import com.hnb.huinongbang.logic.model.Policy
 import com.hnb.huinongbang.ui.common.ProductActivity
 import com.hnb.huinongbang.ui.common.ShowhtmlActivity
 import com.hnb.huinongbang.util.LogUtil
+import java.text.SimpleDateFormat
 
-class PolicyAdapter (private val fragment: Fragment, val policyList: List<Policy>): RecyclerView.Adapter<PolicyAdapter.ViewHolder>(){
+class PolicyAdapter (private val fragment: Activity, val policyList: List<Policy>): RecyclerView.Adapter<PolicyAdapter.ViewHolder>(){
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val policyItem: View = view.findViewById(R.id.policyItem)
         val policyName: TextView = view.findViewById(R.id.policyName)
@@ -40,7 +42,9 @@ class PolicyAdapter (private val fragment: Fragment, val policyList: List<Policy
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val policy = policyList[position]
         holder.policyName.text = policy.policy_Topic
-        holder.policDate.text = policy.policy_CreateTime.toString()
+        val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val newDate = date.format(policy.policy_CreateTime)
+        holder.policDate.text = newDate.toString()
     }
 
     override fun getItemCount() = policyList.size

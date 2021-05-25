@@ -12,3 +12,5 @@ data class Policy(val policy_ID: Int,
                   val policy_View: Int,
                   val policy_CreateTime: Date
 )
+
+data class PoliciesResponse(val code: Int, val data: List<Policy>, val message: String)

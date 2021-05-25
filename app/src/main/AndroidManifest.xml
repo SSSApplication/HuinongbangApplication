@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Huinongbang">
-        <activity android:name=".ui.common.SearchResultActivity"></activity>
+        <activity android:name=".ui.policy.SearchPolicyActivity"></activity>
+        <activity android:name=".ui.planting.SearchPlantActivity" />
+        <activity android:name=".ui.common.SearchResultActivity" />
         <activity android:name=".ui.my.OrderActivity" />
         <activity android:name=".ui.my.ListActivity" />
         <activity android:name=".ui.my.CartActivity" />

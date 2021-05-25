@@ -2,23 +2,14 @@ package com.hnb.huinongbang.ui.common
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
-import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
-import com.hnb.huinongbang.logic.Repository
-import com.hnb.huinongbang.logic.model.CreateOrderData
-import com.hnb.huinongbang.logic.model.GetOrderItemData
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_category_page.*
-import kotlinx.android.synthetic.main.activity_category_page.searchView
-import kotlinx.android.synthetic.main.activity_create_order.*
 
 
 class CategoryPageActivity : AppCompatActivity() {
@@ -31,6 +22,7 @@ class CategoryPageActivity : AppCompatActivity() {
 
         //获取传递过来的分类id
         val cid = intent.extras!!.getInt("cid")
+        val categoryName = intent.getStringExtra("categoryName")
         //请求数据
         viewModel.getProducts(cid)
 
@@ -55,10 +47,9 @@ class CategoryPageActivity : AppCompatActivity() {
         myRefresh.setOnRefreshListener {
             getData()
         }
-
-        //搜索按钮监听
-        search.setOnClickListener {
-            ToastUtil.show("搜索")
+        category_text.text = categoryName
+        return_category.setOnClickListener {
+            onBackPressed()
         }
     }
 

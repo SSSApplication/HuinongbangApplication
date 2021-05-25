@@ -13,6 +13,7 @@ import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.model.PlantsNews
 import com.hnb.huinongbang.ui.common.ShowhtmlActivity
 import com.hnb.huinongbang.util.LogUtil
+import java.text.SimpleDateFormat
 
 class PlantsNewsAdapter (val activity: Activity, val plantsNewsList: List<PlantsNews>) : RecyclerView.Adapter<PlantsNewsAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -53,7 +54,9 @@ class PlantsNewsAdapter (val activity: Activity, val plantsNewsList: List<Plants
         //holder.plantName.text =plantsNews.plant_Name
         holder.plantTitle.text=plantsNews.plant_Title
         holder.plantInformation.text=plantsNews.plant_Values
-        holder.plantData.text="发表时间:"+plantsNews.plant_CreateTime.toString()
+        val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val newDate = date.format(plantsNews.plant_CreateTime)
+        holder.plantData.text="发表时间:"+newDate.toString()
 
     }
 

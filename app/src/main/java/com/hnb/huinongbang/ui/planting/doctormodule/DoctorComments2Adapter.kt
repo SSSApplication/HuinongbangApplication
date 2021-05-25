@@ -23,6 +23,7 @@ import com.hnb.huinongbang.logic.model.DoctorFile
 import com.hnb.huinongbang.ui.login.LoginViewModel
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_doctor_comments.*
+import java.text.SimpleDateFormat
 
 //根评论的数量
 class DoctorComments2Adapter (val activity: Activity, val commentNodeList: List<Comment>) : RecyclerView.Adapter<DoctorComments2Adapter.ViewHolder>() {
@@ -53,7 +54,9 @@ class DoctorComments2Adapter (val activity: Activity, val commentNodeList: List<
         val commentNode = commentNodeList[position]
         holder.commentUserName2.text =commentNode.dUser_ID.user_name+"@"+commentNode.discuss_root.dUser_ID.user_name
         holder.userComment2.text =commentNode.discuss_Values
-        holder.userCommentTime2.text=commentNode.discuss_CreateTime.toString()
+        val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val newDate = date.format(commentNode.discuss_CreateTime)
+        holder.userCommentTime2.text=newDate.toString()
 
         /*holder.itemView.setOnClickListener {
             showBottomSheetDialog(this.activity,"回复@${commentNode.dUser_ID.user_name}",commentNode.dUserup_ID.user_ID,commentNode.discuss_root.discuss_ID)

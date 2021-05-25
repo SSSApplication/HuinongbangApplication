@@ -17,12 +17,14 @@ import com.bumptech.glide.request.RequestOptions
 import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.ui.common.BannerDataBean
+import com.hnb.huinongbang.ui.common.SearchResultActivity
 import com.hnb.huinongbang.ui.planting.doctormodule.DoctorActivity
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
+import kotlinx.android.synthetic.main.fragment_donate.*
 import kotlinx.android.synthetic.main.fragment_planting.*
 import kotlinx.android.synthetic.main.fragment_shopping.*
 
@@ -50,6 +52,12 @@ class PlantingFragment : Fragment() {
             this.startActivity(intent)
         }
 
+        plant_search.setOnClickListener {
+            val intent = Intent(HNBApplication.context, SearchPlantActivity::class.java).apply {
+                putExtra("keyword",plant_searchView.text.toString())
+            }
+            startActivity(intent)
+        }
 
         //分类
         viewModel.plantingcategoriesLiveData.observe(this, Observer { result ->

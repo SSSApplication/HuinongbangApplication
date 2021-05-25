@@ -11,6 +11,9 @@ import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.Repository
 import com.hnb.huinongbang.logic.model.PayForDonationData
+import com.hnb.huinongbang.logic.model.PayForShopping
+import com.hnb.huinongbang.ui.my.MyInformationActivity
+import com.hnb.huinongbang.ui.my.OrderActivity
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import kotlinx.android.synthetic.main.activity_create_order.*
@@ -34,9 +37,9 @@ class PayActivity : AppCompatActivity() {
                 //慧农币余额隐藏
                 balance.visibility = View.GONE
                 //二维码显示
-                QRCode.visibility = View.VISIBLE
+//                QRCode.visibility = View.VISIBLE
                 //扣除慧农币按钮隐藏
-                deduction.visibility = View.GONE
+                deduction.visibility = View.VISIBLE
             }
             1 -> {
                 //捐赠模块
@@ -45,7 +48,7 @@ class PayActivity : AppCompatActivity() {
                 balance.text =  "当前余额：" + Repository.getUser().money.toString() + "慧农币"
                 balance.visibility = View.VISIBLE
                 //二维码隐藏
-                QRCode.visibility = View.GONE
+//                QRCode.visibility = View.GONE
                 //扣除慧农币按钮显示
                 deduction.visibility = View.VISIBLE
             }
@@ -79,7 +82,26 @@ class PayActivity : AppCompatActivity() {
             when (type) {
                 0 -> {
                     //购物
-                    ToastUtil.show("移动端请使用二维码支付！")
+                    viewModel.shopping(
+                        PayForShopping(
+                            oid.toString(),
+                            total.toString()
+                        )
+                    )
+                    viewModel.shoppingResult.observe(this, Observer { result ->
+                        val response = result.getOrNull()
+                        if (response != null){
+                            LogUtil.d("付款", "${response}")
+                            ToastUtil.show("付款成功")
+                            val intent = Intent(HNBApplication.context, OrderActivity::class.java).apply {
+                                putExtra("type", 0)
+                            }
+                            startActivity(intent)
+                        }else{
+                            ToastUtil.show("付款失败")
+                            result.exceptionOrNull()?.printStackTrace()
+                        }
+                    })
                 }
                 1 -> {
                     //捐赠
@@ -97,6 +119,10 @@ class PayActivity : AppCompatActivity() {
                         if (response != null){
                             LogUtil.d("付款", "${response}")
                             ToastUtil.show("付款成功")
+                            val intent = Intent(HNBApplication.context, OrderActivity::class.java).apply {
+                                putExtra("type", 1)
+                            }
+                            startActivity(intent)
                         }else{
                             ToastUtil.show("付款失败")
                             result.exceptionOrNull()?.printStackTrace()

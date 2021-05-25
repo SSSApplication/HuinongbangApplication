@@ -97,12 +97,17 @@ object HNBNetwork {
         data.uid,
         data.total
     ).await()
+    suspend fun payForShopping(data: PayForShopping) = buyService.payForShopping(
+        data.oid,
+        data.total
+    ).await()
 
     //封装PlantingCategory的网络请求
     private val plantingCategoryService = ServiceCreator.create<PlantingCategoryService>()
     suspend fun plantingCategories() = plantingCategoryService.plantingCategories().await()
     //plantsNews的网络请求
     suspend fun plantsNews() = plantingCategoryService.plantsNews().await()
+    suspend fun plantSearch(keyword: String) = plantingCategoryService.search(keyword).await()
     //plantsNewsOfCategory的网络请求
     suspend fun plantsNewsOfCategory(classify:String,item:String) = plantingCategoryService.plantsNewsOfCategory(classify,item).await()
 
@@ -117,6 +122,7 @@ object HNBNetwork {
     private val policyService = ServiceCreator.create<PolicyService>()
     suspend fun policys() = policyService.policys().await()
     suspend fun newpolicys() = policyService.newpolicys().await()
+    suspend fun policySearch(keyword: String) = policyService.search(keyword).await()
 
     //封装测试的网络请求
     private val testService = ServiceCreator.create<BuyService>()

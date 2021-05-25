@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.common.SearchResultActivity">
-
+    tools:context=".ui.planting.SearchPlantActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +17,7 @@
             android:background="@color/color_background">
 
             <Button
-                android:id="@+id/return_search"
+                android:id="@+id/return_plantSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/color_background"
@@ -29,7 +28,7 @@
                 android:text="@string/back"/>
 
             <TextView
-                android:id="@+id/search_text"
+                android:id="@+id/plantSearch_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -48,7 +47,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/searchRecycler"
+            android:id="@+id/plantSearchRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

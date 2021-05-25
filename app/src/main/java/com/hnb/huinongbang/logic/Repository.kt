@@ -254,6 +254,18 @@ object Repository {
         }
     }
 
+    //购物付款
+    fun payForShopping(data: PayForShopping) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.payForShopping(data)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("购物付款", "付款成功，${response.data}")
+            Result.success(response)
+        } else {
+            LogUtil.d("购物付款", "付款失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
+    }
+
     //种植模块获取所有分类
     fun plantingCategories() = fire(Dispatchers.IO) {
         val plantingCategoryResponse = HNBNetwork.plantingCategories()
@@ -277,6 +289,18 @@ object Repository {
             Result.failure(RuntimeException("response status is ${plantsNewsResponse.message}"))
         }
 
+    }
+    //搜索
+    fun plantSearch(keyword: String) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.plantSearch(keyword)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("搜索", "搜索成功：${response.data}")
+            val plant = response.data
+            Result.success(plant)
+        } else {
+            LogUtil.d("搜索", "搜索失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
+        }
     }
 
 
@@ -358,6 +382,18 @@ object Repository {
         } else {
             LogUtil.d("政策模块", "分类获取政策失败，${policyResponse.message}")
             Result.failure(RuntimeException("response status is ${policyResponse.message}"))
+        }
+    }
+    //搜索
+    fun policySearch(keyword: String) = fire(Dispatchers.IO) {
+        val response = HNBNetwork.policySearch(keyword)
+        if (response.code == 1) { //根据状态来处理
+            LogUtil.d("搜索", "搜索成功：${response.data}")
+            val policy = response.data
+            Result.success(policy)
+        } else {
+            LogUtil.d("搜索", "搜索失败，${response.message}")
+            Result.failure(RuntimeException("response status is ${response.message}"))
         }
     }
 

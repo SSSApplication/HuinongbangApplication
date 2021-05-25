@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.ui.Donate
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,16 +19,14 @@ import com.hnb.huinongbang.R
 import com.hnb.huinongbang.ui.common.BannerDataBean
 import com.hnb.huinongbang.ui.common.CategoryAdapter
 import com.hnb.huinongbang.ui.common.ProductAdapter
+import com.hnb.huinongbang.ui.common.SearchResultActivity
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
-import kotlinx.android.synthetic.main.activity_category_page.*
 import kotlinx.android.synthetic.main.fragment_donate.*
-import kotlinx.android.synthetic.main.fragment_donate.search
-import kotlinx.android.synthetic.main.fragment_shopping.*
 
 class DonateFragment : Fragment() {
 
@@ -95,8 +94,12 @@ class DonateFragment : Fragment() {
         }
 
         //搜索按钮监听
-        search.setOnClickListener {
-            ToastUtil.show("搜索")
+        donate_search.setOnClickListener {
+            val intent = Intent(HNBApplication.context, SearchResultActivity::class.java).apply {
+                putExtra("keyword", donate_searchView.text.toString())
+                putExtra("type", 1)
+            }
+            startActivity(intent)
         }
     }
     fun refreshgetdata(){

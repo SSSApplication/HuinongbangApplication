@@ -2,6 +2,7 @@ package com.hnb.huinongbang.logic.network
 
 import com.hnb.huinongbang.logic.model.GeneralResponse
 import com.hnb.huinongbang.logic.model.OrderItemResponse
+import com.hnb.huinongbang.logic.model.OrderResponse
 import com.hnb.huinongbang.logic.model.UserResponse
 import retrofit2.Call
 import retrofit2.Response
@@ -66,7 +67,7 @@ interface UserService {
     fun getOrder(
         @Query("uid") uid: String,
         @Query("type") type: String
-    ): Call<OrderItemResponse>
+    ): Call<OrderResponse>
 
     //删除购物车
     @GET("foremdeleteCart")

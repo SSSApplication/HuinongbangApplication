@@ -54,6 +54,7 @@ class CategoryAdapter(private val fragment: Fragment, val categoryList: List<Cat
         holder.categorybutton.setOnClickListener {
             val intent = Intent(this.fragment.context, CategoryPageActivity::class.java).apply {
                 putExtra("cid",category.id)
+                putExtra("categoryName",category.name)
             }
             this.fragment.startActivity(intent)
         }

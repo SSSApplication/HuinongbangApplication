@@ -23,36 +23,37 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="2"
-                        android:src="@drawable/logohuinongbanglogo" />
-
-                    <SearchView
-                        android:id="@+id/searchView"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="5"
-                        android:background="@drawable/bg_button"
-                        android:iconifiedByDefault="false"
-                        android:queryHint="请输入搜索内容" />
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_background">
 
                     <Button
-                        android:id="@+id/search"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginTop="12dp"
+                        android:id="@+id/return_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/color_background"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_gravity="center"
+                        android:textSize="18sp"
+                        android:textColor="#707070"
+                        android:text="@string/back"/>
+
+                    <TextView
+                        android:id="@+id/category_text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@drawable/bv_addtocart"
-                        android:textColor="@color/white"
-                        android:text="搜索" />
+                        android:textSize="18sp"
+                        android:textColor="#707070"
+                        android:text=""/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:background="@color/color_background"/>
+
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout

@@ -8,13 +8,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.model.DoctorFile
 import com.hnb.huinongbang.logic.model.DoctorInformation
+import com.hnb.huinongbang.logic.network.ServiceCreator
 import com.hnb.huinongbang.ui.common.ShowhtmlActivity
 import com.hnb.huinongbang.util.LogUtil
 
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.fragment_my.*
 
 class DoctorItemAdapter (val activity: Activity, val doctorFileList: List<DoctorFile>) : RecyclerView.Adapter<DoctorItemAdapter.ViewHolder>() {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -40,6 +44,8 @@ class DoctorItemAdapter (val activity: Activity, val doctorFileList: List<Doctor
         holder.doctorName.text =doctorInformation.user_ID.user_name
         holder.doctorBelong.text =doctorInformation.belong
         holder.doctorIntroduce.text =doctorInformation.introduce
+        val avatarUrl = ServiceCreator.avatar + doctorInformation.user_ID.user_ID + ".jpg" + "?" + (Math.random()*100).toInt()
+        Glide.with(HNBApplication.context).load(avatarUrl).into(holder.doctorHead)
         holder.doctorButton.setOnClickListener {
             val doctorId=doctorInformation.user_ID.user_ID.toString()
             val intent1 = Intent(this.activity, DoctorCommentsActivity::class.java).apply { putExtra("doctorId",doctorId)}

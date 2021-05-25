@@ -21,6 +21,7 @@ import com.hnb.huinongbang.logic.model.CommentList
 import com.hnb.huinongbang.logic.model.DoctorCommentBack
 import com.hnb.huinongbang.logic.model.DoctorFile
 import de.hdodenhof.circleimageview.CircleImageView
+import java.text.SimpleDateFormat
 import androidx.lifecycle.ViewModelProviders.of as of1
 
 //根评论的数量
@@ -58,7 +59,9 @@ class DoctorComments1Adapter (val activity: Activity, private val commentRootLis
         val commentRoot = commentRootList[position]
         holder.comment1UserName.text =commentRoot.root.dUser_ID.user_name
         holder.userComment1.text =commentRoot.root.discuss_Values
-        holder.userCommentTime1.text=commentRoot.root.discuss_CreateTime.toString()
+        val date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val newDate = date.format(commentRoot.root.discuss_CreateTime)
+        holder.userCommentTime1.text=newDate.toString()
 
         //item点击事件监听
         holder.itemView.setOnClickListener {

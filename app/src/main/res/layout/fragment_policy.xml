@@ -23,8 +23,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <SearchView
-                    android:id="@+id/searchView"
+                <EditText
+                    android:id="@+id/policySearchView"
                     android:layout_width="0dp"
                     android:layout_height="35dp"
                     android:layout_marginLeft="10dp"
@@ -32,9 +32,10 @@
                     android:layout_weight="5"
                     android:background="@drawable/bg_button"
                     android:iconifiedByDefault="false"
-                    android:queryHint="请输入搜索内容" />
+                    android:hint="请输入搜索内容" />
 
                 <android.widget.Button
+                    android:id="@+id/policySearch"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="5dp"

@@ -8,7 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface BuyService {
-    //注册 测试内容 实际需要你自己写
     @GET("forembuy")
     fun buy(@Query("oiid") oiid: Array<String>, @Query("type") type: Int): Call<OrderItemResponse>
 
@@ -39,6 +38,13 @@ interface BuyService {
     fun payForDonation(
         @Query("oid") oid: String,
         @Query("uid") uid: String,
+        @Query("total") total: String
+    ): Call<CreateOrderResponse>
+
+    //购物付款
+    @GET("forempayed")
+    fun payForShopping(
+        @Query("oid") oid: String,
         @Query("total") total: String
     ): Call<CreateOrderResponse>
 }

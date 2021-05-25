@@ -1,5 +1,6 @@
 package com.hnb.huinongbang.ui.policy
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +16,14 @@ import com.hnb.huinongbang.HNBApplication
 import com.hnb.huinongbang.R
 import com.hnb.huinongbang.logic.model.Policy
 import com.hnb.huinongbang.ui.common.BannerDataBean
+import com.hnb.huinongbang.ui.planting.SearchPlantActivity
 import com.hnb.huinongbang.util.LogUtil
 import com.hnb.huinongbang.util.ToastUtil
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
+import kotlinx.android.synthetic.main.fragment_planting.*
 import kotlinx.android.synthetic.main.fragment_policy.*
 
 class PolicyFragment : Fragment() {
@@ -63,7 +66,7 @@ class PolicyFragment : Fragment() {
                 viewModel.policyList.clear()
                 viewModel.policyList.addAll(policies)
                 policyRecycler.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
-                policyAdapter = PolicyAdapter(this, viewModel.policyList)
+                policyAdapter = PolicyAdapter(activity!!, viewModel.policyList)
                 policyRecycler.adapter = policyAdapter
             }else {
                 ToastUtil.show("没有政策")
@@ -77,6 +80,12 @@ class PolicyFragment : Fragment() {
             refreshData()
             refreshBanner()
         }
+        policySearch.setOnClickListener {
+            val intent = Intent(HNBApplication.context, SearchPolicyActivity::class.java).apply {
+                putExtra("keyword",policySearchView.text.toString())
+            }
+            startActivity(intent)
+        }
     }
 
     fun refreshData(){
@@ -85,7 +94,7 @@ class PolicyFragment : Fragment() {
     }
     fun showpolicy(policyListbyclassify: List<Policy>){
         policyRecyclerbyclassify.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL, false)
-        policyAdapterbyclassify = PolicyAdapter(this, policyListbyclassify)
+        policyAdapterbyclassify = PolicyAdapter(activity!!, policyListbyclassify)
         policyRecyclerbyclassify.adapter = policyAdapterbyclassify
     }
     fun refreshBanner(){

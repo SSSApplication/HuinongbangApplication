@@ -5,6 +5,8 @@ import java.util.*
 
 data class OrderItemResponse(val code: Int, val data: List<OrderItem>, val message: String)
 
+data class OrderResponse(val code: Int, val data: List<Order>, val message: String)
+
 data class OrderItem(val number: Int, val product: Product, val id: Int, val type: Int)
 
 data class Order(
@@ -57,5 +59,10 @@ data class CreateOrderData(
 data class PayForDonationData(
     val oid: String,
     val uid: String,
+    val total: String
+)
+
+data class PayForShopping(
+    val oid: String,
     val total: String
 )
